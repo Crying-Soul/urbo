@@ -142,16 +142,23 @@ $(document).ready(function() {
             return false;
         }
     }
-
     const supportsPassive = true;
 
     const wheelOpt = supportsPassive ? { passive: false } : false;
     const wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
 
-    window.addEventListener("DOMMouseScroll", preventDefault, false);
-    window.addEventListener(wheelEvent, preventDefault, wheelOpt);
-    window.addEventListener("touchmove", preventDefault, wheelOpt);
-    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+    function disableScroll(params) {
+
+
+        window.addEventListener("DOMMouseScroll", preventDefault, false);
+        window.addEventListener(wheelEvent, preventDefault, wheelOpt);
+        window.addEventListener("touchmove", preventDefault, wheelOpt);
+        window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+    }
+
+    if (window.location.pathname === "/") {
+        disableScroll()
+    }
 
 
 });
