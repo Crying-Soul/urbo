@@ -11,6 +11,16 @@
     src: url(../assets/fonts/Majorant-Md.woff2);
 }
 
+@font-face {
+    font-family: "Majorant-Lt";
+    src: url(../assets/fonts/Majorant-Lt.woff2);
+}
+
+@font-face {
+    font-family: "Majorant-Rg";
+    src: url(../assets/fonts/Majorant-Rg.woff2);
+}
+
 .content {
     display: none;
 }
@@ -21,6 +31,7 @@
 
 .d-n {
     display: none;
+    z-index: -1;
 }
 
 button:hover {
@@ -39,8 +50,8 @@ header {
 
 .wrapper {
     position: absolute;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
     background-color: black;
     z-index: -1;
 }
@@ -82,7 +93,7 @@ header .logo {
     position: absolute;
     display: flex;
     height: 100%;
-    align-items: flex-end;
+    align-items: center;
     transition: .5s;
 }
 
@@ -98,7 +109,7 @@ header .logo svg {
 
 .item {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     height: 100%;
     appearance: none;
@@ -185,9 +196,8 @@ header .logo svg {
     position: fixed;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
-    text-align: left;
     text-transform: uppercase;
     width: 17%;
     height: 250px;
@@ -199,6 +209,7 @@ header .logo svg {
 }
 
 .menu-alter-el {
+    font-family: 'Majorant-Lt';
     color: white;
     transform: scale(1);
     transition: 0.5s;
@@ -392,11 +403,10 @@ aside .menu {
 }
 
 .view-wrapper {
-    position: absolute;
+    position: fixed;
     left: 100px;
     bottom: 80px;
     z-index: 10;
-    /* overflow: hidden; */
 }
 
 .view-wrapper button {
@@ -708,4 +718,99 @@ aside .menu {
     left: 45%;
     top: 55%;
     transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+}
+
+.header-proj-img {
+    position: relative;
+    height: 1080px;
+    width: 100vw;
+}
+
+.header-proj-img img {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+}
+
+.slogan-wrapper {
+    position: relative;
+    width: 70vw;
+    left: 100px;
+    top: 40%;
+}
+
+.slogan-wrapper {
+    font-family: "Majorant-Rg";
+    font-size: 3rem;
+}
+
+.project-stats {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-stats .project-stats-group {
+    display: flex;
+    height: 400px;
+    width: 50%;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.project-stats-group .stats-info p {
+    font-family: "Majorant-Rg";
+    font-size: 18px;
+    color: black;
+}
+
+.project-stats-group .stats-info span {
+    font-family: "Majorant-Md";
+    font-size: 18px;
+    color: black;
+}
+
+#project {
+    width: 100vw;
+    background-color: #FFF;
+}
+
+.project-description {
+    position: relative;
+    left: 50%;
+    width: 80vw;
+    height: 350px;
+    transform: translateX(-50%);
+}
+
+.project-description h3 {
+    font-family: "Majorant-Md";
+    color: black;
+}
+
+.project-description p {
+    font-family: "Majorant-Lt";
+    color: black;
+}
+
+.project-footer {
+    position: relative;
+    left: 50%;
+    width: 80vw;
+    height: 100px;
+    transform: translateX(-50%);
+}
+
+.project-footer span {
+    color: black;
 }
