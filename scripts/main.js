@@ -1,12 +1,10 @@
 "use strict";
 $(document).ready(function() {
-    console.log("Document loaded");
+    const scroll_counter = 4;
     let href = "home";
     let grid = $('button.grid-list-view').children().text() == "GRID VIEW";
 
-
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
-
 
     $(".menu-trigger").on("click", function() {
         $(this).toggleClass("tgl");
@@ -25,7 +23,7 @@ $(document).ready(function() {
             "<p>GRID&nbsp;VIEW</p>"
         );
 
-        console.log(href, grid);
+
         if (!grid) {
 
             $(`.project-wrapper-list`).addClass('project-view-swap');
@@ -56,23 +54,28 @@ $(document).ready(function() {
         return false;
     });
     $(".project-wrapper-grid").on("mousemove", function(e) {
-        $('.project').each((i, el) => {
+        $('.group-project .project').each((i, el) => {
             const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
             const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
             el.style.transform = `translateX(${x}px) translateY(${y}px) `;
         });
     });
-    $(".project").mouseenter(function(e) {
+    $(".group-project .project").mouseenter(function(e) {
         // console.log($(this).children('h1').length);
-        if (!$(this).children('h1').length) {
+        if (!$(this).children('p').length) {
             // console.log($(this).attr('data-content'));
-            $(this).prepend(`<h1>${$(this).attr('data-content')}</h1>`)
+            $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
         }
     });
-    $(".project").mouseleave(function(e) {
-        if ($(this).children('h1')) {
+    $(".group-project .project").click(function(e) {
+
+        location.href = `./pages/${$(this).attr('data-content').toLowerCase().replace('.', '-')}.html`;
+
+    });
+    $(".group-project .project").mouseleave(function(e) {
+        if ($(this).children('p')) {
             // console.log($(this).attr('data-content'));
-            $(this).children('h1').remove()
+            $(this).children('p').remove()
         }
 
     });
@@ -97,7 +100,7 @@ $(document).ready(function() {
         counter = e.deltaY > 0 ? counter + 1 : counter - 1;
         // console.log(hrefs_list);
 
-        if (counter >= 3 && hrefs_list[hrefs_list.indexOf(href) + 1]) {
+        if (counter >= scroll_counter && hrefs_list[hrefs_list.indexOf(href) + 1]) {
 
             $(".menu-el").removeClass("active");
 
@@ -116,7 +119,7 @@ $(document).ready(function() {
             // $(".menu-el, .menu-alter-el")
             counter = 0;
         }
-        if (counter <= -3 && hrefs_list[hrefs_list.indexOf(href) - 1]) {
+        if (counter <= -scroll_counter && hrefs_list[hrefs_list.indexOf(href) - 1]) {
 
             $(".menu-el").removeClass("active");
 
@@ -147,15 +150,12 @@ $(document).ready(function() {
     const wheelOpt = supportsPassive ? { passive: false } : false;
     const wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
 
-    function disableScroll(params) {
-
-
+    function disableScroll() {
         window.addEventListener("DOMMouseScroll", preventDefault, false);
         window.addEventListener(wheelEvent, preventDefault, wheelOpt);
         window.addEventListener("touchmove", preventDefault, wheelOpt);
         window.addEventListener("keydown", preventDefaultForScrollKeys, false);
     }
-
     if (window.location.pathname === "/") {
         disableScroll()
     }
