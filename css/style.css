@@ -67,11 +67,6 @@ a:hover {
     transform: scale(0.8);
 }
 
-
-/**
-    HEADER SECTION
-*/
-
 header {
     position: fixed;
     width: 100vw;
@@ -90,6 +85,7 @@ header .logo {
     position: absolute;
     display: flex;
     height: 100%;
+    width: min-content;
     align-items: center;
     transition: .5s;
 }
@@ -139,7 +135,7 @@ header .logo svg {
     height: 40px;
     background: none;
     border: none;
-    outline: inherit;
+    outline: none;
     background: transparent;
     cursor: pointer;
     padding: 30px;
@@ -176,7 +172,7 @@ header .logo svg {
     width: 100vw;
     height: 100vh;
     z-index: 6;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) brightness(70%);
     transition: .2s;
 }
 
@@ -187,20 +183,13 @@ header .logo svg {
 }
 
 .menu-alter-wrap {
-    position: fixed;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
     flex-direction: column;
-    text-transform: uppercase;
-    width: 17%;
-    height: 250px;
-    right: 15px;
-    font-size: 2em;
-    top: 50%;
+    justify-content: space-between;
+    align-items: flex-end;
     opacity: 1;
     z-index: 9;
-    transform: translateY(-50%);
+    margin-right: 6vw;
 }
 
 .menu-alter-el {
@@ -208,6 +197,7 @@ header .logo svg {
     color: white;
     transform: scale(1);
     transition: 0.5s;
+    font-size: 2em;
 }
 
 .menu-alter-el:hover {
@@ -230,9 +220,9 @@ header .logo svg {
 }
 
 .menu-extra-el {
+    font-family: "Majorant-Rg";
     transition: 0.5s;
-    transform: scale(1);
-    margin: 25px 50px;
+    margin: 25px 30px;
     opacity: 0;
     animation-fill-mode: both;
 }
@@ -271,14 +261,15 @@ header .logo svg {
 
 .menu-extra-el:hover {
     transition: 0.5s;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .menu-extra-el:hover a {
     color: #fff;
 }
 
-aside {
+.side-bar,
+.menu-alter-wrap {
     position: fixed;
     right: 0;
     top: 50%;
@@ -288,7 +279,7 @@ aside {
     transform: translateY(-50%);
 }
 
-aside .menu {
+.side-bar .menu {
     position: relative;
     display: flex;
     height: 100%;
@@ -532,7 +523,8 @@ aside .menu {
     }
 }
 
-.project a:hover~img {
+.project p:hover~img,
+.project img:hover {
     transition: .5s;
     transform: scale(1.05);
     filter: brightness(100%);
@@ -818,10 +810,85 @@ aside .menu {
 }
 
 #project-header {
-    position: absolute;
+    position: fixed;
 }
 
 #project-header .menu-alter {
     position: fixed;
     height: inherit;
+}
+
+.back-to-main {
+    position: relative;
+    top: 135px;
+    left: 135px;
+    width: 50px;
+    height: 50px;
+}
+
+.arrow-container {
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%) rotateZ(0deg) rotate(90deg);
+}
+
+.arrow-container:hover {
+    cursor: pointer;
+}
+
+.arrow-container:hover .arrow {
+    top: 50%;
+}
+
+.arrow-container:hover .arrow:before {
+    transform: translate(-50%, -50%) rotateZ(-30deg);
+}
+
+.arrow-container:hover .arrow:after {
+    transform: translate(-50%, -50%) rotateZ(30deg);
+}
+
+.arrow {
+    position: absolute;
+    left: 50%;
+    transition: all 0.4s ease;
+    transform: scale(0.5);
+}
+
+.arrow:before,
+.arrow:after {
+    transition: all 0.4s ease;
+    content: "";
+    display: block;
+    position: absolute;
+    transform-origin: bottom right;
+    background-color: #000;
+    width: 4px;
+    height: 50px;
+    border-radius: 10px;
+    transform: translate(-50%, -50%) rotateZ(-45deg);
+}
+
+.arrow:after {
+    transform-origin: bottom left;
+    transform: translate(-50%, -50%) rotateZ(45deg);
+}
+
+.arrow:nth-child(1) {
+    opacity: 0.3;
+    top: 40%;
+}
+
+.arrow:nth-child(2) {
+    opacity: 0.6;
+    top: 50%;
+}
+
+.arrow:nth-child(3) {
+    opacity: 0.9;
+    top: 60%;
 }
