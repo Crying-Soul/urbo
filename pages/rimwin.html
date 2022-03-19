@@ -15,12 +15,8 @@
 <body style="overflow-x: hidden;">
     <div class="wrapper">
 
-        <div class="content" id="about">
-            <div style="display: flex; background-color: #0f0d23; width: 100vw; height: 100vh; justify-content: center; align-items: center;">
-                <h1>Soon...</h1>
-            </div>
-        </div>
-        <header>
+
+        <header style="position: absolute !important;">
             <div class="logo"><a href="/"><svg 
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -74,11 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="view-wrapper view-swap">
-            <div class="button-view-wrap">
-                <button class="grid-list-view"><p>GRID&nbsp;VIEW</p></button>
-            </div>
-        </div>
+
         <div class="content active-content" id="project">
             <div class="project-stats">
                 <div class="project-stats-group">
@@ -86,7 +78,7 @@
                         <p>Company&nbsp;Name:<br><span>Banki.shop</span></p>
                     </div>
                     <div class="stats-info">
-                        <p>Industry:<br><span>Defi</span></p>
+                        <p>Industry:<br><span>defi, finance, real-estate</span></p>
                     </div>
                     <div class="stats-info">
                         <p>Website:<br><span>http://bank.shop/</span></p>
@@ -100,14 +92,16 @@
                         <p>Geography:<br><span>Worldwide</span></p>
                     </div>
                     <div class="stats-info">
-                        <p>Announcement&nbsp;date:<br><span>March 2020</span></p>
+                        <p>Announcement&nbsp;date:<br><span>March 10 2020</span></p>
                     </div>
                 </div>
             </div>
             <div class="project-description">
                 <h3>Description</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit veniam quae explicabo, expedita architecto maxime temporibus ipsam facilis, cumque inventore rerum sunt tempore eos. Quo alias magnam repudiandae doloremque.
+                    This is a directory for the professional real estate market: real estate agents, loan brokers, construction companies. Service provides access to banks that issue mortgage loans, collateral programs and refinancing programs. There are 65 banks, 427 programs
+                    and a convenient "Algorithm of selection the best loan program match" into our product. The platform contains 129 services for checking information and documents from clients to validate their relevance and veracity. "Algorithm of
+                    selection the best loan program match" will give an opportunity to get the loan with a probability of 94.6% will select the best solution.
                 </p>
             </div>
             <footer class="project-footer">
@@ -121,6 +115,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../scripts/main.js"></script>
+    <script>
+        const supportsPassive = false;
+        if (window.pageYOffset > 600) {
+            $('.menu-trigger span').css("background-color", "#000")
+            $('.menu-alter-el a').css("color", "#000")
+        } else {
+            $('.menu-trigger span').css("background-color", "#FFF");
+            $('.menu-alter-el a').css("color", "#FFF")
+        }
+        const scrollController = e => {
+            if (window.pageYOffset > 600) {
+                $('.menu-trigger span').css("background-color", "#000")
+                $('.menu-alter-el a').css("color", "#000")
+            } else {
+                $('.menu-trigger span').css("background-color", "#FFF");
+                $('.menu-alter-el a').css("color", "#FFF")
+            }
+
+            // console.log(e.pageY);
+        }
+        const wheelOpt = supportsPassive ? {
+            passive: false
+        } : false;
+        const wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+        window.addEventListener("DOMMouseScroll", scrollController, false);
+        window.addEventListener(wheelEvent, scrollController, wheelOpt);
+        window.addEventListener("touchmove", scrollController, wheelOpt);
+    </script>
 </body>
 
 </html>
