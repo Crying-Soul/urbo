@@ -378,10 +378,9 @@ header .logo svg {
 .active a:hover::after,
 .tgl-brd button::after,
 .tgl-brd button:hover::after {
-    transition: 0.5s;
     border-bottom: 1px grey solid;
     transform: rotate(45deg);
-    border-top: 2px white solid;
+    border-top: 1px white solid;
 }
 
 .view-wrapper {
@@ -393,6 +392,10 @@ header .logo svg {
 
 .button-view-wrap button {
     color: #fff;
+}
+
+.button-view-wrap button p {
+    font-family: "Majorant-Rg";
 }
 
 .view-wrapper button {
@@ -446,7 +449,7 @@ header .logo svg {
     height: 100%;
     left: 0;
     top: -2px;
-    border-top: 2px solid #FFF;
+    border-top: 1px solid #FFF;
     border-radius: 2px;
     transition: .5s;
 }
