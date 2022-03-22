@@ -1,8 +1,13 @@
 "use strict";
 $(document).ready(function() {
     const scroll_counter = 4;
+
+    /**
+     * alternative menu activation
+     */
+
     let href = "home";
-    let grid = $('button.grid-list-view').children().text() == "GRID VIEW";
+    let grid = $('button.grid-list-view p').text() == "GRID VIEW";
 
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
@@ -14,6 +19,11 @@ $(document).ready(function() {
         $(".menu-extra-el").toggleClass("menu-extra-anim");
         return false;
     });
+
+    /**
+     * Grid < -- > List view swapper
+     */
+
     $("button.grid-list-view").on("click", function() {
         grid = $('button.grid-list-view').children().text() == "GRID VIEW";
         $('.project-wrapper-list').removeClass('d-n');
@@ -22,7 +32,6 @@ $(document).ready(function() {
             "<p>LIST&nbsp;VIEW</p>" :
             "<p>GRID&nbsp;VIEW</p>"
         );
-
 
         if (!grid) {
 
@@ -34,22 +43,32 @@ $(document).ready(function() {
         }
         return false;
     });
-    $(".menu-el, .menu-alter-el").on("click", function() {
-        $('.page-scroller').attr('id', 'page-scroller');
-        $(".menu-el").removeClass("active");
-        $(this).addClass("active");
-        href = $(this).children().attr('data-href');
+    /**
+     * Navigation
+     */
 
-        $('.content').removeClass('active-content');
-        $(`.content#${href}`).addClass("active-content");
-        $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
-        console.log(grid);
-        window.setTimeout(() => {
-            $('.page-scroller').attr('id', '');
-        }, 1250)
-        if (!grid) {
-            $('.project-wrapper-list').addClass('d-n');
-        }
+    $(".menu-el, .menu-alter-el").on("click", function() {
+        $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
+        $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
+        setTimeout(() => {
+            $(".menu-el").removeClass("active");
+
+            $('.content').removeClass(`scroll-animation-out-${href} active-content`)
+            href = $(this).children().attr('data-href');
+
+            $(this).addClass("active");
+            $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+
+
+            if (!grid) {
+                $('.project-wrapper-list').addClass('d-n');
+            }
+
+
+        }, 2000);
+
+
 
         return false;
     });
@@ -79,8 +98,6 @@ $(document).ready(function() {
         }
 
     });
-
-
 
     let counter = 0;
     // let 
@@ -116,7 +133,6 @@ $(document).ready(function() {
             }
 
 
-            // $(".menu-el, .menu-alter-el")
             counter = 0;
         }
         if (counter <= -scroll_counter && hrefs_list[hrefs_list.indexOf(href) - 1]) {
