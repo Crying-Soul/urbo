@@ -48,6 +48,7 @@ $(document).ready(function() {
      */
 
     $(".menu-el, .menu-alter-el").on("click", function() {
+        if (location.pathname !== "/") location.href = "/";
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
         setTimeout(() => {
@@ -104,7 +105,7 @@ $(document).ready(function() {
     const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
     const hrefs_list = [];
 
-    $('.menu-el').each(function(index) {
+    $('.menu-el').each(function() {
 
         hrefs_list.push($(this).children().attr('data-href'));
     });
