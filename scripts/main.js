@@ -56,6 +56,11 @@ $(document).ready(function() {
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
 
+            if (href === "about") {
+                location.href = "/pages/about.html";
+
+            }
+
             $(this).addClass("active");
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -65,11 +70,7 @@ $(document).ready(function() {
                 $('.project-wrapper-list').addClass('d-n');
             }
 
-
-        }, 2000);
-
-
-
+        }, 1500);
         return false;
     });
     $(".project-wrapper-grid").on("mousemove", function(e) {
@@ -96,11 +97,10 @@ $(document).ready(function() {
             // console.log($(this).attr('data-content'));
             $(this).children('p').remove()
         }
-
     });
 
     let counter = 0;
-    // let 
+    let skip = true;
     const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
     const hrefs_list = [];
 
@@ -109,47 +109,64 @@ $(document).ready(function() {
         hrefs_list.push($(this).children().attr('data-href'));
     });
 
-    console.log(hrefs_list);
-
-
     function preventDefault(e) {
         // console.log(e);
         counter = e.deltaY > 0 ? counter + 1 : counter - 1;
-        // console.log(hrefs_list);
+        console.log(href);
 
-        if (counter >= scroll_counter && hrefs_list[hrefs_list.indexOf(href) + 1]) {
-
-            $(".menu-el").removeClass("active");
-
-            $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
-            href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-
-            $('.content').removeClass('active-content');
-            $(`.content#${href}`).addClass("active-content");
-            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
-            console.log(grid);
-            if (!grid) {
-                $('.project-wrapper-list').addClass('d-n');
-            }
-
-
+        if (counter >= scroll_counter && hrefs_list[hrefs_list.indexOf(href) + 1] && skip) {
+            skip = false;
             counter = 0;
+            $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
+            $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
+            setTimeout(() => {
+                if (href === "about" || href === "team") {
+                    location.href = "/pages/about.html";
+                }
+                $(".menu-el").removeClass("active");
+                $('.content').removeClass(`scroll-animation-out-${href} active-content`)
+                $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
+                href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
+
+                $('.content').removeClass('active-content');
+                $(`.content#${href}`).addClass("active-content");
+                $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+                $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+
+                if (!grid) {
+                    $('.project-wrapper-list').addClass('d-n');
+                }
+                skip = true;
+                counter = 0;
+            }, 1500);
+
         }
-        if (counter <= -scroll_counter && hrefs_list[hrefs_list.indexOf(href) - 1]) {
-
-            $(".menu-el").removeClass("active");
-
-            $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
-            href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
-
-            $('.content').removeClass('active-content');
-            $(`.content#${href}`).addClass("active-content");
-            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
-            console.log(grid);
-            if (!grid) {
-                $('.project-wrapper-list').addClass('d-n');
-            }
+        if (counter <= -scroll_counter && hrefs_list[hrefs_list.indexOf(href) - 1] && skip) {
             counter = 0;
+            skip = false;
+            $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
+            $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
+            setTimeout(() => {
+                if (href === "about" || href === "team") {
+                    location.href = "/pages/about.html";
+                }
+                $(".menu-el").removeClass("active");
+                $('.content').removeClass(`scroll-animation-out-${href} active-content`)
+                $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
+                href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
+
+                $('.content').removeClass('active-content');
+                $(`.content#${href}`).addClass("active-content");
+                $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+                $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+
+                if (!grid) {
+                    $('.project-wrapper-list').addClass('d-n');
+                }
+                skip = true;
+                counter = 0;
+            }, 1500);
+
         }
 
         e.preventDefault();
