@@ -724,7 +724,8 @@ header .logo svg {
 
 .header-proj-img {
     position: relative;
-    height: 80vh;
+    height: 80vw;
+    max-height: 80vh;
     width: 100vw;
 }
 
@@ -939,18 +940,33 @@ header .logo svg {
         margin: 50px 25px;
     }
     100% {
-        opacity: 0;
+        opacity: 0.1;
         margin: 100px 50px;
     }
 }
 
 @keyframes scroll-animation-in-2 {
     0% {
-        opacity: 0;
+        opacity: 0.1;
         margin: 100px 50px;
     }
     100% {
         opacity: 1;
         margin: 50px 25px;
     }
+}
+
+.header-about {
+    position: relative;
+    height: 80vw;
+    max-height: 80vh;
+    width: 100vw;
+    background-color: #0f0d23;
+}
+
+.header-about svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
