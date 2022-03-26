@@ -1,6 +1,5 @@
 "use strict";
 $(document).ready(function() {
-
     const scroll_counter = 4;
 
     /**
@@ -60,7 +59,9 @@ $(document).ready(function() {
 
             if (href === "about") {
                 location.href = "/pages/about.html";
+
             }
+
             $(this).addClass("active");
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -81,17 +82,20 @@ $(document).ready(function() {
         });
     });
     $(".group-project .project").mouseenter(function(e) {
-
+        // console.log($(this).children('h1').length);
         if (!$(this).children('p').length) {
-
+            // console.log($(this).attr('data-content'));
             $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
         }
     });
     $(".group-project .project").click(function(e) {
+
         location.href = `./pages/${$(this).attr('data-content').toLowerCase().replace('.', '-')}.html`;
+
     });
     $(".group-project .project").mouseleave(function(e) {
         if ($(this).children('p')) {
+            // console.log($(this).attr('data-content'));
             $(this).children('p').remove()
         }
     });
@@ -117,7 +121,7 @@ $(document).ready(function() {
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
-                if (href === "about") {
+                if (href === "about" || href === "team") {
                     location.href = "/pages/about.html";
                 }
                 $(".menu-el").removeClass("active");
@@ -144,7 +148,7 @@ $(document).ready(function() {
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
-                if (href === "about") {
+                if (href === "about" || href === "team") {
                     location.href = "/pages/about.html";
                 }
                 $(".menu-el").removeClass("active");
@@ -189,4 +193,6 @@ $(document).ready(function() {
     if (window.location.pathname === "/") {
         disableScroll()
     }
+
+
 });
