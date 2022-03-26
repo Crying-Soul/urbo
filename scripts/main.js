@@ -82,9 +82,9 @@ $(document).ready(function() {
         });
     });
     $(".group-project .project").mouseenter(function(e) {
-        // console.log($(this).children('h1').length);
+
         if (!$(this).children('p').length) {
-            // console.log($(this).attr('data-content'));
+
             $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
         }
     });
@@ -95,7 +95,7 @@ $(document).ready(function() {
     });
     $(".group-project .project").mouseleave(function(e) {
         if ($(this).children('p')) {
-            // console.log($(this).attr('data-content'));
+
             $(this).children('p').remove()
         }
     });
@@ -113,7 +113,7 @@ $(document).ready(function() {
     function preventDefault(e) {
         // console.log(e);
         counter = e.deltaY > 0 ? counter + 1 : counter - 1;
-        console.log(href);
+
 
         if (counter >= scroll_counter && hrefs_list[hrefs_list.indexOf(href) + 1] && skip) {
             skip = false;
@@ -148,9 +148,6 @@ $(document).ready(function() {
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
-                if (href === "about" || href === "team") {
-                    location.href = "/pages/about.html";
-                }
                 $(".menu-el").removeClass("active");
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
