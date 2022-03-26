@@ -41,10 +41,6 @@ a:hover {
     cursor: pointer;
 }
 
-* {
-    /* border: 1px solid red; */
-}
-
 .wrapper {
     position: absolute;
     min-width: 100vw;
@@ -85,7 +81,8 @@ header .logo {
     position: absolute;
     display: flex;
     height: 100%;
-    width: min-content;
+    width: 400px;
+    justify-content: flex-end;
     align-items: center;
     transition: .5s;
 }
@@ -96,7 +93,6 @@ header .logo svg:hover {
 }
 
 header .logo svg {
-    margin-left: 110px;
     transition: .5s;
 }
 
@@ -171,6 +167,7 @@ header .logo svg {
     height: 100vh;
     backdrop-filter: blur(10px) brightness(70%);
     transition: .2s;
+    z-index: 8;
 }
 
 .display-n {
@@ -271,7 +268,7 @@ header .logo svg {
     position: fixed;
     right: 0;
     top: 50%;
-    width: 17%;
+    min-width: 17%;
     height: 250px;
     z-index: 10;
     transform: translateY(-50%);
@@ -484,6 +481,7 @@ header .logo svg {
     margin: 50px 25px;
     width: 400px;
     height: 400px;
+    transition: all .5s ease-out;
 }
 
 .project img {
