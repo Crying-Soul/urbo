@@ -959,4 +959,30 @@ header .logo svg {
     .view-wrapper {
         display: none;
     }
+    .group-project .project {
+        margin: 12px 6px;
+        width: 300px;
+        height: 300px;
+        transition: all .5s ease-out;
+    }
+    @keyframes scroll-animation-out-2 {
+        0% {
+            opacity: 1;
+            margin: 12px 6px;
+        }
+        100% {
+            opacity: .1;
+            margin: 24px 12px;
+        }
+    }
+    @keyframes scroll-animation-in-2 {
+        0% {
+            opacity: .1;
+            margin: 24px 12px;
+        }
+        100% {
+            opacity: 1;
+            margin: 12px 6px;
+        }
+    }
 }
