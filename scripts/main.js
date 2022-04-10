@@ -1,6 +1,7 @@
 "use strict";
 $(document).ready(function() {
     const scroll_counter = 4;
+    const mobile_scroll_counter = 8;
 
     /**
      * alternative menu activation
@@ -104,20 +105,42 @@ $(document).ready(function() {
     let skip = true;
     const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
     const hrefs_list = [];
-
+    const mobileScrollBuffer = [];
+    let mobileCounter = 0;
     $('.menu-el').each(function() {
 
         hrefs_list.push($(this).children().attr('data-href'));
     });
 
+
+
     function preventDefault(e) {
-        // console.log(e);
-        counter = e.deltaY > 0 ? counter + 1 : counter - 1;
+        // console.log(e.changedTouches[0].screenY);
+
+        if ('changedTouches' in e) {
+            mobileScrollBuffer.push(e.changedTouches[0].screenY);
+
+            if (mobileScrollBuffer.length >= 4 && skip) {
+
+                mobileCounter = mobileScrollBuffer.shift() > mobileScrollBuffer.pop() ? mobileCounter + 1 : mobileCounter - 1;
+                mobileScrollBuffer.length = 0;
+            }
+
+        } else {
+            counter = e.deltaY > 0 ? counter + 1 : counter - 1;
+        }
+
+        console.log(mobileCounter)
 
 
-        if (counter >= scroll_counter && hrefs_list[hrefs_list.indexOf(href) + 1] && skip) {
+
+
+
+        if ((counter >= scroll_counter || mobileCounter >= mobile_scroll_counter) && hrefs_list[hrefs_list.indexOf(href) + 1] && skip) {
             skip = false;
             counter = 0;
+            mobileCounter = 0
+            mobileScrollBuffer.length = 0;
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
@@ -137,13 +160,17 @@ $(document).ready(function() {
                 if (!grid) {
                     $('.project-wrapper-list').addClass('d-n');
                 }
+                console.log(href);
                 skip = true;
                 counter = 0;
+                mobileCounter = 0;
+
             }, 1500);
 
         }
-        if (counter <= -scroll_counter && hrefs_list[hrefs_list.indexOf(href) - 1] && skip) {
+        if ((counter <= -scroll_counter || mobileCounter <= -mobile_scroll_counter) && hrefs_list[hrefs_list.indexOf(href) - 1] && skip) {
             counter = 0;
+            mobileCounter = 0;
             skip = false;
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
@@ -163,6 +190,7 @@ $(document).ready(function() {
                 }
                 skip = true;
                 counter = 0;
+                mobileCounter = 0;
             }, 1500);
 
         }

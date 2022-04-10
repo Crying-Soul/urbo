@@ -61,6 +61,7 @@ a:hover {
     -webkit-filter: brightness(85%);
     filter: brightness(85%);
     transform: scale(0.8);
+    transition: .5s;
 }
 
 header {
@@ -913,4 +914,49 @@ header .logo svg {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 500px) {
+    .side-bar {
+        display: none;
+    }
+    header {
+        height: 100px;
+    }
+    header .menu-alter {
+        width: 35%;
+        color: #7601fd;
+    }
+    header .logo {
+        width: 65vw;
+        transform: scale(0.7);
+    }
+    .wrapper video {
+        object-fit: contain;
+        transform: scale(1.5);
+        transition: transform .5s ease-in-out;
+    }
+    @keyframes scroll-animation-out-1 {
+        0% {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.6);
+        }
+    }
+    @keyframes scroll-animation-in-1 {
+        0% {
+            opacity: 0;
+            transform: scale(0.6);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+    }
+    .view-wrapper {
+        display: none;
+    }
 }
