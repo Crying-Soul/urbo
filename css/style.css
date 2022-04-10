@@ -924,8 +924,10 @@
                 width: 65vw;
                 transform: scale(0.7);
             }
-            header .logo svg path {
+            .logo svg path,
+            .menu-trigger span {
                 fill: #7601fd;
+                background-color: #7601fd;
             }
             .wrapper video {
                 object-fit: contain;
@@ -988,5 +990,13 @@
                     opacity: 1;
                     margin: 15px 12px;
                 }
+            }
+            .menu-extra {
+                justify-content: space-between;
+                padding: 10px;
+            }
+            .menu-extra-el {
+                margin: 0;
+                font-size: 0.6em;
             }
         }
