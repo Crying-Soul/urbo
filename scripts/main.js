@@ -1,7 +1,7 @@
 "use strict";
 $(document).ready(function() {
     const scroll_counter = 4;
-    const mobile_scroll_counter = 8;
+    const mobile_scroll_counter = 6;
 
     /**
      * alternative menu activation
@@ -120,7 +120,7 @@ $(document).ready(function() {
         if ('changedTouches' in e) {
             mobileScrollBuffer.push(e.changedTouches[0].screenY);
 
-            if (mobileScrollBuffer.length >= 4 && skip) {
+            if (mobileScrollBuffer.length >= 2 && skip) {
 
                 mobileCounter = mobileScrollBuffer.shift() > mobileScrollBuffer.pop() ? mobileCounter + 1 : mobileCounter - 1;
                 mobileScrollBuffer.length = 0;
@@ -131,10 +131,6 @@ $(document).ready(function() {
         }
 
         console.log(mobileCounter)
-
-
-
-
 
         if ((counter >= scroll_counter || mobileCounter >= mobile_scroll_counter) && hrefs_list[hrefs_list.indexOf(href) + 1] && skip) {
             skip = false;
