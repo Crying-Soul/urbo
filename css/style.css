@@ -957,6 +957,9 @@
             .view-wrapper {
                 display: none;
             }
+            .button-scroll-down {
+                display: block !important;
+            }
             .group-project {
                 margin-top: 20vh;
             }
@@ -998,5 +1001,14 @@
             .menu-extra-el {
                 margin: 0;
                 font-size: 0.6em;
+            }
+            .button-scroll-down {
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-50%, -50%);
+            }
+            .button-scroll-down p {
+                font-size: 34px;
             }
         }
