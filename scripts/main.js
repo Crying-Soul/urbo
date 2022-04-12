@@ -215,5 +215,42 @@ $(document).ready(function() {
         disableScroll()
     }
 
+    /**
+     * Mobile scroll
+     */
+
+    $("button.scroll-down").on("click", function() {
+        skip = false;
+        counter = 0;
+        mobileCounter = 0
+        mobileScrollBuffer.length = 0;
+        $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
+        $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
+        setTimeout(() => {
+            if (href === "about" || href === "team") {
+                location.href = "/pages/about.html";
+            }
+            $(".menu-el").removeClass("active");
+            $('.content').removeClass(`scroll-animation-out-${href} active-content`)
+            $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
+            href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
+
+            $('.content').removeClass('active-content');
+            $(`.content#${href}`).addClass("active-content");
+            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+            $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+
+            if (!grid) {
+                $('.project-wrapper-list').addClass('d-n');
+            }
+            console.log(href);
+            skip = true;
+            counter = 0;
+            mobileCounter = 0;
+
+        }, 1500);
+        return false;
+    });
+
 
 });
