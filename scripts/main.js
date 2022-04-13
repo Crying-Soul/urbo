@@ -252,5 +252,22 @@ $(document).ready(function() {
         return false;
     });
 
+    $(".mobile-default-view p button").on("click",
+        function() {
+            $(".mobile-default-view").addClass('d-n');
+            $(".button-scroll-down").addClass('d-n')
+            $(".view-wrapper").addClass('mobile-view-wrapper')
+            $(".mobile-back-arrow").removeClass('d-n')
+
+        }
+    );
+    $(".mobile-back-arrow").on("click", function() {
+        $(".mobile-default-view").removeClass('d-n');
+        $(".button-scroll-down").removeClass('d-n')
+        $(".view-wrapper").removeClass('mobile-view-wrapper')
+        $(".mobile-back-arrow").addClass('d-n')
+
+    });
+
 
 });
