@@ -694,20 +694,6 @@
             backdrop-filter: blur(10px) brightness(10%);
         }
         
-        .primitive {
-            position: absolute;
-            width: 20%;
-            height: 20%;
-            top: 20%;
-            left: 50%;
-            background-repeat: no-repeat;
-            background-image: linear-gradient(to right, #C9C9C9 100%, #C9C9C9 100%), linear-gradient(to bottom, #C9C9C9 100%, #C9C9C9 100%), linear-gradient(to right, #C9C9C9 100%, #C9C9C9 100%), linear-gradient(to bottom, #C9C9C9 100%, #C9C9C9 100%);
-            background-size: 100% 10px, 5px 100%, 100% 10px, 5px 100%;
-            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-            animation: bg .5s ease-in-out 1;
-            transform: translate(-50%, -50%) rotate(45deg) matrix3d(1.255, -0.84125, 0, -0.002412, -0.97625, 1.615, 0, -0.001962, 0, 0, 1, 0, 178, 160, 0, 1);
-        }
-        
         .loader-text {
             position: relative;
             left: 45%;
@@ -803,35 +789,28 @@
             transform: translateX(-50%);
         }
         
-        #project-header {
-            position: fixed;
-        }
-        
-        #project-header .menu-alter {
-            position: fixed;
-            height: inherit;
-        }
-        
         .back-to-main {
-            position: relative;
-            top: 135px;
-            left: 10vw;
-            max-width: 50px;
-            max-height: 50px;
+            position: absolute;
+            display: flex;
+            height: 200%;
+            width: 230px;
+            justify-content: flex-end;
+            align-items: center;
+            transition: .5s;
         }
         
         .arrow-back>* {
             position: relative;
             font-size: 44px;
             left: -25px;
-            color: #fff;
+            color: grey;
             transition: .5s;
         }
         
         .arrow-back:hover>* {
             left: -50px;
             transition: all .5s linear;
-            transform: scale(1.2);
+            transform: scale(1.2) translateX(20%);
         }
         
         .scroll-animation-out-home>* {
@@ -840,6 +819,10 @@
         
         .scroll-animation-in-home>* {
             animation: scroll-animation-in-1 ease-in-out 2s;
+        }
+        
+        .menu-project-trigger span {
+            background-color: grey !important;
         }
         
         @keyframes scroll-animation-out-1 {
@@ -914,6 +897,15 @@
         .button-scroll-down,
         .mobile-default-view {
             display: none;
+        }
+        
+        #project-scroll {
+            position: absolute;
+            display: block;
+        }
+        
+        #project-scroll button {
+            font-size: 34px;
         }
         
         @media only screen and (max-device-width: 680px) {
