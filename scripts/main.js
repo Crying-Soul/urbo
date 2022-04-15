@@ -228,7 +228,7 @@ $(document).ready(function() {
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
         setTimeout(() => {
             if (href === "about" || href === "team") {
-                location.href = "/pages/about.html";
+                $("button.scroll-down p").text('close').css("font-size", "14px")
             }
             $(".menu-el").removeClass("active");
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
@@ -274,6 +274,4 @@ $(document).ready(function() {
         $('html,body').animate({ scrollTop: 900 }, 500);
 
     });
-
-
 });
