@@ -7,16 +7,19 @@
 
 @font-face {
     font-family: "Majorant-Md";
+    font-display: swap;
     src: url(../assets/fonts/Majorant-Md.woff2)
 }
 
 @font-face {
     font-family: "Majorant-Lt";
+    font-display: swap;
     src: url(../assets/fonts/Majorant-Lt.woff2)
 }
 
 @font-face {
     font-family: "Majorant-Rg";
+    font-display: swap;
     src: url(../assets/fonts/Majorant-Rg.woff2)
 }
 
