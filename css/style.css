@@ -311,14 +311,6 @@ header .logo svg {
     width: 100px
 }
 
-.menu-el a::before {
-    transform: skewX(20deg)
-}
-
-.menu-el a::after {
-    transform: skewY(-20deg)
-}
-
 .menu-el a::before,
 .menu-el a::after,
 .menu-wrapper button::before,
@@ -343,14 +335,14 @@ header .logo svg {
     opacity: 1
 }
 
-.menu-el a>svg,
-.active a>svg {
+.menu-el a i,
+.active a i {
     transform: scale(0.35);
     transition: .5s
 }
 
-.menu-el a:hover>svg,
-.active a>svg {
+.menu-el a:hover>i,
+.active a>i {
     transform: scale(0);
     transition: .5s
 }
