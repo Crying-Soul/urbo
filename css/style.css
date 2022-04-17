@@ -816,6 +816,10 @@ header .logo svg {
     animation: scroll-animation-in-1 ease-in-out 2s
 }
 
+.scroll-animation-out-about>* {}
+
+.scroll-animation-in-about>* {}
+
 .menu-project-trigger span {
     background-color: grey!important
 }
@@ -1010,8 +1014,8 @@ header .logo svg {
         flex-direction: column;
         font-family: "Majorant-Md";
         font-size: 20px;
-        height: 25vh;
         justify-content: space-between;
+        height: 35vh;
         left: 50%;
         line-height: 25px;
         position: absolute;
