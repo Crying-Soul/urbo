@@ -816,9 +816,35 @@ header .logo svg {
     animation: scroll-animation-in-1 ease-in-out 2s
 }
 
-.scroll-animation-out-about>* {}
+.scroll-animation-out-about>* {
+    animation: scroll-animation-out-4 linear 1s forwards;
+}
 
-.scroll-animation-in-about>* {}
+.scroll-animation-in-about>* {
+    animation: scroll-animation-in-4 linear 1s forwards;
+}
+
+@keyframes scroll-animation-in-4 {
+    0% {
+        opacity: 0;
+        background-color: inherit;
+    }
+    100% {
+        opacity: 1;
+        background-color: #2e0056;
+    }
+}
+
+@keyframes scroll-animation-out-4 {
+    0% {
+        opacity: 1;
+        background-color: #2e0056;
+    }
+    100% {
+        opacity: 0;
+        background-color: black;
+    }
+}
 
 .menu-project-trigger span {
     background-color: grey!important
