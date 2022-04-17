@@ -254,6 +254,7 @@ $(document).ready(function() {
 
     $(".mobile-default-view p button").on("click",
         function() {
+            skip = false;
             $(".mobile-default-view").addClass('d-n');
             $(".button-scroll-down").addClass('d-n')
             $(".view-wrapper").addClass('mobile-view-wrapper')
@@ -262,6 +263,7 @@ $(document).ready(function() {
         }
     );
     $(".mobile-back-arrow").on("click", function() {
+        skip = true
         $(".mobile-default-view").removeClass('d-n');
         $(".button-scroll-down").removeClass('d-n')
         $(".view-wrapper").removeClass('mobile-view-wrapper')
