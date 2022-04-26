@@ -1,5 +1,5 @@
 "use strict";
-$(document).ready((function() {
+$(document).ready((function () {
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
 
@@ -12,7 +12,7 @@ $(document).ready((function() {
 
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
-    $(".menu-trigger").on("click", (function() {
+    $(".menu-trigger").on("click", (function () {
         $(this).toggleClass("tgl");
         $(".menu-wrapper").toggleClass("tgl-brd");
         $(".bg-alter").toggleClass("display-n");
@@ -25,13 +25,13 @@ $(document).ready((function() {
      * Grid < -- > List view swapper
      */
 
-    $("button.grid-list-view").on("click", (function() {
+    $("button.grid-list-view").on("click", (function () {
         grid = $('button.grid-list-view').children().text() == "GRID VIEW";
         $('.project-wrapper-list').removeClass('d-n');
         $(this).html(
             grid ?
-            "<p>LIST&nbsp;VIEW</p>" :
-            "<p>GRID&nbsp;VIEW</p>"
+                "<p>LIST&nbsp;VIEW</p>" :
+                "<p>GRID&nbsp;VIEW</p>"
         );
 
         if (!grid) {
@@ -48,7 +48,7 @@ $(document).ready((function() {
      * Navigation
      */
 
-    $(".menu-el, .menu-alter-el").on("click", (function() {
+    $(".menu-el, .menu-alter-el").on("click", (function () {
         if (location.pathname !== "/") location.href = "/";
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
@@ -57,10 +57,13 @@ $(document).ready((function() {
 
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
-
+            
             if (href === "about") {
                 location.href = "/pages/about.html";
-
+            }else if (href === "home") {
+                $(".view-wrapper").addClass("d-n")
+            }else {
+                $(".view-wrapper").removeClass("d-n")
             }
 
             $(this).addClass("active");
@@ -75,26 +78,26 @@ $(document).ready((function() {
         }, 1500);
         return false;
     }));
-    $(".project-wrapper-grid").on("mousemove", (function(e) {
+    $(".project-wrapper-grid").on("mousemove", (function (e) {
         $('.group-project .project').each((i, el) => {
             const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
             const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
             el.style.transform = `translateX(${x}px) translateY(${y}px) `;
         });
     }));
-    $(".group-project .project").mouseenter((function(e) {
+    $(".group-project .project").mouseenter((function (e) {
 
         if (!$(this).children('p').length) {
 
             $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
         }
     }));
-    $(".group-project .project").click((function(e) {
+    $(".group-project .project").click((function (e) {
 
         location.href = `./pages/${$(this).attr('data-content').toLowerCase().replace('.', '-')}.html`;
 
     }));
-    $(".group-project .project").mouseleave((function(e) {
+    $(".group-project .project").mouseleave((function (e) {
         if ($(this).children('p')) {
 
             $(this).children('p').remove()
@@ -111,7 +114,7 @@ $(document).ready((function() {
 
 
 
-    $('.menu-el').each((function() {
+    $('.menu-el').each((function () {
 
         hrefs_list.push($(this).children().attr('data-href'));
     }));
@@ -141,6 +144,7 @@ $(document).ready((function() {
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
+                
                 if ((href === "about" || href === "team") && !isMobile) {
 
                     location.href = "/pages/about.html";
@@ -153,7 +157,11 @@ $(document).ready((function() {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-
+                 if (href === "home") {
+                    $(".view-wrapper").addClass("d-n")
+                }else {
+                    $(".view-wrapper").removeClass("d-n")
+                }
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -181,7 +189,11 @@ $(document).ready((function() {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
-
+                if (href === "home") {
+                    $(".view-wrapper").addClass("d-n")
+                }else {
+                    $(".view-wrapper").removeClass("d-n")
+                }
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -225,7 +237,7 @@ $(document).ready((function() {
      * Mobile scroll
      */
 
-    $("button.scroll-down").on("click", (function() {
+    $("button.scroll-down").on("click", (function () {
 
         skip = false;
         counter, mobileCounter, mobileScrollBuffer.length = 0;
@@ -272,7 +284,7 @@ $(document).ready((function() {
     }));
 
     $(".mobile-default-view p button").on("click",
-        (function() {
+        (function () {
             skip = false;
             $(".mobile-default-view").addClass('d-n');
             $(".button-scroll-down").addClass('d-n')
@@ -281,7 +293,7 @@ $(document).ready((function() {
 
         })
     );
-    $(".mobile-back-arrow").on("click", (function() {
+    $(".mobile-back-arrow").on("click", (function () {
         skip = true
         $(".mobile-default-view").removeClass('d-n');
         $(".button-scroll-down").removeClass('d-n')
@@ -290,7 +302,7 @@ $(document).ready((function() {
 
     }));
 
-    $(".scroll-down-project").on("click", (function(e) {
+    $(".scroll-down-project").on("click", (function (e) {
         e.preventDefault();
         $('html,body').animate({ scrollTop: 900 }, 500);
 
