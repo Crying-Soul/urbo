@@ -508,8 +508,9 @@ header .logo svg {
 .group-project .project {
     height: 400px;
     margin: 50px 25px;
-    transition: all .5s ease-out;
-    width: 400px
+    /* transition: all .1s ease-out; */
+    width: 400px;
+    transform: translate(0);
 }
 
 .project img {

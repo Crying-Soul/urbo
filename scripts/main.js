@@ -57,12 +57,12 @@ $(document).ready((function () {
 
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
-            
+
             if (href === "about") {
                 location.href = "/pages/about.html";
-            }else if (href === "home") {
+            } else if (href === "home") {
                 $(".view-wrapper").addClass("d-n")
-            }else {
+            } else {
                 $(".view-wrapper").removeClass("d-n")
             }
 
@@ -78,13 +78,14 @@ $(document).ready((function () {
         }, 1500);
         return false;
     }));
-    $(".project-wrapper-grid").on("mousemove", (function (e) {
+    $(".project-wrapper-grid").on("mousemove", (function(e) {
         $('.group-project .project').each((i, el) => {
             const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
             const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
             el.style.transform = `translateX(${x}px) translateY(${y}px) `;
         });
     }));
+    
     $(".group-project .project").mouseenter((function (e) {
 
         if (!$(this).children('p').length) {
@@ -144,7 +145,7 @@ $(document).ready((function () {
             $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
             $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
             setTimeout(() => {
-                
+
                 if ((href === "about" || href === "team") && !isMobile) {
 
                     location.href = "/pages/about.html";
@@ -157,9 +158,9 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-                 if (href === "home") {
+                if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
-                }else {
+                } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
                 $('.content').removeClass('active-content');
@@ -191,7 +192,7 @@ $(document).ready((function () {
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
-                }else {
+                } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
                 $('.content').removeClass('active-content');
