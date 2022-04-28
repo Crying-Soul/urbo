@@ -2,25 +2,24 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-decoration: none;
-
+    text-decoration: none
 }
 
 @font-face {
-    font-family: "Majorant-Md";
     font-display: swap;
+    font-family: "Majorant-Md";
     src: url(../assets/fonts/Majorant-Md.woff2)
 }
 
 @font-face {
-    font-family: "Majorant-Lt";
     font-display: swap;
+    font-family: "Majorant-Lt";
     src: url(../assets/fonts/Majorant-Lt.woff2)
 }
 
 @font-face {
-    font-family: "Majorant-Rg";
     font-display: swap;
+    font-family: "Majorant-Rg";
     src: url(../assets/fonts/Majorant-Rg.woff2)
 }
 
@@ -35,14 +34,6 @@
 .d-n {
     display: none !important;
     z-index: -1 !important
-}
-
-button:hover {
-    cursor: pointer
-}
-
-a:hover {
-    cursor: pointer
 }
 
 .wrapper {
@@ -83,13 +74,11 @@ header .menu-alter {
 }
 
 header .logo {
-
     height: 100%;
-    position: absolute;
     left: 100px;
+    position: absolute;
     top: 130px;
-    transition: .5s;
-
+    transition: .5s
 }
 
 header .logo svg:hover {
@@ -103,12 +92,12 @@ header .logo svg {
 }
 
 .item {
-    position: relative;
-    top: 100px;
     align-items: center;
     display: flex;
-    height: 100%;
-    justify-content: center
+    justify-content: center;
+    position: relative;
+    top: 150px;
+    transform: translateY(-30%)
 }
 
 .menu-wrapper {
@@ -246,6 +235,11 @@ header .logo svg {
     animation-delay: 1s
 }
 
+button:hover,
+a:hover {
+    cursor: pointer
+}
+
 @keyframes menu-extra {
     0% {
         margin-bottom: 0;
@@ -352,7 +346,6 @@ header .logo svg {
     transition: .5s
 }
 
-
 .active a::before,
 .menu-wrapper button:hover::before,
 .tgl-brd button::before {
@@ -372,29 +365,27 @@ header .logo svg {
 
 .menu-el a:hover::after {
     border-bottom: 1px grey solid;
-
     transform: rotate(45deg);
     transition: .5s
 }
-.menu-el:not(.active) a:hover > span {
-    transition: .5s;
+
+.menu-el:not(.active) a:hover>span {
     opacity: 1;
     transform: scale(1.1);
     transform: translate(-10%, -50%);
-   
+    transition: .5s
 }
 
-.menu-el a span  {
-    position: absolute;
+.menu-el a span {
+    font-size: 1em;
     left: 50%;
+    opacity: 0;
+    position: absolute;
+    text-transform: uppercase;
     top: 50%;
     transform: translate(-20%, -50%);
-    opacity: 0;
-    font-size: 1em;
-    transition: .5s;
-    text-transform: uppercase;
+    transition: .5s
 }
-
 
 .menu-wrapper button:hover::after {
     border-bottom: 1px grey solid;
@@ -509,9 +500,9 @@ header .logo svg {
 .group-project .project {
     height: 400px;
     margin: 50px 25px;
-    transition: all .1s ease-out;
-    width: 400px;
     transform: translate(0);
+    transition: all .1s ease-out;
+    width: 400px
 }
 
 .project img {
@@ -865,34 +856,34 @@ header .logo svg {
 }
 
 .scroll-animation-out-about>* {
-    animation: scroll-animation-out-4 linear 1s forwards;
+    animation: scroll-animation-out-4 linear 1s forwards
 }
 
 .scroll-animation-in-about>* {
-    animation: scroll-animation-in-4 linear 1s forwards;
+    animation: scroll-animation-in-4 linear 1s forwards
 }
 
 @keyframes scroll-animation-in-4 {
     0% {
-        opacity: 0;
         background-color: inherit;
+        opacity: 0
     }
 
     100% {
-        opacity: 1;
         background-color: #2e0056;
+        opacity: 1
     }
 }
 
 @keyframes scroll-animation-out-4 {
     0% {
-        opacity: 1;
         background-color: #2e0056;
+        opacity: 1
     }
 
     100% {
-        opacity: 0;
-        background-color: black;
+        background-color: #000;
+        opacity: 0
     }
 }
 
@@ -1051,12 +1042,12 @@ header .logo svg {
         position: absolute
     }
 
-    .button-view-wrap button {
-        color: #7601fd
-    }
-
     .button-scroll-down {
-        display: block !important
+        display: block !important;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        z-index: 7
     }
 
     .button-view-wrap::after {
@@ -1090,13 +1081,6 @@ header .logo svg {
         margin: 0
     }
 
-    .button-scroll-down {
-        left: 50%;
-        position: absolute;
-        transform: translateX(-50%);
-        z-index: 7
-    }
-
     .button-scroll-down p {
         font-size: 34px
     }
@@ -1117,8 +1101,8 @@ header .logo svg {
         flex-direction: column;
         font-family: "Majorant-Md";
         font-size: 20px;
-        justify-content: space-between;
         height: 35vh;
+        justify-content: space-between;
         left: 50%;
         line-height: 25px;
         position: absolute;
@@ -1174,6 +1158,7 @@ header .logo svg {
         width: 105px
     }
 
+    .button-view-wrap button,
     .back-to-main>* svg {
         color: #7601fd
     }
