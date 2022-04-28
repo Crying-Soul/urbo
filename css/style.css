@@ -5,6 +5,10 @@
     text-decoration: none
 }
 
+body {
+    overflow: hidden !important;
+}
+
 @font-face {
     font-display: swap;
     font-family: "Majorant-Md";
@@ -26,6 +30,14 @@
 .content {
     display: none
 }
+.inactive-el,.inactive-el  > * {
+    pointer-events: none;
+    
+  /* for "disabled" effect */
+  opacity: 0.5;
+  /* background: #CCC; */
+}
+
 
 .active-content {
     display: block
@@ -478,24 +490,36 @@ a:hover {
 
 .project-wrapper-grid {
     background-color: #0f0d23;
-    height: 100vh;
+    width: 1450vw;
     overflow: hidden;
     position: absolute;
-    width: 100vw
+    height: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+
 }
+
 
 .flex-projects {
-    align-items: center;
+
     display: flex;
-    height: 100vh;
-    justify-content: space-around;
-    width: 100vw
+    width: 125vw;
+
+    height: min-content;
+    overflow: hidden;
+
+
 }
 
-.group-project {
-    height: 100vh;
-    width: 100%
+.flex-projects>* {
+    margin: -10px 20px;
 }
+
+
 
 .group-project .project {
     height: 400px;
@@ -512,7 +536,7 @@ a:hover {
     object-fit: cover;
     position: relative;
     transition: .5s;
-    width: 100%;
+    width: 90%;
     z-index: 4
 }
 
@@ -550,11 +574,6 @@ a:hover {
     transition: .5s
 }
 
-.group-project:nth-child(1),
-.group-project:nth-child(3),
-.group-project:nth-child(5) {
-    margin-top: -45vh
-}
 
 .project-wrapper-list {
     animation: gradient-swap-in 2.8s ease-in-out forwards;
@@ -670,7 +689,7 @@ a:hover {
 
 .project-list .project-el {
     animation: project-view-swap-in .65s ease-in-out forwards;
-    font-size: 3em;
+    font-size: 5vw;
     opacity: 0;
     position: relative;
     transition: .5s
@@ -979,6 +998,27 @@ a:hover {
 }
 
 @media only screen and (max-device-width: 680px) {
+    .project-wrapper-grid {
+        background-color: #0f0d23;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+        width: 100vw
+    }
+
+    .flex-projects {
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        justify-content: space-around;
+        width: 100vw
+    }
+
+    .group-project {
+        height: 100vh;
+        width: 100%
+    }
+
     .side-bar {
         display: none
     }
@@ -992,6 +1032,8 @@ a:hover {
     }
 
     header .logo {
+        position: absolute;
+        left: 0;
         transform: scale(0.6);
         width: 65vw
     }

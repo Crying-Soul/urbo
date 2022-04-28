@@ -1,5 +1,20 @@
 "use strict";
 $(document).ready((function () {
+    const main = document.querySelector('#projects .project-wrapper-grid .flex-projects');
+    let _buffer = [];
+    for (let i = 0; i < 70; i++) {
+       _buffer.push(main.cloneNode(true))
+
+    }
+    $('#projects .project-wrapper-grid').append(_buffer)
+    const main_team = document.querySelector('#team .project-wrapper-grid .flex-projects');
+    let __buffer = [];
+    for (let i = 0; i < 70; i++) {
+       __buffer.push(main_team.cloneNode(true))
+
+    }
+    $('#team .project-wrapper-grid').append(__buffer)
+
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
 
@@ -51,19 +66,29 @@ $(document).ready((function () {
     $(".menu-el, .menu-alter-el").on("click", (function () {
         if (location.pathname !== "/") location.href = "/";
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
+        $(".menu-el, .menu-alter-el").addClass('inactive-el');
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
         setTimeout(() => {
             $(".menu-el").removeClass("active");
 
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
-
+            if (href == "projects") {
+                playProjects()
+            }else {
+                removeProjects()
+            }
             if (href === "about") {
                 location.href = "/pages/about.html";
             } else if (href === "home") {
                 $(".view-wrapper").addClass("d-n")
             } else {
                 $(".view-wrapper").removeClass("d-n")
+            }
+            if (href == "team") {
+                playTeam()
+            }else {
+                removeTeam()
             }
 
             $(this).addClass("active");
@@ -74,18 +99,134 @@ $(document).ready((function () {
             if (!grid) {
                 $('.project-wrapper-list').addClass('d-n');
             }
-
+            $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
         return false;
     }));
-    $(".project-wrapper-grid").on("mousemove", (function(e) {
-        $('.group-project .project').each((i, el) => {
-            const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
-            const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
-            el.style.transform = `translateX(${x}px) translateY(${y}px) `;
-        });
-    }));
-    
+    // $(".project-wrapper-grid").on("mousemove", (function(e) {
+    //     $('.group-project .project').each((i, el) => {
+    //         const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
+    //         const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
+    //         el.style.transform = `translateX(${x}px) translateY(${y}px) `;
+    //     });
+    // }));
+
+
+
+    let x = 1, y = 1, count = 0, speed = 0, direction = { x: 1, y: 1 };
+    let bufferX = 0, bufferY = 0;
+ 
+
+    let projectIntervalId = null;
+
+
+
+    $('#projects .project-wrapper-grid').on("mousemove", (e) => {
+        speed = 0.35;
+        bufferX = e.pageX / window.innerWidth;
+        bufferY = e.pageY / window.innerHeight;
+        if (bufferX <= 0.5) {
+            direction.x = 1 - bufferX;
+        } else {
+            direction.x = -bufferX
+        }
+        if (bufferY <= 0.5) {
+            direction.y = 1 - bufferY;
+        } else {
+            direction.y = -bufferY
+        }
+
+        if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
+            direction.x = 0
+            direction.y = 0
+        }
+    });
+
+    const playProjects = () => {
+
+        projectIntervalId = setInterval(() => {
+
+
+            x += speed * direction.x;
+            y += speed * direction.y;
+
+            console.log(x);
+
+
+            $('#projects .project-wrapper-grid .flex-projects').each((i, el) => {
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            })
+
+
+
+        }, 1000 / 60);
+
+    }
+    const removeProjects = () => {
+        clearInterval(projectIntervalId);
+        speed = 0;
+        x = 0;
+        y = 0;
+    }
+
+
+
+  
+    let isPlayTeam = false;
+
+    let teamIntervalId = null;
+
+
+
+    $('#team .project-wrapper-grid').on("mousemove", (e) => {
+        speed = 0.35;
+        bufferX = e.pageX / window.innerWidth;
+        bufferY = e.pageY / window.innerHeight;
+        if (bufferX <= 0.5) {
+            direction.x = 1 - bufferX;
+        } else {
+            direction.x = -bufferX
+        }
+        if (bufferY <= 0.5) {
+            direction.y = 1 - bufferY;
+        } else {
+            direction.y = -bufferY
+        }
+
+        if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
+            direction.x = 0
+            direction.y = 0
+        }
+    });
+
+    const playTeam = () => {
+
+        projectIntervalId = setInterval(() => {
+
+
+            x += speed * direction.x;
+            y += speed * direction.y;
+
+            console.log(x);
+
+
+            $('#team .project-wrapper-grid .flex-projects').each((i, el) => {
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            })
+
+
+
+        }, 1000 / 60);
+
+    }
+    const removeTeam = () => {
+        clearInterval(teamIntervalId);
+        speed = 0;
+        x = 0;
+        y = 0;
+    }
+
+
     $(".group-project .project").mouseenter((function (e) {
 
         if (!$(this).children('p').length) {
@@ -158,10 +299,21 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
+                
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
                 } else {
                     $(".view-wrapper").removeClass("d-n")
+                }
+                if (href == "projects" && !isMobile) {
+                    playProjects()
+                }else {
+                    removeProjects()
+                }
+                if (href == "team"  && !isMobile) {
+                    playTeam()
+                }else {
+                    removeTeam()
                 }
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
@@ -175,6 +327,7 @@ $(document).ready((function () {
                 skip = true;
                 counter = 0;
                 mobileCounter = 0;
+             
 
             }, 1500);
 
@@ -195,6 +348,16 @@ $(document).ready((function () {
                 } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
+                if (href == "projects" && !isMobile) {
+                    playProjects()
+                }else {
+                    removeProjects()
+                }
+                if (href == "team" && !isMobile) {
+                    playTeam()
+                }else {
+                    removeTeam()
+                }
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -206,6 +369,7 @@ $(document).ready((function () {
                 skip = true;
                 counter = 0;
                 mobileCounter = 0;
+             
             }, 1500);
 
         }
@@ -257,7 +421,16 @@ $(document).ready((function () {
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
 
             href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-
+            if (href == "projects" && !isMobile) {
+                playProjects()
+            }else {
+                removeProjects()
+            }
+            if (href == "team" && !isMobile) {
+                playTeam()
+            }else {
+                removeTeam()
+            }
             $('.content').removeClass('active-content');
             $(`.content#${href}`).addClass("active-content");
 
@@ -279,6 +452,7 @@ $(document).ready((function () {
             console.log(href);
             skip = true;
             counter, mobileCounter = 0;
+          
 
         }, 1500);
         return false;
