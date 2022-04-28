@@ -5,9 +5,6 @@
     text-decoration: none
 }
 
-body {
-    overflow: hidden !important;
-}
 
 @font-face {
     font-display: swap;
@@ -28,7 +25,8 @@ body {
 }
 
 .content {
-    display: none
+    display: none;
+    overflow: hidden !important;
 }
 .inactive-el,.inactive-el  > * {
     pointer-events: none;
