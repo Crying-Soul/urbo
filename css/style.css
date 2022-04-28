@@ -85,25 +85,26 @@ header .menu-alter {
 header .logo {
 
     height: 100%;
-
     position: absolute;
     left: 100px;
     top: 130px;
     transition: .5s;
-    width: 400px
+
 }
 
 header .logo svg:hover {
-    transform: scale(1.0);
+    transform: scale(0.85);
     transition: .5s
 }
 
 header .logo svg {
-    transform: scale(0.9);
+    transform: scale(0.75);
     transition: .5s
 }
 
 .item {
+    position: relative;
+    top: 100px;
     align-items: center;
     display: flex;
     height: 100%;
@@ -508,7 +509,7 @@ header .logo svg {
 .group-project .project {
     height: 400px;
     margin: 50px 25px;
-    /* transition: all .1s ease-out; */
+    transition: all .1s ease-out;
     width: 400px;
     transform: translate(0);
 }
@@ -664,7 +665,7 @@ header .logo svg {
     font-size: 26px;
     height: 40%;
     justify-content: space-between;
-    left: 50%;
+    left: 40%;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%)
@@ -678,7 +679,7 @@ header .logo svg {
 
 .project-list .project-el {
     animation: project-view-swap-in .65s ease-in-out forwards;
-    font-size: 2em;
+    font-size: 3em;
     opacity: 0;
     position: relative;
     transition: .5s
@@ -1000,7 +1001,7 @@ header .logo svg {
     }
 
     header .logo {
-        transform: scale(0.7);
+        transform: scale(0.6);
         width: 65vw
     }
 
