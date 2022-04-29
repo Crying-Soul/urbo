@@ -149,12 +149,8 @@ $(document).ready((function () {
 
         projectIntervalId = setInterval(() => {
 
-
             x += speed * direction.x;
             y += speed * direction.y;
-
-            console.log(x);
-
 
             $('#projects .project-wrapper-grid .flex-projects').each((i, el) => {
                 el.style.transform = `translate(${x}px, ${y}px)`;
@@ -210,7 +206,7 @@ $(document).ready((function () {
             x += speed * direction.x;
             y += speed * direction.y;
 
-            console.log(x);
+         
 
 
             $('#team .project-wrapper-grid .flex-projects').each((i, el) => {
@@ -267,7 +263,7 @@ $(document).ready((function () {
 
 
     function preventDefault(e) {
-        // console.log(e.changedTouches[0].screenY);
+        
 
         if ('changedTouches' in e) {
             isMobile = true;
@@ -326,7 +322,7 @@ $(document).ready((function () {
                 if (!grid) {
                     $('.project-wrapper-list').addClass('d-n');
                 }
-                console.log(href);
+               
                 skip = true;
                 counter = 0;
                 mobileCounter = 0;
@@ -452,7 +448,7 @@ $(document).ready((function () {
 
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             }
-            console.log(href);
+       
             skip = true;
             counter, mobileCounter = 0;
           
