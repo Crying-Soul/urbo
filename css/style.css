@@ -33,10 +33,7 @@ body {
 }
 .inactive-el,.inactive-el  > * {
     pointer-events: none;
-    
-  /* for "disabled" effect */
-  opacity: 0.5;
-  /* background: #CCC; */
+    opacity: 0.5;
 }
 
 
