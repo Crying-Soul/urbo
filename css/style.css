@@ -29,9 +29,11 @@ body {
 
 .content {
     display: none;
-   
+
 }
-.inactive-el,.inactive-el  > * {
+
+.inactive-el,
+.inactive-el>* {
     pointer-events: none;
     opacity: 0.5;
 }
@@ -918,7 +920,7 @@ a:hover {
     }
 }
 
-/* .scroll-animation-out-projects>* .project,
+.scroll-animation-out-projects>* .project,
 .scroll-animation-out-team>* .project {
     animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
 }
@@ -926,28 +928,28 @@ a:hover {
 .scroll-animation-in-projects>* .project,
 .scroll-animation-in-team>* .project {
     animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
-} */
+}
 
 @keyframes scroll-animation-out-2 {
     0% {
-        margin: 50px 25px;
+
         opacity: 1
     }
 
     100% {
-        margin: 100px 50px;
-        opacity: .1
+
+        opacity: 0
     }
 }
 
 @keyframes scroll-animation-in-2 {
     0% {
-        margin: 100px 50px;
-        opacity: .1
+
+        opacity: 0;
     }
 
     100% {
-        margin: 50px 25px;
+
         opacity: 1
     }
 }
@@ -982,26 +984,6 @@ a:hover {
 }
 
 @media only screen and (max-device-width: 680px) {
-    .project-wrapper-grid {
-        background-color: #0f0d23;
-        height: 100vh;
-        overflow: hidden;
-        position: absolute;
-        width: 100vw
-    }
-
-    .flex-projects {
-        align-items: center;
-        display: flex;
-        height: 100vh;
-        justify-content: space-around;
-        width: 100vw
-    }
-
-    .group-project {
-        height: 100vh;
-        width: 100%
-    }
 
     .side-bar {
         display: none
@@ -1078,23 +1060,6 @@ a:hover {
 
     .button-view-wrap::after {
         border-top: 2px solid #7601fd !important
-    }
-
-    .group-project {
-        margin-top: 20vh
-    }
-
-    .group-project .project {
-        height: 70vw;
-        margin: 15px 12px;
-        transition: all .5s ease-out;
-        width: 70vw
-    }
-
-    .group-project:nth-child(1),
-    .group-project:nth-child(3),
-    .group-project:nth-child(5) {
-        margin-top: -10vh
     }
 
     .menu-extra {
