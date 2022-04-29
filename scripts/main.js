@@ -1,6 +1,7 @@
 "use strict";
 $(document).ready((function () {
-    if (location.href == '/') {
+    
+    if (location.pathname === '/') {
       const main = document.querySelector('#projects .project-wrapper-grid .flex-projects .group');
 
     let _buffer = [];
