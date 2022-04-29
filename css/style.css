@@ -829,11 +829,11 @@ a:hover {
 .back-to-main {
     align-items: center;
     display: flex;
-    height: 200%;
+    height: 300%;
     justify-content: flex-end;
     position: absolute;
     transition: .5s;
-    width: 230px
+    width: 200px
 }
 
 .arrow-back>* {
