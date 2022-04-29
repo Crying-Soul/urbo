@@ -489,42 +489,26 @@ a:hover {
 .project-wrapper-grid {
     background-color: #0f0d23;
     width: 1450vw;
-    overflow: hidden;
-    position: absolute;
     height: min-content;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-
-
 }
-
 
 .flex-projects {
-
     display: flex;
-    width: 125vw;
-
-    height: min-content;
-    overflow: hidden;
-
-
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 }
 
-.flex-projects>* {
-    margin: -10px 20px;
-}
-
-
-
-.group-project .project {
-    height: 400px;
-    margin: 50px 25px;
+.group .project {
+    position: relative;
     transform: translate(0);
     transition: all .1s ease-out;
-    width: 400px
 }
 
 .project img {
@@ -534,11 +518,13 @@ a:hover {
     object-fit: cover;
     position: relative;
     transition: .5s;
-    width: 90%;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
     z-index: 4
 }
 
-.group-project .project p {
+.group .project p {
     animation: prj-text-anim .5s linear forwards;
     color: #fff;
     cursor: pointer;
@@ -932,7 +918,7 @@ a:hover {
     }
 }
 
-.scroll-animation-out-projects>* .project,
+/* .scroll-animation-out-projects>* .project,
 .scroll-animation-out-team>* .project {
     animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
 }
@@ -940,7 +926,7 @@ a:hover {
 .scroll-animation-in-projects>* .project,
 .scroll-animation-in-team>* .project {
     animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
-}
+} */
 
 @keyframes scroll-animation-out-2 {
     0% {
