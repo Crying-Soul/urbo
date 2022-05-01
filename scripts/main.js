@@ -1,27 +1,35 @@
 "use strict";
 $(document).ready((function () {
-    
+
     if (location.pathname === '/') {
-      const main = document.querySelector('#projects .project-wrapper-grid .flex-projects .group');
+        const project = document.querySelector('#projects .project-wrapper-grid .flex-projects .group');
+        const projects_cache = [];
+        for (let i = 200; i >= 0; --i) {
+            let group = project.cloneNode(true);
+            
+            for (let j = group.children.length; j >= 0; j--) {
+                group.appendChild(group.children[Math.random() * j | 0]);
+            }
+            projects_cache.push(group)
+        }
 
-    let _buffer = [];
-    for (let i = 200; i >= 0; --i) {
-        _buffer.push(main.cloneNode(true))
+        $('#projects .project-wrapper-grid .flex-projects').append(projects_cache)
+
+
+       const team = document.querySelector('#team .project-wrapper-grid .flex-projects .group');
+       const team_cache = [];
+       for (let i = 200; i >= 0; --i) {
+        let group = team.cloneNode(true);
+        
+        for (let j = group.children.length; j >= 0; j--) {
+            group.appendChild(group.children[Math.random() * j | 0]);
+        }
+        team_cache.push(group)
+    }
+        $('#team .project-wrapper-grid .flex-projects').append(team_cache)
+
     }
 
-    $('#projects .project-wrapper-grid .flex-projects').append(_buffer)
-
-
-    const main_team = document.querySelector('#team .project-wrapper-grid .flex-projects .group');
-    let __buffer = [];
-    for (let i = 200; i >= 0; --i) {
-        __buffer.push(main_team.cloneNode(true))
-    }
-
-    $('#team .project-wrapper-grid .flex-projects').append(__buffer)
-  
-    }
-    
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
 
@@ -111,7 +119,7 @@ $(document).ready((function () {
         return false;
     }));
     // $(".project-wrapper-grid").on("mousemove", (function(e) {
-    //     $('.group-project .project').each((i, el) => {
+    //     $('.group .project').each((i, el) => {
     //         const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
     //         const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
     //         el.style.transform = `translateX(${x}px) translateY(${y}px) `;
@@ -129,7 +137,7 @@ $(document).ready((function () {
 
 
     $('#projects .project-wrapper-grid').on("mousemove", (e) => {
-        speed = 0.35;
+        speed = 0.2;
         bufferX = e.pageX / window.innerWidth;
         bufferY = e.pageY / window.innerHeight;
         if (bufferX <= 0.5) {
