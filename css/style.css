@@ -33,8 +33,9 @@ body {
 
 .inactive-el,
 .inactive-el>* {
-    opacity: .5;
-    pointer-events: none
+    opacity: .4;
+    pointer-events: none;
+    transition: .5s all
 }
 
 .active-content {
@@ -84,7 +85,6 @@ header .menu-alter {
 }
 
 header .logo {
-    height: 100%;
     left: 100px;
     position: absolute;
     top: 130px;
@@ -360,30 +360,37 @@ a:hover {
 .menu-wrapper button:hover::before,
 .tgl-brd button::before {
     border-left: 1px grey solid;
-    border-radius: 1px;
     border-right: 1px grey solid;
     transform: rotate(45deg);
     transition: .5s
 }
 
+.active a::after,
+.tgl-brd button::after,
+.tgl-brd button:hover::after {
+    border-bottom: 1px grey solid;
+    border-top: 1px grey solid;
+    transform: rotate(45deg)
+}
+
 .menu-el a:hover::before {
-    border-left: 1px grey solid;
-    border-radius: 1px;
     transform: rotate(45deg);
     transition: .5s
 }
 
 .menu-el a:hover::after {
-    border-bottom: 1px grey solid;
     transform: rotate(45deg);
     transition: .5s
 }
 
-.menu-el:not(.active) a:hover>span {
+.menu-el a:hover>span {
     opacity: 1;
     transform: scale(1.1);
     transform: translate(-10%, -50%);
-    transition: .5s
+    transition-delay: .5s;
+    transition-duration: .6s;
+    transition-property: opacity;
+    z-index: 10
 }
 
 .menu-el a span {
@@ -397,20 +404,48 @@ a:hover {
     transition: .5s
 }
 
+.menu-el a:hover::after {
+    animation: hover-menu-anim .5s linear forwards;
+    border: 1px solid grey
+}
+
+.menu-el a:hover::before {
+    border: none
+}
+
+@keyframes hover-menu-anim {
+    0% {
+        border: 1px rgba(0, 0, 0, .1) solid
+    }
+
+    25% {
+        border-top: 1px #fff solid;
+        width: 100%
+    }
+
+    50% {
+        border-right: 1px #fff solid
+    }
+
+    75% {
+        border-bottom: 1px #fff solid;
+        border-left: 1px rgba(0, 0, 0, .1) solid;
+        border-top: 1px rgba(0, 0, 0, .1) solid
+    }
+
+    100% {
+        border-bottom: 1px #fff solid;
+        border-left: 1px #fff solid;
+        border-right: 1px rgba(0, 0, 0, .1) solid;
+        border-top: 1px rgba(0, 0, 0, .1) solid
+    }
+}
+
 .menu-wrapper button:hover::after {
     border-bottom: 1px grey solid;
     border-top: 1px grey solid;
     transform: rotate(45deg);
     transition: .5s
-}
-
-.active a::after,
-.active a:hover::after,
-.tgl-brd button::after,
-.tgl-brd button:hover::after {
-    border-bottom: 1px grey solid;
-    border-top: 1px #fff solid;
-    transform: rotate(45deg)
 }
 
 .view-wrapper {
@@ -659,6 +694,7 @@ a:hover {
     height: 40%;
     justify-content: space-between;
     left: 40%;
+    letter-spacing: .2rem;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%)
@@ -675,7 +711,7 @@ a:hover {
     font-size: 5vw;
     opacity: 0;
     position: relative;
-    transition: .5s
+    transition: .5s all
 }
 
 .project-list .project-el a {
@@ -684,11 +720,7 @@ a:hover {
 
 .project-list .project-el:hover {
     transform: scale(1.1);
-    transition: .5s
-}
-
-.project-list .project-el:hover p {
-    filter: brightness(10%)
+    transition: .5s all
 }
 
 .project-list .project-el span {

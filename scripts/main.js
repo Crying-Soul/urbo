@@ -6,7 +6,7 @@ $(document).ready((function () {
         const projects_cache = [];
         for (let i = 200; i >= 0; --i) {
             let group = project.cloneNode(true);
-            
+
             for (let j = group.children.length; j >= 0; j--) {
                 group.appendChild(group.children[Math.random() * j | 0]);
             }
@@ -16,16 +16,16 @@ $(document).ready((function () {
         $('#projects .project-wrapper-grid .flex-projects').append(projects_cache)
 
 
-       const team = document.querySelector('#team .project-wrapper-grid .flex-projects .group');
-       const team_cache = [];
-       for (let i = 200; i >= 0; --i) {
-        let group = team.cloneNode(true);
-        
-        for (let j = group.children.length; j >= 0; j--) {
-            group.appendChild(group.children[Math.random() * j | 0]);
+        const team = document.querySelector('#team .project-wrapper-grid .flex-projects .group');
+        const team_cache = [];
+        for (let i = 200; i >= 0; --i) {
+            let group = team.cloneNode(true);
+
+            for (let j = group.children.length; j >= 0; j--) {
+                group.appendChild(group.children[Math.random() * j | 0]);
+            }
+            team_cache.push(group)
         }
-        team_cache.push(group)
-    }
         $('#team .project-wrapper-grid .flex-projects').append(team_cache)
 
     }
@@ -111,8 +111,14 @@ $(document).ready((function () {
             $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
 
+           
             if (!grid) {
-                $('.project-wrapper-list').addClass('d-n');
+
+                $(`.project-wrapper-list`).remove('project-view-swap');
+    
+    
+            } else {
+                $(`.project-wrapper-list`).addClass('project-view-swap');
             }
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
@@ -461,6 +467,12 @@ $(document).ready((function () {
         }, 1500);
         return false;
     }));
+    $(".project-el").mouseenter(function (e) {
+        $(".project-el").not(this).addClass('inactive-el')
+    });
+    $(".project-el").mouseleave(function (e) {
+        $(".project-el").removeClass('inactive-el')
+    })
 
     $(".mobile-default-view p button").on("click",
         (function () {
