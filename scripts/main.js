@@ -65,12 +65,9 @@ $(document).ready((function () {
         );
 
         if (!grid) {
-
-            $(`.project-wrapper-list`).addClass('project-view-swap');
-
-
+            $(`.project-wrapper-list`).remove('project-view-swap');
         } else {
-            $(`.project-wrapper-list`).removeClass('project-view-swap');
+            $(`.project-wrapper-list`).addClass('project-view-swap');
         }
         return false;
     }));
@@ -111,12 +108,9 @@ $(document).ready((function () {
             $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
 
-           
-            if (!grid) {
 
+            if (!grid) {
                 $(`.project-wrapper-list`).remove('project-view-swap');
-    
-    
             } else {
                 $(`.project-wrapper-list`).addClass('project-view-swap');
             }
@@ -331,7 +325,9 @@ $(document).ready((function () {
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
                 if (!grid) {
-                    $('.project-wrapper-list').addClass('d-n');
+                    $(`.project-wrapper-list`).remove('project-view-swap');
+                } else {
+                    $(`.project-wrapper-list`).addClass('project-view-swap');
                 }
 
                 skip = true;
@@ -372,9 +368,10 @@ $(document).ready((function () {
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-
                 if (!grid) {
-                    $('.project-wrapper-list').addClass('d-n');
+                    $(`.project-wrapper-list`).remove('project-view-swap');
+                } else {
+                    $(`.project-wrapper-list`).addClass('project-view-swap');
                 }
                 skip = true;
                 counter = 0;
@@ -447,7 +444,9 @@ $(document).ready((function () {
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
             if (!grid) {
-                $('.project-wrapper-list').addClass('d-n');
+                $(`.project-wrapper-list`).remove('project-view-swap');
+            } else {
+                $(`.project-wrapper-list`).addClass('project-view-swap');
             }
             if (!href) {
                 href = "home";

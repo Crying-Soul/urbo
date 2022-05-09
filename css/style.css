@@ -324,19 +324,23 @@ a:hover {
 .menu-el a::after,
 .menu-wrapper button::before,
 .menu-wrapper button::after {
-    border: 0 solid;
+    border: none;
     box-sizing: border-box;
     content: " ";
     height: 100%;
     left: 0;
-    line-height: 100px;
     opacity: 0;
     position: absolute;
     top: 0;
     transition: .5s;
     width: 100%
 }
-
+.menu-el:not(.active) a::after {
+    border-bottom: 1px #fff solid;
+    border-left: 1px #fff solid;
+    border-right: 1px rgba(0, 0, 0, .1) solid;
+    border-top: 1px rgba(0, 0, 0, .1) solid;
+}
 .menu-el a:hover::before,
 .menu-el a:hover::after,
 .menu-wrapper button:hover::before,
