@@ -388,9 +388,10 @@ a:hover {
 }
 
 .menu-el a:hover>span {
+    
     opacity: 1;
     transform: scale(1.1);
-    transform: translate(-10%, -50%);
+    transform: translate(5%, -50%);
     transition-delay: .5s;
     transition-duration: .6s;
     transition-property: opacity;
@@ -398,6 +399,7 @@ a:hover {
 }
 
 .menu-el a span {
+    font-family: "Majorant-Rg";
     font-size: 1em;
     left: 50%;
     opacity: 0;
