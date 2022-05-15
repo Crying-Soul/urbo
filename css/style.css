@@ -31,13 +31,16 @@ body {
 .content {
     display: none
 }
-
+.active-el,.active-el >* {
+    opacity: 1;
+    transition: .5s all}
 .inactive-el,
 .inactive-el>* {
     opacity: .4;
     pointer-events: none;
     transition: .5s all
 }
+
 
 .active-content {
     display: block
@@ -709,7 +712,10 @@ a:hover {
 }
 
 .project-list .project-el a {
-    color: #fff
+    display: block;
+    color: #fff;
+    min-width: min-content;
+    width: calc(80vw - 10%);
 }
 
 .project-list .project-el:hover {

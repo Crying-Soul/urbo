@@ -28,6 +28,57 @@ $(document).ready((function () {
         }
         $('#team .project-wrapper-grid .flex-projects').append(team_cache)
     }
+    let x = 1, y = 1, speed = 0, direction = { x: 1, y: 1 };
+    let bufferX = 0, bufferY = 0;
+
+
+    let projectIntervalId = null;
+
+ const playProjects = () => {
+
+        projectIntervalId = setInterval(() => {
+
+            x += speed * direction.x;
+            y += speed * direction.y;
+
+            $('#projects .project-wrapper-grid .flex-projects').each((i, el) => {
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            })
+
+
+
+        }, 1000 / 60);
+
+    }
+    const removeProjects = () => {
+        clearInterval(projectIntervalId);
+        speed = 0;
+        x = 0;
+        y = 0;
+    }
+    const playTeam = () => {
+
+        projectIntervalId = setInterval(() => {
+            x += speed * direction.x;
+            y += speed * direction.y;
+
+            $('#team .project-wrapper-grid .flex-projects').each((i, el) => {
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+        }, 1000 / 60);
+
+    }
+    const removeTeam = () => {
+        clearInterval(teamIntervalId);
+        speed = 0;
+        x = 0;
+        y = 0;
+    }
+
+
+    let teamIntervalId = null;
+
 
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
@@ -36,8 +87,39 @@ $(document).ready((function () {
      * alternative menu activation
      */
 
-    let href = "home";
+    
+    let href = !localStorage.getItem('href') ? 'home' : localStorage.getItem('href')
+
     let grid = false;
+
+    if (href !== 'home') {
+        
+             
+            if (href == "projects") {
+                playProjects()
+            } else {
+                removeProjects()
+            }
+            if (href === "about") {
+                location.href = "/pages/about.html";
+            } else if (href === "home") {
+                $(".view-wrapper").addClass("d-n")
+            } else {
+                $(".view-wrapper").removeClass("d-n")
+            }
+            if (href == "team") {
+                playTeam()
+            } else {
+                removeTeam()
+            }
+
+            $(this).addClass("active");
+            $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+
+            $(".menu-el, .menu-alter-el").removeClass('inactive-el');
+    
+    }
 
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
@@ -85,7 +167,11 @@ $(document).ready((function () {
      */
 
     $(".menu-el, .menu-alter-el").on("click", (function () {
-        if (location.pathname !== "/") location.href = "/";
+        if (location.pathname !== "/") {
+            href = $(this).children().attr('data-href');
+            localStorage.setItem('href', href)
+            location.href = '/'
+        }
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
         $(".menu-el, .menu-alter-el").addClass('inactive-el');
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
@@ -95,6 +181,9 @@ $(document).ready((function () {
 
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
+            localStorage.setItem('href', href)
+            console.log(href);
+         
             if (href == "projects") {
                 playProjects()
             } else {
@@ -122,10 +211,11 @@ $(document).ready((function () {
 
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
+        
         return false;
     }));
 
-    $(".menu-alter-el").on("click", (function () {
+    $(".menu-alter-wrap>*").on("click", (function () {
         setTimeout(alternativeMenuStateChange,1500)
     }));
     // $(".project-wrapper-grid").on("mousemove", (function(e) {
@@ -138,13 +228,7 @@ $(document).ready((function () {
 
 
 
-    let x = 1, y = 1, count = 0, speed = 0, direction = { x: 1, y: 1 };
-    let bufferX = 0, bufferY = 0;
-
-
-    let projectIntervalId = null;
-
-
+   
 
     $('#projects .project-wrapper-grid').on("mousemove", (e) => {
         speed = 0.2;
@@ -167,36 +251,7 @@ $(document).ready((function () {
         }
     });
 
-    const playProjects = () => {
-
-        projectIntervalId = setInterval(() => {
-
-            x += speed * direction.x;
-            y += speed * direction.y;
-
-            $('#projects .project-wrapper-grid .flex-projects').each((i, el) => {
-                el.style.transform = `translate(${x}px, ${y}px)`;
-            })
-
-
-
-        }, 1000 / 60);
-
-    }
-    const removeProjects = () => {
-        clearInterval(projectIntervalId);
-        speed = 0;
-        x = 0;
-        y = 0;
-    }
-
-
-
-
-    let isPlayTeam = false;
-
-    let teamIntervalId = null;
-
+   
 
 
     $('#team .project-wrapper-grid').on("mousemove", (e) => {
@@ -220,27 +275,7 @@ $(document).ready((function () {
         }
     });
 
-    const playTeam = () => {
-
-        projectIntervalId = setInterval(() => {
-            x += speed * direction.x;
-            y += speed * direction.y;
-
-            $('#team .project-wrapper-grid .flex-projects').each((i, el) => {
-                el.style.transform = `translate(${x}px, ${y}px)`;
-            });
-
-        }, 1000 / 60);
-
-    }
-    const removeTeam = () => {
-        clearInterval(teamIntervalId);
-        speed = 0;
-        x = 0;
-        y = 0;
-    }
-
-
+   
     $(".group .project").mouseenter((function (e) {
 
         if (!$(this).children('p').length) {
@@ -313,7 +348,7 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-
+                localStorage.setItem('href', href)
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
                 } else {
@@ -355,6 +390,7 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
+                localStorage.setItem('href', href)
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
                 } else {
@@ -430,6 +466,7 @@ $(document).ready((function () {
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
 
             href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
+            localStorage.setItem('href', href)
             if (href == "projects" && !isMobile) {
                 playProjects()
             } else {
@@ -448,6 +485,7 @@ $(document).ready((function () {
        
             if (!href) {
                 href = "home";
+                localStorage.setItem('href', href)
 
                 $('.content').removeClass(`scroll-animation-out-about active-content`)
 
@@ -466,8 +504,10 @@ $(document).ready((function () {
     }));
     $(".project-el").mouseenter(function (e) {
         $(".project-el").not(this).addClass('inactive-el')
+        $(".project-el").removeClass('active-el')
     });
     $(".project-el").mouseleave(function (e) {
+        $(".project-el").addClass('active-el')
         $(".project-el").removeClass('inactive-el')
     })
 
