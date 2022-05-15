@@ -2,7 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-decoration: none
+    text-decoration: none;
+
 }
 
 body {
@@ -70,18 +71,13 @@ body {
     z-index: -1
 }
 
-header {
-    height: 150px;
-    position: fixed;
-    width: 100vw;
-    z-index: 10
-}
+
 
 header .menu-alter {
-    height: 100%;
     position: absolute;
-    right: 0;
-    width: 17%
+    top: 130px;
+    right: 100px;    
+    z-index: 10;
 }
 
 header .logo {
@@ -89,6 +85,7 @@ header .logo {
     position: absolute;
     top: 130px;
     transition: .5s
+    
 }
 
 header .logo svg:hover {
@@ -97,17 +94,9 @@ header .logo svg:hover {
 }
 
 header .logo svg {
+    
     transform: scale(0.75);
     transition: .5s
-}
-
-.item {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 150px;
-    transform: translateY(-30%)
 }
 
 .menu-wrapper {
@@ -188,7 +177,6 @@ header .logo svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-right: 6vw;
     opacity: 1;
     z-index: 12
 }
@@ -279,9 +267,9 @@ a:hover {
 .side-bar,
 .menu-alter-wrap {
     height: 250px;
-    min-width: 17%;
+    width: 74px;
     position: fixed;
-    right: 0;
+    right: 95px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10
@@ -310,14 +298,14 @@ a:hover {
 }
 
 .menu-el a {
+    display: block;
     color: #fff;
     font-size: 10px;
-    height: 100px;
-    padding: 10px;
+    padding: 11px;
     position: relative;
     text-align: center;
     transition: .5s;
-    width: 100px
+  
 }
 
 .menu-el a::before,
@@ -1186,24 +1174,23 @@ a:hover {
 
     @keyframes scroll-animation-out-2 {
         0% {
-            margin: 15px 12px;
-            opacity: 1
+                     opacity: 1
         }
 
         100% {
-            margin: 30px 24px;
+          
             opacity: .1
         }
     }
 
     @keyframes scroll-animation-in-2 {
         0% {
-            margin: 30px 24px;
+          
             opacity: .1
         }
 
         100% {
-            margin: 15px 12px;
+           
             opacity: 1
         }
     }
