@@ -27,7 +27,6 @@ $(document).ready((function () {
             team_cache.push(group)
         }
         $('#team .project-wrapper-grid .flex-projects').append(team_cache)
-
     }
 
     const scroll_counter = 4;
@@ -38,7 +37,7 @@ $(document).ready((function () {
      */
 
     let href = "home";
-    let grid = $('button.grid-list-view p').text() == "GRID VIEW";
+    let grid = false;
 
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
@@ -55,20 +54,24 @@ $(document).ready((function () {
      * Grid < -- > List view swapper
      */
 
-    $("button.grid-list-view").on("click", (function () {
+    const updateViewState = () => {
         grid = $('button.grid-list-view').children().text() == "GRID VIEW";
-        $('.project-wrapper-list').removeClass('d-n');
+
+        if (!grid) {
+
+            $('.project-wrapper-list').addClass('project-view-swap');
+        } else {
+            $('.project-wrapper-list').removeClass('project-view-swap');
+        }
+    }
+
+    $("button.grid-list-view").on("click", (function () {
+        updateViewState()
         $(this).html(
             grid ?
                 "<p>LIST&nbsp;VIEW</p>" :
                 "<p>GRID&nbsp;VIEW</p>"
         );
-
-        if (!grid) {
-            $(`.project-wrapper-list`).remove('project-view-swap');
-        } else {
-            $(`.project-wrapper-list`).addClass('project-view-swap');
-        }
         return false;
     }));
     /**
@@ -80,6 +83,7 @@ $(document).ready((function () {
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
         $(".menu-el, .menu-alter-el").addClass('inactive-el');
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
+        
         setTimeout(() => {
             $(".menu-el").removeClass("active");
 
@@ -109,11 +113,7 @@ $(document).ready((function () {
 
 
 
-            if (!grid) {
-                $(`.project-wrapper-list`).remove('project-view-swap');
-            } else {
-                $(`.project-wrapper-list`).addClass('project-view-swap');
-            }
+
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
         return false;
@@ -324,11 +324,7 @@ $(document).ready((function () {
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
-                if (!grid) {
-                    $(`.project-wrapper-list`).remove('project-view-swap');
-                } else {
-                    $(`.project-wrapper-list`).addClass('project-view-swap');
-                }
+               
 
                 skip = true;
                 counter = 0;
@@ -368,11 +364,7 @@ $(document).ready((function () {
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-                if (!grid) {
-                    $(`.project-wrapper-list`).remove('project-view-swap');
-                } else {
-                    $(`.project-wrapper-list`).addClass('project-view-swap');
-                }
+            
                 skip = true;
                 counter = 0;
                 mobileCounter = 0;
@@ -443,11 +435,7 @@ $(document).ready((function () {
 
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
-            if (!grid) {
-                $(`.project-wrapper-list`).remove('project-view-swap');
-            } else {
-                $(`.project-wrapper-list`).addClass('project-view-swap');
-            }
+       
             if (!href) {
                 href = "home";
 
