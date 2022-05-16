@@ -1,5 +1,6 @@
 * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -33,11 +34,15 @@ body {
 }
 .active-el,.active-el >* {
     opacity: 1;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all}
 .inactive-el,
 .inactive-el>* {
     opacity: .4;
     pointer-events: none;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all
 }
 
@@ -68,7 +73,11 @@ body {
     object-fit: cover;
     position: absolute;
     top: 0;
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 100vw;
     z-index: -1
@@ -87,47 +96,74 @@ header .logo {
     left: 100px;
     position: absolute;
     top: 130px;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
     
 }
 
 header .logo svg:hover {
-    transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+        -ms-transform: scale(0.85);
+            transform: scale(0.85);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 header .logo svg {
     
-    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    
+        -ms-transform: scale(0.75);
+    
+            transform: scale(0.75);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-wrapper {
-    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-wrapper:hover,
 .tgl-brd {
-    transform: scale(0.8)
+    -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8)
 }
 
 .menu-trigger,
 .menu-trigger span {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     display: inline-block;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
     transition: all .4s
 }
 
 .menu-trigger {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background: none;
     background: transparent;
     border: none;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 40px;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     outline: none;
     padding: 30px;
     position: relative;
@@ -152,18 +188,25 @@ header .logo svg {
 }
 
 #menu01.tgl span:nth-of-type(1) {
-    transform: translateY(5px) rotate(-45deg)
+    -webkit-transform: translateY(5px) rotate(-45deg);
+        -ms-transform: translateY(5px) rotate(-45deg);
+            transform: translateY(5px) rotate(-45deg)
 }
 
 #menu01.tgl span:nth-of-type(2) {
-    transform: translateY(-5px) rotate(45deg)
+    -webkit-transform: translateY(-5px) rotate(45deg);
+        -ms-transform: translateY(-5px) rotate(45deg);
+            transform: translateY(-5px) rotate(45deg)
 }
 
 .bg-alter {
-    backdrop-filter: blur(10px) brightness(30%);
+    -webkit-backdrop-filter: blur(10px) brightness(30%);
+            backdrop-filter: blur(10px) brightness(30%);
     height: 100vh;
     position: fixed;
     top: 0;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
     transition: .2s;
     width: 100vw;
     z-index: 8
@@ -171,15 +214,26 @@ header .logo svg {
 
 .display-n {
     opacity: 0;
+    -webkit-transition: visibility 0s, opacity .5s linear;
+    -o-transition: visibility 0s, opacity .5s linear;
     transition: visibility 0s, opacity .5s linear;
     visibility: hidden
 }
 
 .menu-alter-wrap {
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     opacity: 1;
     z-index: 12
 }
@@ -189,56 +243,90 @@ header .logo svg {
     font-family: 'Majorant-Lt';
     font-size: 2em;
     position: relative;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-alter-el:hover {
     cursor: pointer;
-    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-extra {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     position: absolute;
-    transform: .5s;
+    -webkit-transform: .5s;
+        -ms-transform: .5s;
+            transform: .5s;
     width: 100%
 }
 
 .menu-extra-anim {
-    animation: menu-extra .4s linear
+    -webkit-animation: menu-extra .4s linear;
+            animation: menu-extra .4s linear
 }
 
 .menu-extra-el {
-    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
     font-family: "Majorant-Rg";
     margin: 25px 30px;
     opacity: 0;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-extra-el:nth-child(1) {
-    animation-delay: 0
+    -webkit-animation-delay: 0;
+            animation-delay: 0
 }
 
 .menu-extra-el:nth-child(2) {
-    animation-delay: .25s
+    -webkit-animation-delay: .25s;
+            animation-delay: .25s
 }
 
 .menu-extra-el:nth-child(3) {
-    animation-delay: .5s
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s
 }
 
 .menu-extra-el:nth-child(4) {
-    animation-delay: 1s
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s
 }
 
 button:hover,
 a:hover {
     cursor: pointer
+}
+
+@-webkit-keyframes menu-extra {
+    0% {
+        margin-bottom: 0;
+        opacity: 0
+    }
+
+    100% {
+        margin-bottom: 25px;
+        opacity: 1
+    }
 }
 
 @keyframes menu-extra {
@@ -259,7 +347,11 @@ a:hover {
 }
 
 .menu-extra-el:hover {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
@@ -274,22 +366,34 @@ a:hover {
     position: fixed;
     right: 95px;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     z-index: 10
 }
 
 .side-bar .menu {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height: 100%;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     position: relative;
     z-index: 8
 }
 
 .menu-el {
     opacity: 1;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
@@ -307,6 +411,8 @@ a:hover {
     padding: 11px;
     position: relative;
     text-align: center;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
   
 }
@@ -316,13 +422,16 @@ a:hover {
 .menu-wrapper button::before,
 .menu-wrapper button::after {
     border: none;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     content: " ";
     height: 100%;
     left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 100%
 }
@@ -341,13 +450,21 @@ a:hover {
 
 .menu-el a i,
 .active a i {
-    transform: scale(0.35);
+    -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+            transform: scale(0.35);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-el a:hover>i,
 .active a>i {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
@@ -356,7 +473,11 @@ a:hover {
 .tgl-brd button::before {
     border-left: 1px grey solid;
     border-right: 1px grey solid;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
@@ -365,26 +486,46 @@ a:hover {
 .tgl-brd button:hover::after {
     border-bottom: 1px grey solid;
     border-top: 1px grey solid;
-    transform: rotate(45deg)
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg)
 }
 
 .menu-el a:hover::before {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-el a:hover::after {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-el a:hover>span {
     
     opacity: 1;
-    transform: scale(1.1);
-    transform: translate(5%, -50%);
-    transition-delay: .5s;
-    transition-duration: .6s;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform: translate(5%, -50%);
+        -ms-transform: translate(5%, -50%);
+            transform: translate(5%, -50%);
+    -webkit-transition-delay: .5s;
+         -o-transition-delay: .5s;
+            transition-delay: .5s;
+    -webkit-transition-duration: .6s;
+         -o-transition-duration: .6s;
+            transition-duration: .6s;
+    -webkit-transition-property: opacity;
+    -o-transition-property: opacity;
     transition-property: opacity;
     z-index: 10
 }
@@ -397,17 +538,50 @@ a:hover {
     position: absolute;
     text-transform: uppercase;
     top: 50%;
-    transform: translate(-20%, -50%);
+    -webkit-transform: translate(-20%, -50%);
+        -ms-transform: translate(-20%, -50%);
+            transform: translate(-20%, -50%);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .menu-el a:hover::after {
-    animation: hover-menu-anim .5s linear forwards;
+    -webkit-animation: hover-menu-anim .5s linear forwards;
+            animation: hover-menu-anim .5s linear forwards;
     border: 1px solid grey
 }
 
 .menu-el a:hover::before {
     border: none
+}
+
+@-webkit-keyframes hover-menu-anim {
+    0% {
+        border: 1px rgba(0, 0, 0, .1) solid
+    }
+
+    25% {
+        border-top: 1px #fff solid;
+        width: 100%
+    }
+
+    50% {
+        border-right: 1px #fff solid
+    }
+
+    75% {
+        border-bottom: 1px #fff solid;
+        border-left: 1px rgba(0, 0, 0, .1) solid;
+        border-top: 1px rgba(0, 0, 0, .1) solid
+    }
+
+    100% {
+        border-bottom: 1px #fff solid;
+        border-left: 1px #fff solid;
+        border-right: 1px rgba(0, 0, 0, .1) solid;
+        border-top: 1px rgba(0, 0, 0, .1) solid
+    }
 }
 
 @keyframes hover-menu-anim {
@@ -441,7 +615,11 @@ a:hover {
 .menu-wrapper button:hover::after {
     border-bottom: 1px grey solid;
     border-top: 1px grey solid;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
@@ -473,15 +651,30 @@ a:hover {
     position: absolute;
     text-align: center;
     top: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     width: 100%;
     z-index: 5
 }
 
 .view-wrapper button p {
-    animation: view-btn-anim 1s linear forwards;
+    -webkit-animation: view-btn-anim 1s linear forwards;
+            animation: view-btn-anim 1s linear forwards;
     opacity: 0;
-    transform: rotate(-45deg)
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg)
+}
+
+@-webkit-keyframes view-btn-anim {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
 }
 
 @keyframes view-btn-anim {
@@ -499,7 +692,9 @@ a:hover {
     border-radius: 2px;
     height: 100px;
     position: relative;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
     width: 100px;
     z-index: 4
 }
@@ -507,57 +702,79 @@ a:hover {
 .button-view-wrap::after {
     border-radius: 2px;
     border-top: 1px solid #FFF;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     content: " ";
     height: 100%;
     left: 0;
     line-height: 100px;
     position: absolute;
     top: -2px;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 50%
 }
 
 .project-wrapper-grid {
     background-color: #0f0d23;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: -webkit-min-content;
+    height: -moz-min-content;
     height: min-content;
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     width: 1450vw
 }
 
 .flex-projects {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     height: 100%;
     width: 100%
 }
 
 .group .project {
     position: relative;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+        -ms-transform: translate(0);
+            transform: translate(0);
+    -webkit-transition: all .1s ease-out;
+    -o-transition: all .1s ease-out;
     transition: all .1s ease-out
 }
 
 .project img {
     border-radius: 3px;
-    filter: brightness(20%);
+    -webkit-filter: brightness(20%);
+            filter: brightness(20%);
    
     height: 35vh;
     margin: 10px;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     position: relative;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 35vh;
     z-index: 4
 }
 
 .group .project p {
-    animation: prj-text-anim .5s linear forwards;
+    -webkit-animation: prj-text-anim .5s linear forwards;
+            animation: prj-text-anim .5s linear forwards;
     color: #fff;
     cursor: pointer;
     font-family: "Majorant-Md";
@@ -566,10 +783,27 @@ a:hover {
     opacity: 0;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     z-index: 5
+}
+
+@-webkit-keyframes prj-text-anim {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
 }
 
 @keyframes prj-text-anim {
@@ -585,25 +819,49 @@ a:hover {
 .project p:hover~img,
 .project img:hover {
     cursor: pointer;
-    filter: brightness(100%);
-    transform: scale(1.05);
+    -webkit-filter: brightness(100%);
+            filter: brightness(100%);
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .project-wrapper-list {
-    animation: gradient-swap-in 2.8s ease-in-out forwards;
+    -webkit-animation: gradient-swap-in 2.8s ease-in-out forwards;
+            animation: gradient-swap-in 2.8s ease-in-out forwards;
+    background: -webkit-gradient(linear, left top, right top, color-stop(60%, #0f0d23), to(transparent));
+    background: -o-linear-gradient(left, #0f0d23 60%, transparent);
     background: linear-gradient(90deg, #0f0d23 60%, transparent);
     background-position: 0;
     height: 100vh;
     position: absolute;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 100vw;
     z-index: 6
 }
 
 .project-view-swap {
-    animation: gradient-swap-out 2.8s ease-in-out forwards;
+    -webkit-animation: gradient-swap-out 2.8s ease-in-out forwards;
+            animation: gradient-swap-out 2.8s ease-in-out forwards;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
+}
+
+@-webkit-keyframes gradient-swap-in {
+    0% {
+        display: block;
+        left: -100%
+    }
+
+    100% {
+        left: 0
+    }
 }
 
 @keyframes gradient-swap-in {
@@ -614,6 +872,17 @@ a:hover {
 
     100% {
         left: 0
+    }
+}
+
+@-webkit-keyframes gradient-swap-out {
+    0% {
+        left: 0
+    }
+
+    100% {
+        display: none;
+        left: -100%
     }
 }
 
@@ -629,33 +898,52 @@ a:hover {
 }
 
 .project-view-swap .project-list {
+    -webkit-transition: visibility 2s;
+    -o-transition: visibility 2s;
     transition: visibility 2s;
     visibility: hidden
 }
 
 .project-list .project-el:nth-child(1),
 .project-view-swap .project-list .project-el:nth-child(1) {
-    animation-delay: .25s
+    -webkit-animation-delay: .25s;
+            animation-delay: .25s
 }
 
 .project-list .project-el:nth-child(2),
 .project-view-swap .project-list .project-el:nth-child(2) {
-    animation-delay: .5s
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s
 }
 
 .project-list .project-el:nth-child(3),
 .project-view-swap .project-list .project-el:nth-child(3) {
-    animation-delay: .75s
+    -webkit-animation-delay: .75s;
+            animation-delay: .75s
 }
 
 .project-list .project-el:nth-child(4),
 .project-view-swap .project-list .project-el:nth-child(4) {
-    animation-delay: 1s
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s
 }
 
 .project-list .project-el:nth-child(5),
 .project-view-swap .project-list .project-el:nth-child(5) {
-    animation-delay: 1.25s
+    -webkit-animation-delay: 1.25s;
+            animation-delay: 1.25s
+}
+
+@-webkit-keyframes project-view-swap-out {
+    0% {
+        opacity: 1;
+        top: 0
+    }
+
+    100% {
+        opacity: 0;
+        top: -20%
+    }
 }
 
 @keyframes project-view-swap-out {
@@ -667,6 +955,18 @@ a:hover {
     100% {
         opacity: 0;
         top: -20%
+    }
+}
+
+@-webkit-keyframes project-view-swap-in {
+    0% {
+        bottom: -20%;
+        opacity: 0
+    }
+
+    100% {
+        bottom: 0;
+        opacity: 1
     }
 }
 
@@ -683,43 +983,66 @@ a:hover {
 }
 
 .project-list {
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     font-family: 'Majorant-Md';
     font-size: 26px;
     height: 40%;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     left: 40%;
     letter-spacing: .2rem;
     position: fixed;
     top: 50%;
-    transform: translate(-50%, -50%)
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
 }
 
 .project-view-swap .project-list .project-el {
-    animation: project-view-swap-out .65s ease-in-out forwards;
+    -webkit-animation: project-view-swap-out .65s ease-in-out forwards;
+            animation: project-view-swap-out .65s ease-in-out forwards;
     opacity: 1;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .project-list .project-el {
-    animation: project-view-swap-in .65s ease-in-out forwards;
+    -webkit-animation: project-view-swap-in .65s ease-in-out forwards;
+            animation: project-view-swap-in .65s ease-in-out forwards;
     font-size: 5vw;
     opacity: 0;
     position: relative;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all
 }
 
 .project-list .project-el a {
     display: block;
     color: #fff;
+    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
     min-width: min-content;
     width: calc(80vw - 10%);
 }
 
 .project-list .project-el:hover {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all
 }
 
@@ -729,6 +1052,28 @@ a:hover {
 
 .page-scroller {
     display: none
+}
+
+@-webkit-keyframes bg {
+    0% {
+        background-size: 0 10px, 5px 0, 0 10px, 5px 0
+    }
+
+    25% {
+        background-size: 100% 10px, 5px 0, 0 10px, 5px 0
+    }
+
+    50% {
+        background-size: 100% 10px, 5px 100%, 0 10px, 5px 0
+    }
+
+    75% {
+        background-size: 100% 10px, 5px 100%, 100% 10px, 5px 0
+    }
+
+    100% {
+        background-size: 100% 10px, 5px 100%, 100% 10px, 5px 100%
+    }
 }
 
 @keyframes bg {
@@ -754,7 +1099,8 @@ a:hover {
 }
 
 #page-scroller {
-    backdrop-filter: blur(10px) brightness(10%);
+    -webkit-backdrop-filter: blur(10px) brightness(10%);
+            backdrop-filter: blur(10px) brightness(10%);
     display: block;
     height: 100vh;
     position: absolute;
@@ -766,7 +1112,9 @@ a:hover {
     left: 45%;
     position: relative;
     top: 55%;
-    transform: translate(-50%, -50%) rotate(-45deg) scale(0.8)
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+        -ms-transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+            transform: translate(-50%, -50%) rotate(-45deg) scale(0.8)
 }
 
 .header-proj-img {
@@ -779,7 +1127,8 @@ a:hover {
 .header-proj-img img {
     height: 100%;
     left: 0;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     position: absolute;
     top: 0;
     width: 100%;
@@ -797,22 +1146,39 @@ a:hover {
 }
 
 .project-stats {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 100vh;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     left: 50%;
     position: relative;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 80vw
 }
 
 .project-stats .project-stats-group {
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height: 400px;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 50%
 }
 
@@ -836,7 +1202,9 @@ a:hover {
     height: 550px;
     left: 50%;
     position: relative;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 80vw
 }
 
@@ -853,16 +1221,26 @@ a:hover {
     height: 100px;
     left: 50%;
     position: relative;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 80vw
 }
 
 .back-to-main {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 300%;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     position: absolute;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s;
     width: 200px
 }
@@ -872,29 +1250,51 @@ a:hover {
     font-size: 44px;
     left: -25px;
     position: relative;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
     transition: .5s
 }
 
 .arrow-back:hover>* {
     left: -50px;
-    transform: scale(1.2) translateX(20%);
+    -webkit-transform: scale(1.2) translateX(20%);
+        -ms-transform: scale(1.2) translateX(20%);
+            transform: scale(1.2) translateX(20%);
+    -webkit-transition: all .5s linear;
+    -o-transition: all .5s linear;
     transition: all .5s linear
 }
 
 .scroll-animation-out-home>* {
-    animation: scroll-animation-out-1 ease-in-out 2s
+    -webkit-animation: scroll-animation-out-1 ease-in-out 2s;
+            animation: scroll-animation-out-1 ease-in-out 2s
 }
 
 .scroll-animation-in-home>* {
-    animation: scroll-animation-in-1 ease-in-out 2s
+    -webkit-animation: scroll-animation-in-1 ease-in-out 2s;
+            animation: scroll-animation-in-1 ease-in-out 2s
 }
 
 .scroll-animation-out-about>* {
-    animation: scroll-animation-out-4 linear 1s forwards
+    -webkit-animation: scroll-animation-out-4 linear 1s forwards;
+            animation: scroll-animation-out-4 linear 1s forwards
 }
 
 .scroll-animation-in-about>* {
-    animation: scroll-animation-in-4 linear 1s forwards
+    -webkit-animation: scroll-animation-in-4 linear 1s forwards;
+            animation: scroll-animation-in-4 linear 1s forwards
+}
+
+@-webkit-keyframes scroll-animation-in-4 {
+    0% {
+        background-color: inherit;
+        opacity: 0
+    }
+
+    100% {
+        background-color: #2e0056;
+        opacity: 1
+    }
 }
 
 @keyframes scroll-animation-in-4 {
@@ -906,6 +1306,18 @@ a:hover {
     100% {
         background-color: #2e0056;
         opacity: 1
+    }
+}
+
+@-webkit-keyframes scroll-animation-out-4 {
+    0% {
+        background-color: #2e0056;
+        opacity: 1
+    }
+
+    100% {
+        background-color: #000;
+        opacity: 0
     }
 }
 
@@ -925,38 +1337,82 @@ a:hover {
     background-color: grey !important
 }
 
-@keyframes scroll-animation-out-1 {
+@-webkit-keyframes scroll-animation-out-1 {
     0% {
         opacity: 1;
-        transform: scale(0.8)
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8)
     }
 
     100% {
         opacity: 0;
-        transform: scale(0.6)
+        -webkit-transform: scale(0.6);
+                transform: scale(0.6)
+    }
+}
+
+@keyframes scroll-animation-out-1 {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(0.6);
+                transform: scale(0.6)
+    }
+}
+
+@-webkit-keyframes scroll-animation-in-1 {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.6);
+                transform: scale(0.6)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8)
     }
 }
 
 @keyframes scroll-animation-in-1 {
     0% {
         opacity: 0;
-        transform: scale(0.6)
+        -webkit-transform: scale(0.6);
+                transform: scale(0.6)
     }
 
     100% {
         opacity: 1;
-        transform: scale(0.8)
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8)
     }
 }
 
 .scroll-animation-out-projects>* .project,
 .scroll-animation-out-team>* .project {
-    animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
+    -webkit-animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
+            animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
 }
 
 .scroll-animation-in-projects>* .project,
 .scroll-animation-in-team>* .project {
-    animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
+    -webkit-animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
+            animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
+}
+
+@-webkit-keyframes scroll-animation-out-2 {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
 }
 
 @keyframes scroll-animation-out-2 {
@@ -966,6 +1422,16 @@ a:hover {
 
     100% {
         opacity: 0
+    }
+}
+
+@-webkit-keyframes scroll-animation-in-2 {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
     }
 }
 
@@ -991,7 +1457,9 @@ a:hover {
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%)
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
 }
 
 .button-scroll-down,
@@ -1024,7 +1492,11 @@ a:hover {
         left: 0;
         top: 10px;
         position: relative;
-        transform: scale(0.6);
+        -webkit-transform: scale(0.6);
+            -ms-transform: scale(0.6);
+                transform: scale(0.6);
+        width: -webkit-min-content;
+        width: -moz-min-content;
         width: min-content;
         z-index: 10;
     }
@@ -1046,32 +1518,71 @@ a:hover {
     }
 
     .wrapper video {
-        object-fit: contain;
-        transform: scale(1.5);
-        transition: transform .5s ease-in-out
+        -o-object-fit: contain;
+           object-fit: contain;
+        -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+                transform: scale(1.5);
+        -webkit-transition: -webkit-transform .5s ease-in-out;
+        transition: -webkit-transform .5s ease-in-out;
+        -o-transition: transform .5s ease-in-out;
+        transition: transform .5s ease-in-out;
+        transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out
+    }
+
+    @-webkit-keyframes scroll-animation-out-1 {
+        0% {
+            opacity: 1;
+            -webkit-transform: scale(1.5);
+                    transform: scale(1.5)
+        }
+
+        100% {
+            opacity: 0;
+            -webkit-transform: scale(0.6);
+                    transform: scale(0.6)
+        }
     }
 
     @keyframes scroll-animation-out-1 {
         0% {
             opacity: 1;
-            transform: scale(1.5)
+            -webkit-transform: scale(1.5);
+                    transform: scale(1.5)
         }
 
         100% {
             opacity: 0;
-            transform: scale(0.6)
+            -webkit-transform: scale(0.6);
+                    transform: scale(0.6)
+        }
+    }
+
+    @-webkit-keyframes scroll-animation-in-1 {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(0.6);
+                    transform: scale(0.6)
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1.5);
+                    transform: scale(1.5)
         }
     }
 
     @keyframes scroll-animation-in-1 {
         0% {
             opacity: 0;
-            transform: scale(0.6)
+            -webkit-transform: scale(0.6);
+                    transform: scale(0.6)
         }
 
         100% {
             opacity: 1;
-            transform: scale(1.5)
+            -webkit-transform: scale(1.5);
+                    transform: scale(1.5)
         }
     }
 
@@ -1089,7 +1600,9 @@ a:hover {
         display: block !important;
         left: 50%;
         position: absolute;
-        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
         z-index: 7
     }
 
@@ -1098,7 +1611,9 @@ a:hover {
     }
 
     .menu-extra {
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding: 10px
     }
 
@@ -1112,7 +1627,8 @@ a:hover {
     }
 
     .mobile-default-view {
-        backdrop-filter: brightness(60%) blur(2px);
+        -webkit-backdrop-filter: brightness(60%) blur(2px);
+                backdrop-filter: brightness(60%) blur(2px);
         display: block;
         height: 100vh;
         position: absolute;
@@ -1121,19 +1637,30 @@ a:hover {
     }
 
     .mobile-default-view p {
-        align-items: flex-start;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
         color: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         font-family: "Majorant-Md";
         font-size: 20px;
         height: 35vh;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         left: 50%;
         line-height: 25px;
         position: absolute;
         top: 45%;
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
         width: 60vw
     }
 
@@ -1152,7 +1679,9 @@ a:hover {
         bottom: 9vh;
         left: 12vw;
         position: absolute;
-        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+                transform: rotate(90deg);
         z-index: 6
     }
 
@@ -1162,7 +1691,11 @@ a:hover {
         color: #fff;
         font-size: 48px;
         outline: none;
-        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+        -webkit-transition: .5s;
+        -o-transition: .5s;
         transition: .5s
     }
 
@@ -1175,11 +1708,21 @@ a:hover {
     }
 
     .back-to-main {
-        align-items: flex-end;
+        -webkit-box-align: end;
+            -ms-flex-align: end;
+                align-items: flex-end;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         height: 125%;
-        justify-content: flex-end;
-        transform: scale(0.7);
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        -webkit-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+                transform: scale(0.7);
+        -webkit-transition: .5s;
+        -o-transition: .5s;
         transition: .5s;
         width: 105px
     }
@@ -1187,6 +1730,17 @@ a:hover {
     .button-view-wrap button,
     .back-to-main>* svg {
         color: #7601fd
+    }
+
+    @-webkit-keyframes scroll-animation-out-2 {
+        0% {
+                     opacity: 1
+        }
+
+        100% {
+          
+            opacity: .1
+        }
     }
 
     @keyframes scroll-animation-out-2 {
@@ -1197,6 +1751,18 @@ a:hover {
         100% {
           
             opacity: .1
+        }
+    }
+
+    @-webkit-keyframes scroll-animation-in-2 {
+        0% {
+          
+            opacity: .1
+        }
+
+        100% {
+           
+            opacity: 1
         }
     }
 
