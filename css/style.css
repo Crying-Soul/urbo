@@ -1,6 +1,6 @@
 * {
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -32,11 +32,15 @@ body {
 .content {
     display: none
 }
-.active-el,.active-el >* {
+
+.active-el,
+.active-el>* {
     opacity: 1;
     -webkit-transition: .5s all;
     -o-transition: .5s all;
-    transition: .5s all}
+    transition: .5s all
+}
+
 .inactive-el,
 .inactive-el>* {
     opacity: .4;
@@ -74,8 +78,8 @@ body {
     position: absolute;
     top: 0;
     -webkit-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-            transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
@@ -88,7 +92,7 @@ body {
 header .menu-alter {
     position: absolute;
     top: 130px;
-    right: 100px;    
+    right: 100px;
     z-index: 10;
 }
 
@@ -99,25 +103,24 @@ header .logo {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
-    
 }
 
 header .logo svg:hover {
     -webkit-transform: scale(0.85);
-        -ms-transform: scale(0.85);
-            transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    transform: scale(0.85);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
 }
 
 header .logo svg {
-    
+
     -webkit-transform: scale(0.75);
-    
-        -ms-transform: scale(0.75);
-    
-            transform: scale(0.75);
+
+    -ms-transform: scale(0.75);
+
+    transform: scale(0.75);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -125,8 +128,8 @@ header .logo svg {
 
 .menu-wrapper {
     -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-            transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -135,14 +138,14 @@ header .logo svg {
 .menu-wrapper:hover,
 .tgl-brd {
     -webkit-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-            transform: scale(0.8)
+    -ms-transform: scale(0.8);
+    transform: scale(0.8)
 }
 
 .menu-trigger,
 .menu-trigger span {
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     display: inline-block;
     -webkit-transition: all .4s;
     -o-transition: all .4s;
@@ -151,8 +154,8 @@ header .logo svg {
 
 .menu-trigger {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     background: none;
     background: transparent;
     border: none;
@@ -162,8 +165,8 @@ header .logo svg {
     display: flex;
     height: 40px;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     outline: none;
     padding: 30px;
     position: relative;
@@ -189,19 +192,19 @@ header .logo svg {
 
 #menu01.tgl span:nth-of-type(1) {
     -webkit-transform: translateY(5px) rotate(-45deg);
-        -ms-transform: translateY(5px) rotate(-45deg);
-            transform: translateY(5px) rotate(-45deg)
+    -ms-transform: translateY(5px) rotate(-45deg);
+    transform: translateY(5px) rotate(-45deg)
 }
 
 #menu01.tgl span:nth-of-type(2) {
     -webkit-transform: translateY(-5px) rotate(45deg);
-        -ms-transform: translateY(-5px) rotate(45deg);
-            transform: translateY(-5px) rotate(45deg)
+    -ms-transform: translateY(-5px) rotate(45deg);
+    transform: translateY(-5px) rotate(45deg)
 }
 
 .bg-alter {
     -webkit-backdrop-filter: blur(10px) brightness(30%);
-            backdrop-filter: blur(10px) brightness(30%);
+    backdrop-filter: blur(10px) brightness(30%);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -222,18 +225,18 @@ header .logo svg {
 
 .menu-alter-wrap {
     -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     opacity: 1;
     z-index: 12
 }
@@ -251,8 +254,8 @@ header .logo svg {
 .menu-alter-el:hover {
     cursor: pointer;
     -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-            transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -260,30 +263,30 @@ header .logo svg {
 
 .menu-extra {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     bottom: 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     position: absolute;
     -webkit-transform: .5s;
-        -ms-transform: .5s;
-            transform: .5s;
+    -ms-transform: .5s;
+    transform: .5s;
     width: 100%
 }
 
 .menu-extra-anim {
     -webkit-animation: menu-extra .4s linear;
-            animation: menu-extra .4s linear
+    animation: menu-extra .4s linear
 }
 
 .menu-extra-el {
     -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
+    animation-fill-mode: both;
     font-family: "Majorant-Rg";
     margin: 25px 30px;
     opacity: 0;
@@ -294,22 +297,22 @@ header .logo svg {
 
 .menu-extra-el:nth-child(1) {
     -webkit-animation-delay: 0;
-            animation-delay: 0
+    animation-delay: 0
 }
 
 .menu-extra-el:nth-child(2) {
     -webkit-animation-delay: .25s;
-            animation-delay: .25s
+    animation-delay: .25s
 }
 
 .menu-extra-el:nth-child(3) {
     -webkit-animation-delay: .5s;
-            animation-delay: .5s
+    animation-delay: .5s
 }
 
 .menu-extra-el:nth-child(4) {
     -webkit-animation-delay: 1s;
-            animation-delay: 1s
+    animation-delay: 1s
 }
 
 button:hover,
@@ -348,8 +351,8 @@ a:hover {
 
 .menu-extra-el:hover {
     -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -367,25 +370,25 @@ a:hover {
     right: 95px;
     top: 50%;
     -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     z-index: 10
 }
 
 .side-bar .menu {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     height: 100%;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     position: relative;
     z-index: 8
 }
@@ -414,7 +417,7 @@ a:hover {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-  
+
 }
 
 .menu-el a::before,
@@ -423,7 +426,7 @@ a:hover {
 .menu-wrapper button::after {
     border: none;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     content: " ";
     height: 100%;
     left: 0;
@@ -435,12 +438,14 @@ a:hover {
     transition: .5s;
     width: 100%
 }
+
 .menu-el:not(.active) a::after {
     border-bottom: 1px #fff solid;
     border-left: 1px #fff solid;
     border-right: 1px rgba(0, 0, 0, .1) solid;
     border-top: 1px rgba(0, 0, 0, .1) solid;
 }
+
 .menu-el a:hover::before,
 .menu-el a:hover::after,
 .menu-wrapper button:hover::before,
@@ -451,8 +456,8 @@ a:hover {
 .menu-el a i,
 .active a i {
     -webkit-transform: scale(0.35);
-        -ms-transform: scale(0.35);
-            transform: scale(0.35);
+    -ms-transform: scale(0.35);
+    transform: scale(0.35);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -461,8 +466,8 @@ a:hover {
 .menu-el a:hover>i,
 .active a>i {
     -webkit-transform: scale(0);
-        -ms-transform: scale(0);
-            transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -474,8 +479,8 @@ a:hover {
     border-left: 1px grey solid;
     border-right: 1px grey solid;
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -487,14 +492,14 @@ a:hover {
     border-bottom: 1px grey solid;
     border-top: 1px grey solid;
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg)
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
 }
 
 .menu-el a:hover::before {
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -502,28 +507,28 @@ a:hover {
 
 .menu-el a:hover::after {
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
 }
 
 .menu-el a:hover>span {
-    
+
     opacity: 1;
     -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
     -webkit-transform: translate(5%, -50%);
-        -ms-transform: translate(5%, -50%);
-            transform: translate(5%, -50%);
+    -ms-transform: translate(5%, -50%);
+    transform: translate(5%, -50%);
     -webkit-transition-delay: .5s;
-         -o-transition-delay: .5s;
-            transition-delay: .5s;
+    -o-transition-delay: .5s;
+    transition-delay: .5s;
     -webkit-transition-duration: .6s;
-         -o-transition-duration: .6s;
-            transition-duration: .6s;
+    -o-transition-duration: .6s;
+    transition-duration: .6s;
     -webkit-transition-property: opacity;
     -o-transition-property: opacity;
     transition-property: opacity;
@@ -539,8 +544,8 @@ a:hover {
     text-transform: uppercase;
     top: 50%;
     -webkit-transform: translate(-20%, -50%);
-        -ms-transform: translate(-20%, -50%);
-            transform: translate(-20%, -50%);
+    -ms-transform: translate(-20%, -50%);
+    transform: translate(-20%, -50%);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -548,7 +553,7 @@ a:hover {
 
 .menu-el a:hover::after {
     -webkit-animation: hover-menu-anim .5s linear forwards;
-            animation: hover-menu-anim .5s linear forwards;
+    animation: hover-menu-anim .5s linear forwards;
     border: 1px solid grey
 }
 
@@ -616,8 +621,8 @@ a:hover {
     border-bottom: 1px grey solid;
     border-top: 1px grey solid;
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -652,19 +657,19 @@ a:hover {
     text-align: center;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     z-index: 5
 }
 
 .view-wrapper button p {
     -webkit-animation: view-btn-anim 1s linear forwards;
-            animation: view-btn-anim 1s linear forwards;
+    animation: view-btn-anim 1s linear forwards;
     opacity: 0;
     -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg)
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg)
 }
 
 @-webkit-keyframes view-btn-anim {
@@ -693,8 +698,8 @@ a:hover {
     height: 100px;
     position: relative;
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
     width: 100px;
     z-index: 4
 }
@@ -703,7 +708,7 @@ a:hover {
     border-radius: 2px;
     border-top: 1px solid #FFF;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     content: " ";
     height: 100%;
     left: 0;
@@ -722,7 +727,7 @@ a:hover {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
@@ -730,8 +735,8 @@ a:hover {
     position: absolute;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 1450vw
 }
 
@@ -740,7 +745,7 @@ a:hover {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%
 }
@@ -748,8 +753,8 @@ a:hover {
 .group .project {
     position: relative;
     -webkit-transform: translate(0);
-        -ms-transform: translate(0);
-            transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translate(0);
     -webkit-transition: all .1s ease-out;
     -o-transition: all .1s ease-out;
     transition: all .1s ease-out
@@ -758,12 +763,12 @@ a:hover {
 .project img {
     border-radius: 3px;
     -webkit-filter: brightness(20%);
-            filter: brightness(20%);
-   
+    filter: brightness(20%);
+
     height: 35vh;
     margin: 10px;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     position: relative;
     -webkit-transition: .5s;
     -o-transition: .5s;
@@ -774,7 +779,7 @@ a:hover {
 
 .group .project p {
     -webkit-animation: prj-text-anim .5s linear forwards;
-            animation: prj-text-anim .5s linear forwards;
+    animation: prj-text-anim .5s linear forwards;
     color: #fff;
     cursor: pointer;
     font-family: "Majorant-Md";
@@ -784,15 +789,15 @@ a:hover {
     position: absolute;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     z-index: 5
 }
 
@@ -820,10 +825,10 @@ a:hover {
 .project img:hover {
     cursor: pointer;
     -webkit-filter: brightness(100%);
-            filter: brightness(100%);
+    filter: brightness(100%);
     -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-            transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -831,7 +836,7 @@ a:hover {
 
 .project-wrapper-list {
     -webkit-animation: gradient-swap-in 2.8s ease-in-out forwards;
-            animation: gradient-swap-in 2.8s ease-in-out forwards;
+    animation: gradient-swap-in 2.8s ease-in-out forwards;
     background: -webkit-gradient(linear, left top, right top, color-stop(60%, #0f0d23), to(transparent));
     background: -o-linear-gradient(left, #0f0d23 60%, transparent);
     background: linear-gradient(90deg, #0f0d23 60%, transparent);
@@ -847,7 +852,7 @@ a:hover {
 
 .project-view-swap {
     -webkit-animation: gradient-swap-out 2.8s ease-in-out forwards;
-            animation: gradient-swap-out 2.8s ease-in-out forwards;
+    animation: gradient-swap-out 2.8s ease-in-out forwards;
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s
@@ -907,31 +912,31 @@ a:hover {
 .project-list .project-el:nth-child(1),
 .project-view-swap .project-list .project-el:nth-child(1) {
     -webkit-animation-delay: .25s;
-            animation-delay: .25s
+    animation-delay: .25s
 }
 
 .project-list .project-el:nth-child(2),
 .project-view-swap .project-list .project-el:nth-child(2) {
     -webkit-animation-delay: .5s;
-            animation-delay: .5s
+    animation-delay: .5s
 }
 
 .project-list .project-el:nth-child(3),
 .project-view-swap .project-list .project-el:nth-child(3) {
     -webkit-animation-delay: .75s;
-            animation-delay: .75s
+    animation-delay: .75s
 }
 
 .project-list .project-el:nth-child(4),
 .project-view-swap .project-list .project-el:nth-child(4) {
     -webkit-animation-delay: 1s;
-            animation-delay: 1s
+    animation-delay: 1s
 }
 
 .project-list .project-el:nth-child(5),
 .project-view-swap .project-list .project-el:nth-child(5) {
     -webkit-animation-delay: 1.25s;
-            animation-delay: 1.25s
+    animation-delay: 1.25s
 }
 
 @-webkit-keyframes project-view-swap-out {
@@ -984,33 +989,33 @@ a:hover {
 
 .project-list {
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     font-family: 'Majorant-Md';
     font-size: 26px;
     height: 40%;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     left: 40%;
     letter-spacing: .2rem;
     position: fixed;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%)
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
 }
 
 .project-view-swap .project-list .project-el {
     -webkit-animation: project-view-swap-out .65s ease-in-out forwards;
-            animation: project-view-swap-out .65s ease-in-out forwards;
+    animation: project-view-swap-out .65s ease-in-out forwards;
     opacity: 1;
     -webkit-transition: .5s;
     -o-transition: .5s;
@@ -1019,7 +1024,7 @@ a:hover {
 
 .project-list .project-el {
     -webkit-animation: project-view-swap-in .65s ease-in-out forwards;
-            animation: project-view-swap-in .65s ease-in-out forwards;
+    animation: project-view-swap-in .65s ease-in-out forwards;
     font-size: 5vw;
     opacity: 0;
     position: relative;
@@ -1039,8 +1044,8 @@ a:hover {
 
 .project-list .project-el:hover {
     -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
     -webkit-transition: .5s all;
     -o-transition: .5s all;
     transition: .5s all
@@ -1100,7 +1105,7 @@ a:hover {
 
 #page-scroller {
     -webkit-backdrop-filter: blur(10px) brightness(10%);
-            backdrop-filter: blur(10px) brightness(10%);
+    backdrop-filter: blur(10px) brightness(10%);
     display: block;
     height: 100vh;
     position: absolute;
@@ -1113,8 +1118,8 @@ a:hover {
     position: relative;
     top: 55%;
     -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
-        -ms-transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
-            transform: translate(-50%, -50%) rotate(-45deg) scale(0.8)
+    -ms-transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0.8)
 }
 
 .header-proj-img {
@@ -1128,7 +1133,7 @@ a:hover {
     height: 100%;
     left: 0;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     position: absolute;
     top: 0;
     width: 100%;
@@ -1147,38 +1152,38 @@ a:hover {
 
 .project-stats {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     height: 100vh;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     left: 50%;
     position: relative;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 80vw
 }
 
 .project-stats .project-stats-group {
     -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     height: 400px;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     width: 50%
 }
 
@@ -1203,8 +1208,8 @@ a:hover {
     left: 50%;
     position: relative;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 80vw
 }
 
@@ -1222,22 +1227,22 @@ a:hover {
     left: 50%;
     position: relative;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 80vw
 }
 
 .back-to-main {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     height: 300%;
     -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
     position: absolute;
     -webkit-transition: .5s;
     -o-transition: .5s;
@@ -1258,8 +1263,8 @@ a:hover {
 .arrow-back:hover>* {
     left: -50px;
     -webkit-transform: scale(1.2) translateX(20%);
-        -ms-transform: scale(1.2) translateX(20%);
-            transform: scale(1.2) translateX(20%);
+    -ms-transform: scale(1.2) translateX(20%);
+    transform: scale(1.2) translateX(20%);
     -webkit-transition: all .5s linear;
     -o-transition: all .5s linear;
     transition: all .5s linear
@@ -1267,22 +1272,22 @@ a:hover {
 
 .scroll-animation-out-home>* {
     -webkit-animation: scroll-animation-out-1 ease-in-out 2s;
-            animation: scroll-animation-out-1 ease-in-out 2s
+    animation: scroll-animation-out-1 ease-in-out 2s
 }
 
 .scroll-animation-in-home>* {
     -webkit-animation: scroll-animation-in-1 ease-in-out 2s;
-            animation: scroll-animation-in-1 ease-in-out 2s
+    animation: scroll-animation-in-1 ease-in-out 2s
 }
 
 .scroll-animation-out-about>* {
     -webkit-animation: scroll-animation-out-4 linear 1s forwards;
-            animation: scroll-animation-out-4 linear 1s forwards
+    animation: scroll-animation-out-4 linear 1s forwards
 }
 
 .scroll-animation-in-about>* {
     -webkit-animation: scroll-animation-in-4 linear 1s forwards;
-            animation: scroll-animation-in-4 linear 1s forwards
+    animation: scroll-animation-in-4 linear 1s forwards
 }
 
 @-webkit-keyframes scroll-animation-in-4 {
@@ -1341,13 +1346,13 @@ a:hover {
     0% {
         opacity: 1;
         -webkit-transform: scale(0.8);
-                transform: scale(0.8)
+        transform: scale(0.8)
     }
 
     100% {
         opacity: 0;
         -webkit-transform: scale(0.6);
-                transform: scale(0.6)
+        transform: scale(0.6)
     }
 }
 
@@ -1355,13 +1360,13 @@ a:hover {
     0% {
         opacity: 1;
         -webkit-transform: scale(0.8);
-                transform: scale(0.8)
+        transform: scale(0.8)
     }
 
     100% {
         opacity: 0;
         -webkit-transform: scale(0.6);
-                transform: scale(0.6)
+        transform: scale(0.6)
     }
 }
 
@@ -1369,13 +1374,13 @@ a:hover {
     0% {
         opacity: 0;
         -webkit-transform: scale(0.6);
-                transform: scale(0.6)
+        transform: scale(0.6)
     }
 
     100% {
         opacity: 1;
         -webkit-transform: scale(0.8);
-                transform: scale(0.8)
+        transform: scale(0.8)
     }
 }
 
@@ -1383,26 +1388,26 @@ a:hover {
     0% {
         opacity: 0;
         -webkit-transform: scale(0.6);
-                transform: scale(0.6)
+        transform: scale(0.6)
     }
 
     100% {
         opacity: 1;
         -webkit-transform: scale(0.8);
-                transform: scale(0.8)
+        transform: scale(0.8)
     }
 }
 
 .scroll-animation-out-projects>* .project,
 .scroll-animation-out-team>* .project {
     -webkit-animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
-            animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
+    animation: scroll-animation-out-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
 }
 
 .scroll-animation-in-projects>* .project,
 .scroll-animation-in-team>* .project {
     -webkit-animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
-            animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
+    animation: scroll-animation-in-2 cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s
 }
 
 @-webkit-keyframes scroll-animation-out-2 {
@@ -1458,8 +1463,8 @@ a:hover {
     position: absolute;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%)
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
 }
 
 .button-scroll-down,
@@ -1477,39 +1482,44 @@ a:hover {
 }
 
 @media only screen and (max-device-width: 680px) {
+
     /* * {
         border: 1px solid red;
     } */
     .side-bar {
         display: none;
     }
+
     .header {
         position: absolute;
         width: 100vw;
         height: 100px;
     }
+
     header .logo {
         left: 0;
         top: 10px;
         position: relative;
         -webkit-transform: scale(0.6);
-            -ms-transform: scale(0.6);
-                transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        transform: scale(0.6);
         width: -webkit-min-content;
         width: -moz-min-content;
         width: min-content;
         z-index: 10;
     }
+
     header .menu-alter {
         position: absolute;
         top: 10px;
-        right: 50px;    
+        right: 50px;
         z-index: 10;
     }
+
     .menu-alter-wrap {
         right: 50px;
     }
-    
+
 
     .logo svg path,
     .menu-trigger span {
@@ -1519,10 +1529,10 @@ a:hover {
 
     .wrapper video {
         -o-object-fit: contain;
-           object-fit: contain;
+        object-fit: contain;
         -webkit-transform: scale(1.5);
-            -ms-transform: scale(1.5);
-                transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
         -webkit-transition: -webkit-transform .5s ease-in-out;
         transition: -webkit-transform .5s ease-in-out;
         -o-transition: transform .5s ease-in-out;
@@ -1534,13 +1544,13 @@ a:hover {
         0% {
             opacity: 1;
             -webkit-transform: scale(1.5);
-                    transform: scale(1.5)
+            transform: scale(1.5)
         }
 
         100% {
             opacity: 0;
             -webkit-transform: scale(0.6);
-                    transform: scale(0.6)
+            transform: scale(0.6)
         }
     }
 
@@ -1548,13 +1558,13 @@ a:hover {
         0% {
             opacity: 1;
             -webkit-transform: scale(1.5);
-                    transform: scale(1.5)
+            transform: scale(1.5)
         }
 
         100% {
             opacity: 0;
             -webkit-transform: scale(0.6);
-                    transform: scale(0.6)
+            transform: scale(0.6)
         }
     }
 
@@ -1562,13 +1572,13 @@ a:hover {
         0% {
             opacity: 0;
             -webkit-transform: scale(0.6);
-                    transform: scale(0.6)
+            transform: scale(0.6)
         }
 
         100% {
             opacity: 1;
             -webkit-transform: scale(1.5);
-                    transform: scale(1.5)
+            transform: scale(1.5)
         }
     }
 
@@ -1576,13 +1586,13 @@ a:hover {
         0% {
             opacity: 0;
             -webkit-transform: scale(0.6);
-                    transform: scale(0.6)
+            transform: scale(0.6)
         }
 
         100% {
             opacity: 1;
             -webkit-transform: scale(1.5);
-                    transform: scale(1.5)
+            transform: scale(1.5)
         }
     }
 
@@ -1601,8 +1611,8 @@ a:hover {
         left: 50%;
         position: absolute;
         -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-                transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
         z-index: 7
     }
 
@@ -1612,8 +1622,8 @@ a:hover {
 
     .menu-extra {
         -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
         padding: 10px
     }
 
@@ -1628,7 +1638,7 @@ a:hover {
 
     .mobile-default-view {
         -webkit-backdrop-filter: brightness(60%) blur(2px);
-                backdrop-filter: brightness(60%) blur(2px);
+        backdrop-filter: brightness(60%) blur(2px);
         display: block;
         height: 100vh;
         position: absolute;
@@ -1638,29 +1648,29 @@ a:hover {
 
     .mobile-default-view p {
         -webkit-box-align: start;
-            -ms-flex-align: start;
-                align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
         color: #fff;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
         font-family: "Majorant-Md";
         font-size: 20px;
         height: 35vh;
         -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
         left: 50%;
         line-height: 25px;
         position: absolute;
         top: 45%;
         -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
         width: 60vw
     }
 
@@ -1680,8 +1690,8 @@ a:hover {
         left: 12vw;
         position: absolute;
         -webkit-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-                transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
         z-index: 6
     }
 
@@ -1692,8 +1702,8 @@ a:hover {
         font-size: 48px;
         outline: none;
         -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-                transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
         -webkit-transition: .5s;
         -o-transition: .5s;
         transition: .5s
@@ -1709,18 +1719,18 @@ a:hover {
 
     .back-to-main {
         -webkit-box-align: end;
-            -ms-flex-align: end;
-                align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         height: 125%;
         -webkit-box-pack: end;
-            -ms-flex-pack: end;
-                justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
         -webkit-transform: scale(0.7);
-            -ms-transform: scale(0.7);
-                transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        transform: scale(0.7);
         -webkit-transition: .5s;
         -o-transition: .5s;
         transition: .5s;
@@ -1734,46 +1744,46 @@ a:hover {
 
     @-webkit-keyframes scroll-animation-out-2 {
         0% {
-                     opacity: 1
+            opacity: 1
         }
 
         100% {
-          
+
             opacity: .1
         }
     }
 
     @keyframes scroll-animation-out-2 {
         0% {
-                     opacity: 1
+            opacity: 1
         }
 
         100% {
-          
+
             opacity: .1
         }
     }
 
     @-webkit-keyframes scroll-animation-in-2 {
         0% {
-          
+
             opacity: .1
         }
 
         100% {
-           
+
             opacity: 1
         }
     }
 
     @keyframes scroll-animation-in-2 {
         0% {
-          
+
             opacity: .1
         }
 
         100% {
-           
+
             opacity: 1
         }
     }
