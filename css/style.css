@@ -410,7 +410,7 @@ a:hover {
 .menu-el a {
     display: block;
     color: #fff;
-    font-size: 10px;
+    font-size: 13px;
     padding: 11px;
     position: relative;
     text-align: center;
@@ -455,6 +455,9 @@ a:hover {
 
 .menu-el a i,
 .active a i {
+    display: block;
+    position: relative;
+    line-height: 0.85;
     -webkit-transform: scale(0.35);
     -ms-transform: scale(0.35);
     transform: scale(0.35);
@@ -464,7 +467,7 @@ a:hover {
 }
 
 .menu-el a:hover>i,
-.active a>i {
+.active a > i {
     -webkit-transform: scale(0);
     -ms-transform: scale(0);
     transform: scale(0);
