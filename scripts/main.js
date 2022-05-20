@@ -169,7 +169,8 @@ $(document).ready((function () {
     $(".menu-el, .menu-alter-el").on("click", (function () {
         if (location.pathname !== "/") {
             href = $(this).children().attr('data-href');
-            localStorage.setItem('href', href)
+            
+            localStorage.setItem('href', href !== "about" ? href : "home")
             location.href = '/'
         }
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
@@ -181,7 +182,7 @@ $(document).ready((function () {
 
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
-            localStorage.setItem('href', href)
+            localStorage.setItem('href', href !== "about" ? href : "home")
             console.log(href);
          
             if (href == "projects") {
@@ -343,7 +344,7 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-                localStorage.setItem('href', href)
+                localStorage.setItem('href', href !== "about" ? href : "home")
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
                 } else {
@@ -385,7 +386,7 @@ $(document).ready((function () {
                 $('.content').removeClass(`scroll-animation-out-${href} active-content`)
                 $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).parent().addClass('active')
                 href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) - 1]}]`).attr('data-href');
-                localStorage.setItem('href', href)
+                localStorage.setItem('href', href !== "about" ? href : "home")
                 if (href === "home") {
                     $(".view-wrapper").addClass("d-n")
                 } else {
@@ -461,7 +462,7 @@ $(document).ready((function () {
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
 
             href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
-            localStorage.setItem('href', href)
+            localStorage.setItem('href', href !== "about" ? href : "home")
             if (href == "projects" && !isMobile) {
                 playProjects()
             } else {
@@ -480,7 +481,7 @@ $(document).ready((function () {
        
             if (!href) {
                 href = "home";
-                localStorage.setItem('href', href)
+                localStorage.setItem('href', href !== "about" ? href : "home")
 
                 $('.content').removeClass(`scroll-animation-out-about active-content`)
 
