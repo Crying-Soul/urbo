@@ -1196,15 +1196,16 @@ a:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 300%;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
     position: absolute;
     -webkit-transition: .5s;
     -o-transition: .5s;
+    height: 25%;
     transition: .5s;
-    width: 200px
+    width: 200px;
+    z-index: 5;
 }
 
 .arrow-back>* {
