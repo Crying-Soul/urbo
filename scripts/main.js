@@ -52,7 +52,7 @@ $(document).ready((function() {
                 /**
                  * RIGHT
                  */
-                if (buffer[buffer.length - 1].x + w < w) {
+                if (buffer[buffer.length - 1].x + w - scale < w) {
                     console.log(`RIGHT SPAWN X=${buffer[index].x}`);
                     let new_block = model.cloneNode(true);
 
@@ -72,7 +72,7 @@ $(document).ready((function() {
                 /**
                  * LEFT
                  */
-                if (buffer[0].x >= 0) {
+                if (buffer[0].x + scale >= 0) {
                     console.log(`LEFT SPAWN X=${buffer[index].x}`);
                     let new_block = model.cloneNode(true);
 
