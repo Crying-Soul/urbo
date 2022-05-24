@@ -724,8 +724,6 @@ a:hover {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    min-width: 1920px !important;
-    min-height: 1080px !important;
 }
 
 .group .project {
@@ -742,7 +740,7 @@ a:hover {
     border-radius: 3px;
     -webkit-filter: brightness(20%);
     filter: brightness(20%);
-    height: 35vh;
+    height: 37vh;
     margin: 10px;
     -o-object-fit: cover;
     object-fit: cover;
@@ -750,7 +748,7 @@ a:hover {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-    width: 35vh;
+    width: 34vh;
     z-index: 4
 }
 

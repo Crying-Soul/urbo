@@ -34,14 +34,13 @@ $(document).ready((function() {
 
 
 
-    let projectIntervalId = null,
-        teamIntervalId = null;
-
-
     const createPlayer = (buffer, model, parent_el) => {
+
 
         bufferLink = buffer;
         let w = model.clientWidth;
+        const scale = 50 * (1 + window.devicePixelRatio);
+        console.log(scale);
         let intervalId = setInterval(() => {
 
 
@@ -60,7 +59,7 @@ $(document).ready((function() {
 
                     buffer.push({
                             obj: new_block,
-                            x: buffer[index].x + w - 64,
+                            x: buffer[index].x + w - scale,
                             y: buffer[index].y
                         }
 
@@ -82,7 +81,7 @@ $(document).ready((function() {
 
                     buffer.unshift({
                             obj: new_block,
-                            x: buffer[index].x - w + 64,
+                            x: buffer[index].x - w + scale,
                             y: buffer[index].y
                         }
 
