@@ -1,84 +1,111 @@
 "use strict";
-$(document).ready((function () {
+$(document).ready((function() {
+    let speed = 0,
+        direction = { x: 1, y: 1 };
+    let bufferX = 0,
+        bufferY = 0;
+    const copy_model_projects = document.querySelector('#projects .group');
+    const copy_model_team = document.querySelector('#team .group');
+    let bufferLink = null;
 
-    if (location.pathname === '/') {
-        const project = document.querySelector('#projects .project-wrapper-grid .flex-projects .group');
-        const projects_cache = [];
-        for (let i = 200; i >= 0; --i) {
-            let group = project.cloneNode(true);
 
-            for (let j = group.children.length; j >= 0; j--) {
-                group.appendChild(group.children[Math.random() * j | 0]);
-            }
-            projects_cache.push(group)
+
+    $('.flex-projects').on("mousemove", (e) => {
+        speed = 2;
+        bufferX = e.pageX / window.innerWidth;
+        bufferY = e.pageY / window.innerHeight;
+        if (bufferX <= 0.5) {
+
+            direction.x = 1 - bufferX;
+        } else {
+            direction.x = -bufferX
+        }
+        if (bufferY <= 0.5) {
+            direction.y = 1 - bufferY;
+        } else {
+            direction.y = -bufferY
         }
 
-        $('#projects .project-wrapper-grid .flex-projects').append(projects_cache)
-
-
-        const team = document.querySelector('#team .project-wrapper-grid .flex-projects .group');
-        const team_cache = [];
-        for (let i = 200; i >= 0; --i) {
-            let group = team.cloneNode(true);
-
-            for (let j = group.children.length; j >= 0; j--) {
-                group.appendChild(group.children[Math.random() * j | 0]);
-            }
-            team_cache.push(group)
+        if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
+            direction.x = 0
+            direction.y = 0
         }
-        $('#team .project-wrapper-grid .flex-projects').append(team_cache)
-    }
-    let x = 1, y = 1, speed = 0, direction = { x: 1, y: 1 };
-    let bufferX = 0, bufferY = 0;
+    });
 
 
-    let projectIntervalId = null;
 
- const playProjects = () => {
+    let projectIntervalId = null,
+        teamIntervalId = null;
 
-        projectIntervalId = setInterval(() => {
 
-            x += speed * direction.x;
-            y += speed * direction.y;
+    const createPlayer = (buffer, model, parent_el) => {
 
-            $('#projects .project-wrapper-grid .flex-projects').each((i, el) => {
-                el.style.transform = `translate(${x}px, ${y}px)`;
-            })
+        bufferLink = buffer;
+        let w = model.clientWidth;
+        let intervalId = setInterval(() => {
+
+
+            for (let index = buffer.length - 1; index >= 0; --index) {
+                buffer[index].x += speed * direction.x;
+                // buffer[index].y += speed * direction.y;
+
+
+                /**
+                 * RIGHT
+                 */
+                if (buffer[buffer.length - 1].x + w < w) {
+                    console.log(`RIGHT SPAWN X=${buffer[index].x}`);
+                    let new_block = model.cloneNode(true);
+
+
+                    buffer.push({
+                            obj: new_block,
+                            x: buffer[index].x + w - 64,
+                            y: buffer[index].y
+                        }
+
+                    );
+                    new_block.style.transform = `translate(${buffer[buffer.length - 1].x}px, ${buffer[buffer.length - 1].y}px)`
+
+
+                    parent_el.appendChild(new_block)
+                }
+                /**
+                 * LEFT
+                 */
+                if (buffer[0].x >= 0) {
+                    console.log(`LEFT SPAWN X=${buffer[index].x}`);
+                    let new_block = model.cloneNode(true);
+
+                    console.log(new_block);
+
+
+                    buffer.unshift({
+                            obj: new_block,
+                            x: buffer[index].x - w + 64,
+                            y: buffer[index].y
+                        }
+
+                    )
+                    new_block.style.transform = `translate(${buffer[buffer.length - 1].x}px, ${buffer[buffer.length - 1].y}px)`
+
+
+                    parent_el.appendChild(new_block)
+                }
+
+                buffer[index].obj.style.transform = `translate(${buffer[index].x}px, ${buffer[index].y}px)`
+            }
 
 
 
         }, 1000 / 60);
 
+        return intervalId;
     }
-    const removeProjects = () => {
-        clearInterval(projectIntervalId);
-        speed = 0;
-        x = 0;
-        y = 0;
+    const clearPlayer = (intervalId, bufferLink) => {
+        clearInterval(intervalId);
+        console.log(bufferLink);
     }
-    const playTeam = () => {
-
-        projectIntervalId = setInterval(() => {
-            x += speed * direction.x;
-            y += speed * direction.y;
-
-            $('#team .project-wrapper-grid .flex-projects').each((i, el) => {
-                el.style.transform = `translate(${x}px, ${y}px)`;
-            });
-
-        }, 1000 / 60);
-
-    }
-    const removeTeam = () => {
-        clearInterval(teamIntervalId);
-        speed = 0;
-        x = 0;
-        y = 0;
-    }
-
-
-    let teamIntervalId = null;
-
 
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
@@ -87,38 +114,30 @@ $(document).ready((function () {
      * alternative menu activation
      */
 
-    
+
     let href = !localStorage.getItem('href') ? 'home' : localStorage.getItem('href')
 
     let grid = false;
 
     if (href !== 'home') {
-        
-             
-            if (href == "projects") {
-                playProjects()
-            } else {
-                removeProjects()
-            }
-            if (href === "about") {
-                location.href = "/pages/about.html";
-            } else if (href === "home") {
-                $(".view-wrapper").addClass("d-n")
-            } else {
-                $(".view-wrapper").removeClass("d-n")
-            }
-            if (href == "team") {
-                playTeam()
-            } else {
-                removeTeam()
-            }
 
-            $(this).addClass("active");
-            $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-            $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
-            $(".menu-el, .menu-alter-el").removeClass('inactive-el');
-    
+
+        if (href === "about") {
+            location.href = "/pages/about.html";
+        } else if (href === "home") {
+            $(".view-wrapper").addClass("d-n")
+        } else {
+            $(".view-wrapper").removeClass("d-n")
+        }
+
+
+        $(this).addClass("active");
+        $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+        $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
+
+        $(".menu-el, .menu-alter-el").removeClass('inactive-el');
+
     }
 
     $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
@@ -133,8 +152,8 @@ $(document).ready((function () {
         return true;
     }
 
-    $(".menu-trigger").on("click", (function () {
-       alternativeMenuStateChange()
+    $(".menu-trigger").on("click", (function() {
+        alternativeMenuStateChange()
         return false;
     }));
 
@@ -148,17 +167,36 @@ $(document).ready((function () {
         if (!grid) {
 
             $('.project-wrapper-list').addClass('project-view-swap');
+            if (href == "projects") {
+                createPlayer([{
+                        obj: copy_model_projects,
+                        x: 0,
+                        y: 0
+                    }],
+                    copy_model_projects,
+                    document.querySelector('#projects .flex-projects'));
+            } else if (href == "team") {
+                createPlayer([{
+                        obj: copy_model_team,
+                        x: 0,
+                        y: 0
+                    }], copy_model_team,
+                    document.querySelector('#team .flex-projects'));
+
+            }
+
         } else {
             $('.project-wrapper-list').removeClass('project-view-swap');
+
         }
     }
 
-    $("button.grid-list-view").on("click", (function () {
+    $("button.grid-list-view").on("click", (function() {
         updateViewState()
         $(this).html(
             grid ?
-                "<p>LIST&nbsp;VIEW</p>" :
-                "<p>GRID&nbsp;VIEW</p>"
+            "<p>LIST&nbsp;VIEW</p>" :
+            "<p>GRID&nbsp;VIEW</p>"
         );
         return false;
     }));
@@ -166,17 +204,17 @@ $(document).ready((function () {
      * Navigation
      */
 
-    $(".menu-el, .menu-alter-el").on("click", (function () {
+    $(".menu-el, .menu-alter-el").on("click", (function() {
         if (location.pathname !== "/") {
             href = $(this).children().attr('data-href');
-            
+
             localStorage.setItem('href', href !== "about" ? href : "home")
             location.href = '/'
         }
         $('.content').removeClass(`scroll-animation-out-${href} scroll-animation-in-${href}`)
         $(".menu-el, .menu-alter-el").addClass('inactive-el');
         $(`.content#${href}`).addClass(`scroll-animation-out-${href}`)
-        
+
         setTimeout(() => {
             $(".menu-el").removeClass("active");
 
@@ -184,12 +222,8 @@ $(document).ready((function () {
             href = $(this).children().attr('data-href');
             localStorage.setItem('href', href !== "about" ? href : "home")
             console.log(href);
-         
-            if (href == "projects") {
-                playProjects()
-            } else {
-                removeProjects()
-            }
+
+
             if (href === "about") {
                 location.href = "/pages/about.html";
             } else if (href === "home") {
@@ -197,11 +231,7 @@ $(document).ready((function () {
             } else {
                 $(".view-wrapper").removeClass("d-n")
             }
-            if (href == "team") {
-                playTeam()
-            } else {
-                removeTeam()
-            }
+
 
             $(this).addClass("active");
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
@@ -210,81 +240,27 @@ $(document).ready((function () {
 
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
-        
+
         return false;
     }));
 
-    $(".menu-alter-wrap > *").on("click", (function () {
-        setTimeout(alternativeMenuStateChange,1500)
+    $(".menu-alter-wrap > *").on("click", (function() {
+        setTimeout(alternativeMenuStateChange, 1500)
     }));
 
-    // $(".project-wrapper-grid").on("mousemove", (function(e) {
-    //     $('.group .project').each((i, el) => {
-    //         const x = Math.round((window.innerWidth - e.pageX * 2) / 70);
-    //         const y = Math.round((window.innerWidth - e.pageY * 2) / 70);
-    //         el.style.transform = `translateX(${x}px) translateY(${y}px) `;
-    //     });
-    // }));
-
-    $('#projects .project-wrapper-grid').on("mousemove", (e) => {
-        speed = 0.2;
-        bufferX = e.pageX / window.innerWidth;
-        bufferY = e.pageY / window.innerHeight;
-        if (bufferX <= 0.5) {
-            direction.x = 1 - bufferX;
-        } else {
-            direction.x = -bufferX
-        }
-        if (bufferY <= 0.5) {
-            direction.y = 1 - bufferY;
-        } else {
-            direction.y = -bufferY
-        }
-
-        if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
-            direction.x = 0
-            direction.y = 0
-        }
-    });
-
-   
-
-
-    $('#team .project-wrapper-grid').on("mousemove", (e) => {
-        speed = 0.35;
-        bufferX = e.pageX / window.innerWidth;
-        bufferY = e.pageY / window.innerHeight;
-        if (bufferX <= 0.5) {
-            direction.x = 1 - bufferX;
-        } else {
-            direction.x = -bufferX
-        }
-        if (bufferY <= 0.5) {
-            direction.y = 1 - bufferY;
-        } else {
-            direction.y = -bufferY
-        }
-
-        if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
-            direction.x = 0
-            direction.y = 0
-        }
-    });
-
-   
-    $(".group .project").mouseenter((function (e) {
+    $(".group .project").mouseenter((function(e) {
 
         if (!$(this).children('p').length) {
 
             $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
         }
     }));
-    $(".group .project").click((function (e) {
+    $(".group .project").click((function(e) {
 
         location.href = `./pages/${$(this).attr('data-content').toLowerCase().replace('.', '-')}.html`;
 
     }));
-    $(".group .project").mouseleave((function (e) {
+    $(".group .project").mouseleave((function(e) {
         if ($(this).children('p')) {
 
             $(this).children('p').remove()
@@ -301,7 +277,7 @@ $(document).ready((function () {
 
 
 
-    $('.menu-el').each((function () {
+    $('.menu-el').each((function() {
 
         hrefs_list.push($(this).children().attr('data-href'));
     }));
@@ -350,22 +326,14 @@ $(document).ready((function () {
                 } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
-                if (href == "projects" && !isMobile) {
-                    playProjects()
-                } else {
-                    removeProjects()
-                }
-                if (href == "team" && !isMobile) {
-                    playTeam()
-                } else {
-                    removeTeam()
-                }
+
+
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
-               
+
 
                 skip = true;
                 counter = 0;
@@ -392,21 +360,12 @@ $(document).ready((function () {
                 } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
-                if (href == "projects" && !isMobile) {
-                    playProjects()
-                } else {
-                    removeProjects()
-                }
-                if (href == "team" && !isMobile) {
-                    playTeam()
-                } else {
-                    removeTeam()
-                }
+
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-            
+
                 skip = true;
                 counter = 0;
                 mobileCounter = 0;
@@ -443,7 +402,7 @@ $(document).ready((function () {
      * Mobile scroll
      */
 
-    $("button.scroll-down").on("click", (function () {
+    $("button.scroll-down").on("click", (function() {
 
         skip = false;
         counter, mobileCounter, mobileScrollBuffer.length = 0;
@@ -463,22 +422,13 @@ $(document).ready((function () {
 
             href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
             localStorage.setItem('href', href !== "about" ? href : "home")
-            if (href == "projects" && !isMobile) {
-                playProjects()
-            } else {
-                removeProjects()
-            }
-            if (href == "team" && !isMobile) {
-                playTeam()
-            } else {
-                removeTeam()
-            }
+
             $('.content').removeClass('active-content');
             $(`.content#${href}`).addClass("active-content");
 
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
 
-       
+
             if (!href) {
                 href = "home";
                 localStorage.setItem('href', href !== "about" ? href : "home")
@@ -498,17 +448,17 @@ $(document).ready((function () {
         }, 1500);
         return false;
     }));
-    $(".project-el").mouseenter(function (e) {
+    $(".project-el").mouseenter(function(e) {
         $(".project-el").not(this).addClass('inactive-el')
         $(".project-el").removeClass('active-el')
     });
-    $(".project-el").mouseleave(function (e) {
+    $(".project-el").mouseleave(function(e) {
         $(".project-el").addClass('active-el')
         $(".project-el").removeClass('inactive-el')
     })
 
     $(".mobile-default-view p button").on("click",
-        (function () {
+        (function() {
             skip = false;
             $(".mobile-default-view").addClass('d-n');
             $(".button-scroll-down").addClass('d-n')
@@ -517,7 +467,7 @@ $(document).ready((function () {
 
         })
     );
-    $(".mobile-back-arrow").on("click", (function () {
+    $(".mobile-back-arrow").on("click", (function() {
         skip = true
         $(".mobile-default-view").removeClass('d-n');
         $(".button-scroll-down").removeClass('d-n')
@@ -526,7 +476,7 @@ $(document).ready((function () {
 
     }));
 
-    $(".scroll-down-project").on("click", (function (e) {
+    $(".scroll-down-project").on("click", (function(e) {
         e.preventDefault();
         $('html,body').animate({ scrollTop: 900 }, 500);
 

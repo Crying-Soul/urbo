@@ -4,11 +4,10 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-
 }
 
 body {
-    overflow: hidden !important
+    overflow: hidden !important;
 }
 
 @font-face {
@@ -50,7 +49,6 @@ body {
     transition: .5s all
 }
 
-
 .active-content {
     display: block
 }
@@ -87,8 +85,6 @@ body {
     z-index: -1
 }
 
-
-
 header .menu-alter {
     position: absolute;
     top: 130px;
@@ -115,11 +111,8 @@ header .logo svg:hover {
 }
 
 header .logo svg {
-
     -webkit-transform: scale(0.75);
-
     -ms-transform: scale(0.75);
-
     transform: scale(0.75);
     -webkit-transition: .5s;
     -o-transition: .5s;
@@ -325,7 +318,6 @@ a:hover {
         margin-bottom: 0;
         opacity: 0
     }
-
     100% {
         margin-bottom: 25px;
         opacity: 1
@@ -337,7 +329,6 @@ a:hover {
         margin-bottom: 0;
         opacity: 0
     }
-
     100% {
         margin-bottom: 25px;
         opacity: 1
@@ -417,7 +408,6 @@ a:hover {
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
-
 }
 
 .menu-el a::before,
@@ -519,7 +509,6 @@ a:hover {
 }
 
 .menu-el a:hover>span {
-
     opacity: 1;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
@@ -569,22 +558,18 @@ a:hover {
     0% {
         border: 1px rgba(0, 0, 0, .1) solid
     }
-
     25% {
         border-top: 1px #fff solid;
         width: 100%
     }
-
     50% {
         border-right: 1px #fff solid
     }
-
     75% {
         border-bottom: 1px #fff solid;
         border-left: 1px rgba(0, 0, 0, .1) solid;
         border-top: 1px rgba(0, 0, 0, .1) solid
     }
-
     100% {
         border-bottom: 1px #fff solid;
         border-left: 1px #fff solid;
@@ -597,22 +582,18 @@ a:hover {
     0% {
         border: 1px rgba(0, 0, 0, .1) solid
     }
-
     25% {
         border-top: 1px #fff solid;
         width: 100%
     }
-
     50% {
         border-right: 1px #fff solid
     }
-
     75% {
         border-bottom: 1px #fff solid;
         border-left: 1px rgba(0, 0, 0, .1) solid;
         border-top: 1px rgba(0, 0, 0, .1) solid
     }
-
     100% {
         border-bottom: 1px #fff solid;
         border-left: 1px #fff solid;
@@ -680,7 +661,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -690,7 +670,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -726,32 +705,27 @@ a:hover {
 }
 
 .project-wrapper-grid {
-    background-color: #0f0d23;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    height: -webkit-min-content;
-    height: -moz-min-content;
-    height: min-content;
-    left: 50%;
     position: absolute;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 1450vw
+    background-color: #0f0d23;
+    height: 100vh;
+    width: 100%;
 }
 
 .flex-projects {
-    display: -webkit-box;
-    display: -ms-flexbox;
+    position: absolute;
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    width: 100%;
     height: 100%;
-    width: 100%
+    overflow: hidden;
+}
+
+.group {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 1920px !important;
+    min-height: 1080px !important;
 }
 
 .group .project {
@@ -768,7 +742,6 @@ a:hover {
     border-radius: 3px;
     -webkit-filter: brightness(20%);
     filter: brightness(20%);
-
     height: 35vh;
     margin: 10px;
     -o-object-fit: cover;
@@ -809,7 +782,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -819,7 +791,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -867,7 +838,6 @@ a:hover {
         display: block;
         left: -100%
     }
-
     100% {
         left: 0
     }
@@ -878,7 +848,6 @@ a:hover {
         display: block;
         left: -100%
     }
-
     100% {
         left: 0
     }
@@ -888,7 +857,6 @@ a:hover {
     0% {
         left: 0
     }
-
     100% {
         display: none;
         left: -100%
@@ -899,7 +867,6 @@ a:hover {
     0% {
         left: 0
     }
-
     100% {
         display: none;
         left: -100%
@@ -948,7 +915,6 @@ a:hover {
         opacity: 1;
         top: 0
     }
-
     100% {
         opacity: 0;
         top: -20%
@@ -960,7 +926,6 @@ a:hover {
         opacity: 1;
         top: 0
     }
-
     100% {
         opacity: 0;
         top: -20%
@@ -972,7 +937,6 @@ a:hover {
         bottom: -20%;
         opacity: 0
     }
-
     100% {
         bottom: 0;
         opacity: 1
@@ -984,7 +948,6 @@ a:hover {
         bottom: -20%;
         opacity: 0
     }
-
     100% {
         bottom: 0;
         opacity: 1
@@ -1067,19 +1030,15 @@ a:hover {
     0% {
         background-size: 0 10px, 5px 0, 0 10px, 5px 0
     }
-
     25% {
         background-size: 100% 10px, 5px 0, 0 10px, 5px 0
     }
-
     50% {
         background-size: 100% 10px, 5px 100%, 0 10px, 5px 0
     }
-
     75% {
         background-size: 100% 10px, 5px 100%, 100% 10px, 5px 0
     }
-
     100% {
         background-size: 100% 10px, 5px 100%, 100% 10px, 5px 100%
     }
@@ -1089,19 +1048,15 @@ a:hover {
     0% {
         background-size: 0 10px, 5px 0, 0 10px, 5px 0
     }
-
     25% {
         background-size: 100% 10px, 5px 0, 0 10px, 5px 0
     }
-
     50% {
         background-size: 100% 10px, 5px 100%, 0 10px, 5px 0
     }
-
     75% {
         background-size: 100% 10px, 5px 100%, 100% 10px, 5px 0
     }
-
     100% {
         background-size: 100% 10px, 5px 100%, 100% 10px, 5px 100%
     }
@@ -1299,7 +1254,6 @@ a:hover {
         background-color: inherit;
         opacity: 0
     }
-
     100% {
         background-color: #2e0056;
         opacity: 1
@@ -1311,7 +1265,6 @@ a:hover {
         background-color: inherit;
         opacity: 0
     }
-
     100% {
         background-color: #2e0056;
         opacity: 1
@@ -1323,7 +1276,6 @@ a:hover {
         background-color: #2e0056;
         opacity: 1
     }
-
     100% {
         background-color: #000;
         opacity: 0
@@ -1335,7 +1287,6 @@ a:hover {
         background-color: #2e0056;
         opacity: 1
     }
-
     100% {
         background-color: #000;
         opacity: 0
@@ -1352,7 +1303,6 @@ a:hover {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
     }
-
     100% {
         opacity: 0;
         -webkit-transform: scale(0.6);
@@ -1366,7 +1316,6 @@ a:hover {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
     }
-
     100% {
         opacity: 0;
         -webkit-transform: scale(0.6);
@@ -1380,7 +1329,6 @@ a:hover {
         -webkit-transform: scale(0.6);
         transform: scale(0.6)
     }
-
     100% {
         opacity: 1;
         -webkit-transform: scale(0.8);
@@ -1394,7 +1342,6 @@ a:hover {
         -webkit-transform: scale(0.6);
         transform: scale(0.6)
     }
-
     100% {
         opacity: 1;
         -webkit-transform: scale(0.8);
@@ -1418,7 +1365,6 @@ a:hover {
     0% {
         opacity: 1
     }
-
     100% {
         opacity: 0
     }
@@ -1428,7 +1374,6 @@ a:hover {
     0% {
         opacity: 1
     }
-
     100% {
         opacity: 0
     }
@@ -1438,7 +1383,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -1448,7 +1392,6 @@ a:hover {
     0% {
         opacity: 0
     }
-
     100% {
         opacity: 1
     }
@@ -1486,20 +1429,17 @@ a:hover {
 }
 
 @media only screen and (max-device-width: 680px) {
-
     /* * {
         border: 1px solid red;
     } */
     .side-bar {
         display: none;
     }
-
     .header {
         position: absolute;
         width: 100vw;
         height: 100px;
     }
-
     header .logo {
         left: 0;
         top: 10px;
@@ -1512,25 +1452,20 @@ a:hover {
         width: min-content;
         z-index: 10;
     }
-
     header .menu-alter {
         position: absolute;
         top: 10px;
         right: 50px;
         z-index: 10;
     }
-
     .menu-alter-wrap {
         right: 50px;
     }
-
-
     .logo svg path,
     .menu-trigger span {
         background-color: #7601fd;
         fill: #7601fd
     }
-
     .wrapper video {
         -o-object-fit: contain;
         object-fit: contain;
@@ -1543,73 +1478,62 @@ a:hover {
         transition: transform .5s ease-in-out;
         transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out
     }
-
     @-webkit-keyframes scroll-animation-out-1 {
         0% {
             opacity: 1;
             -webkit-transform: scale(1.5);
             transform: scale(1.5)
         }
-
         100% {
             opacity: 0;
             -webkit-transform: scale(0.6);
             transform: scale(0.6)
         }
     }
-
     @keyframes scroll-animation-out-1 {
         0% {
             opacity: 1;
             -webkit-transform: scale(1.5);
             transform: scale(1.5)
         }
-
         100% {
             opacity: 0;
             -webkit-transform: scale(0.6);
             transform: scale(0.6)
         }
     }
-
     @-webkit-keyframes scroll-animation-in-1 {
         0% {
             opacity: 0;
             -webkit-transform: scale(0.6);
             transform: scale(0.6)
         }
-
         100% {
             opacity: 1;
             -webkit-transform: scale(1.5);
             transform: scale(1.5)
         }
     }
-
     @keyframes scroll-animation-in-1 {
         0% {
             opacity: 0;
             -webkit-transform: scale(0.6);
             transform: scale(0.6)
         }
-
         100% {
             opacity: 1;
             -webkit-transform: scale(1.5);
             transform: scale(1.5)
         }
     }
-
     .view-wrapper {
         display: none
     }
-
     .mobile-view-wrapper {
         display: block !important;
         left: 60%;
         position: absolute
     }
-
     .button-scroll-down {
         display: block !important;
         left: 50%;
@@ -1619,27 +1543,22 @@ a:hover {
         transform: translateX(-50%);
         z-index: 7
     }
-
     .button-view-wrap::after {
         border-top: 2px solid #7601fd !important
     }
-
     .menu-extra {
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
         padding: 10px
     }
-
     .menu-extra-el {
         font-size: .6em;
         margin: 0
     }
-
     .button-scroll-down p {
         font-size: 34px
     }
-
     .mobile-default-view {
         -webkit-backdrop-filter: brightness(60%) blur(2px);
         backdrop-filter: brightness(60%) blur(2px);
@@ -1649,7 +1568,6 @@ a:hover {
         width: 100vw;
         z-index: 7
     }
-
     .mobile-default-view p {
         -webkit-box-align: start;
         -ms-flex-align: start;
@@ -1677,7 +1595,6 @@ a:hover {
         transform: translate(-50%, -50%);
         width: 60vw
     }
-
     .mobile-default-view p button {
         background: transparent;
         border: none;
@@ -1688,7 +1605,6 @@ a:hover {
         text-decoration: underline;
         text-transform: uppercase
     }
-
     .mobile-back-arrow {
         bottom: 9vh;
         left: 12vw;
@@ -1698,7 +1614,6 @@ a:hover {
         transform: rotate(90deg);
         z-index: 6
     }
-
     .mobile-back-arrow button {
         background: transparent;
         border: none;
@@ -1712,15 +1627,12 @@ a:hover {
         -o-transition: .5s;
         transition: .5s
     }
-
     .project-list .project-el {
         font-size: 1.2em
     }
-
     .button-scroll-down-project {
         display: none !important
     }
-
     .back-to-main {
         -webkit-box-align: end;
         -ms-flex-align: end;
@@ -1740,54 +1652,39 @@ a:hover {
         transition: .5s;
         width: 105px
     }
-
     .button-view-wrap button,
     .back-to-main>* svg {
         color: #7601fd
     }
-
     @-webkit-keyframes scroll-animation-out-2 {
         0% {
             opacity: 1
         }
-
         100% {
-
             opacity: .1
         }
     }
-
     @keyframes scroll-animation-out-2 {
         0% {
             opacity: 1
         }
-
         100% {
-
             opacity: .1
         }
     }
-
     @-webkit-keyframes scroll-animation-in-2 {
         0% {
-
             opacity: .1
         }
-
         100% {
-
             opacity: 1
         }
     }
-
     @keyframes scroll-animation-in-2 {
         0% {
-
             opacity: .1
         }
-
         100% {
-
             opacity: 1
         }
     }
