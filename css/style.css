@@ -719,7 +719,6 @@ a:hover {
     min-width: 1920px;
     height: 100%;
     overflow: hidden;
-    border: 1px red solid;
 }
 
 .group {
@@ -727,7 +726,6 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     min-width: 1920px;
-    border: 1px solid blueviolet;
 }
 
 .group .project {

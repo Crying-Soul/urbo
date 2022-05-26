@@ -6,7 +6,8 @@ $(document).ready((function() {
         bufferY = 0;
     const copy_model_projects = document.querySelector('#projects .group');
     const copy_model_team = document.querySelector('#team .group');
-    let bufferLink = null;
+    let bufferLink = [];
+    let intervalID = null;
 
 
 
@@ -36,12 +37,21 @@ $(document).ready((function() {
 
     const createPlayer = (buffer, model, parent_el) => {
 
+        buffer[0].original = true
+        if (bufferLink.length > 0) {
+            bufferLink.forEach(elem => {
+                if (!elem.original) {
+                    elem.obj.remove()
+                }
+            })
+        }
 
-        bufferLink = buffer;
+
+
         let w = model.clientWidth;
         let scale = 0;
 
-        console.log("RATIO: " + window.devicePixelRatio, "WIDTH: " + window.innerWidth);
+        // console.log("RATIO: " + window.devicePixelRatio, "WIDTH: " + window.innerWidth);
         let ratio = window.devicePixelRatio
 
         if (ratio >= 1) {
@@ -73,7 +83,8 @@ $(document).ready((function() {
                     buffer.push({
                             obj: new_block,
                             x: buffer[index].x + w - scale,
-                            y: buffer[index].y
+                            y: buffer[index].y,
+                            original: false
                         }
 
                     );
@@ -95,7 +106,8 @@ $(document).ready((function() {
                     buffer.unshift({
                             obj: new_block,
                             x: buffer[index].x - w + scale,
-                            y: buffer[index].y
+                            y: buffer[index].y,
+                            original: false
                         }
 
                     )
@@ -111,12 +123,20 @@ $(document).ready((function() {
 
 
         }, 1000 / 60);
-
+        bufferLink = buffer;
         return intervalId;
     }
-    const clearPlayer = (intervalId, bufferLink) => {
+    const clearPlayer = intervalId => {
+
+
         clearInterval(intervalId);
-        console.log(bufferLink);
+
+        intervalID = null;
+
+
+        return true;
+
+
     }
 
     const scroll_counter = 4;
@@ -174,13 +194,18 @@ $(document).ready((function() {
      */
 
     const updateViewState = () => {
-        grid = $('button.grid-list-view').children().text() == "GRID VIEW";
 
+        grid = $('button.grid-list-view').children().text() == "GRID VIEW";
+        if (intervalID) {
+            clearPlayer(intervalID);
+            console.log('clear old player');
+        }
         if (!grid) {
 
             $('.project-wrapper-list').addClass('project-view-swap');
             if (href == "projects") {
-                createPlayer([{
+
+                intervalID = createPlayer([{
                         obj: copy_model_projects,
                         x: 0,
                         y: 0
@@ -188,7 +213,8 @@ $(document).ready((function() {
                     copy_model_projects,
                     document.querySelector('#projects .flex-projects'));
             } else if (href == "team") {
-                createPlayer([{
+
+                intervalID = createPlayer([{
                         obj: copy_model_team,
                         x: 0,
                         y: 0
