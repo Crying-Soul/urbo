@@ -39,7 +39,20 @@ $(document).ready((function() {
 
         bufferLink = buffer;
         let w = model.clientWidth;
-        const scale = 50 * (1 + window.devicePixelRatio);
+        let scale = 0;
+
+        console.log("RATIO: " + window.devicePixelRatio, "WIDTH: " + window.innerWidth);
+        let ratio = window.devicePixelRatio
+
+        if (ratio >= 1) {
+            scale = 98
+        } else if (ratio < 1 && ratio > 0.85) {
+            scale = 315
+        } else if (ratio < 0.85 && ratio > 0.75) {
+            scale = 120
+        } else if (ratio <= 0.75) {
+            scale = 150
+        }
         console.log(scale);
         let intervalId = setInterval(() => {
 

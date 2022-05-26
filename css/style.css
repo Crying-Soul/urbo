@@ -716,14 +716,18 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    min-width: 1920px;
     height: 100%;
     overflow: hidden;
+    border: 1px red solid;
 }
 
 .group {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    min-width: 1920px;
+    border: 1px solid blueviolet;
 }
 
 .group .project {
