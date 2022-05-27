@@ -10,13 +10,11 @@ $(document).ready((function() {
     let intervalID = null;
 
 
-
     $('.flex-projects').on("mousemove", (e) => {
         speed = 2;
         bufferX = e.pageX / window.innerWidth;
         bufferY = e.pageY / window.innerHeight;
         if (bufferX <= 0.5) {
-
             direction.x = 1 - bufferX;
         } else {
             direction.x = -bufferX
@@ -33,8 +31,6 @@ $(document).ready((function() {
         }
     });
 
-
-
     const createPlayer = (buffer, model, parent_el) => {
 
         buffer[0].original = true
@@ -46,8 +42,6 @@ $(document).ready((function() {
             })
         }
 
-
-
         let w = model.clientWidth;
         let scale = 0;
 
@@ -55,7 +49,7 @@ $(document).ready((function() {
         let ratio = window.devicePixelRatio
 
         if (ratio >= 1) {
-            scale = 98
+            scale = 110
         } else if (ratio < 1 && ratio > 0.85) {
             scale = 315
         } else if (ratio < 0.85 && ratio > 0.75) {
@@ -152,9 +146,6 @@ $(document).ready((function() {
     let grid = false;
 
     if (href !== 'home') {
-
-
-
         if (href === "about") {
             location.href = "/pages/about.html";
         } else if (href === "home") {
@@ -163,11 +154,9 @@ $(document).ready((function() {
             $(".view-wrapper").removeClass("d-n")
         }
 
-
         $(this).addClass("active");
         $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
         $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
-
         $(".menu-el, .menu-alter-el").removeClass('inactive-el');
 
     }
@@ -259,25 +248,29 @@ $(document).ready((function() {
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
             href = $(this).children().attr('data-href');
             localStorage.setItem('href', href !== "about" ? href : "home")
-            console.log(href);
-
-
             if (href === "about") {
                 location.href = "/pages/about.html";
             } else if (href === "home") {
-                $(".view-wrapper").addClass("d-n")
+                $(".view-wrapper").addClass("d-n");
             } else {
-                $(".view-wrapper").removeClass("d-n")
+                $(".view-wrapper").removeClass("d-n");
             }
+
 
 
             $(this).addClass("active");
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
 
+            $('.project-wrapper-list').removeClass('project-view-swap');
 
+            $("button.grid-list-view").html(
+                "<p>LIST&nbsp;VIEW</p>"
+            );
+            grid = true
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
+
 
         return false;
     }));
@@ -323,8 +316,6 @@ $(document).ready((function() {
 
 
     function preventDefault(e) {
-
-
         if ('changedTouches' in e) {
             isMobile = true;
             mobileScrollBuffer.push(e.changedTouches[0].screenY);
@@ -334,7 +325,6 @@ $(document).ready((function() {
                 mobileCounter = mobileScrollBuffer.shift() > mobileScrollBuffer.pop() ? mobileCounter + 1 : mobileCounter - 1;
                 mobileScrollBuffer.length = 0;
             }
-
         } else {
             isMobile = false;
             counter = e.deltaY > 0 ? counter + 1 : counter - 1;
@@ -364,14 +354,10 @@ $(document).ready((function() {
                 } else {
                     $(".view-wrapper").removeClass("d-n")
                 }
-
-
                 $('.content').removeClass('active-content');
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-
-
 
                 skip = true;
                 counter = 0;
@@ -379,7 +365,6 @@ $(document).ready((function() {
 
 
             }, 1500);
-
         }
         if ((counter <= -scroll_counter || mobileCounter <= -mobile_scroll_counter) && hrefs_list[hrefs_list.indexOf(href) - 1] && skip) {
             counter = 0;
@@ -422,7 +407,6 @@ $(document).ready((function() {
         }
     }
     const supportsPassive = true;
-
     const wheelOpt = supportsPassive ? { passive: false } : false;
     const wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
 
@@ -435,7 +419,6 @@ $(document).ready((function() {
     if (window.location.pathname === "/") {
         disableScroll()
     }
-
     /**
      * Mobile scroll
      */
@@ -455,7 +438,6 @@ $(document).ready((function() {
             } else {
                 $("button.scroll-down p").html('<i class="fa-thin fa-arrow-down"></i>').css("font-size", "34px")
             }
-
             $('.content').removeClass(`scroll-animation-out-${href} active-content`)
 
             href = $(`.menu-el a[data-href=${hrefs_list[hrefs_list.indexOf(href) + 1]}]`).attr('data-href');
@@ -465,7 +447,6 @@ $(document).ready((function() {
             $(`.content#${href}`).addClass("active-content");
 
             $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
-
 
             if (!href) {
                 href = "home";
@@ -478,11 +459,8 @@ $(document).ready((function() {
 
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             }
-
             skip = true;
             counter, mobileCounter = 0;
-
-
         }, 1500);
         return false;
     }));
@@ -511,7 +489,6 @@ $(document).ready((function() {
         $(".button-scroll-down").removeClass('d-n')
         $(".view-wrapper").removeClass('mobile-view-wrapper')
         $(".mobile-back-arrow").addClass('d-n')
-
     }));
 
     $(".scroll-down-project").on("click", (function(e) {
