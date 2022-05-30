@@ -724,7 +724,8 @@ a:hover {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    min-width: 1920px;
+    width: 217vh;
+    transition: transform ease-out 1s;
 }
 
 .group .project {

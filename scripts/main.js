@@ -11,7 +11,7 @@ $(document).ready((function() {
 
 
     $('.flex-projects').on("mousemove", (e) => {
-        speed = 2;
+        speed = 3;
         bufferX = e.pageX / window.innerWidth;
         bufferY = e.pageY / window.innerHeight;
         if (bufferX <= 0.5) {
@@ -43,20 +43,13 @@ $(document).ready((function() {
         }
 
         let w = model.clientWidth;
+        let h = model.clientHeight;
         let scale = 0;
 
         // console.log("RATIO: " + window.devicePixelRatio, "WIDTH: " + window.innerWidth);
         let ratio = window.devicePixelRatio
 
-        if (ratio >= 1) {
-            scale = 110
-        } else if (ratio < 1 && ratio > 0.85) {
-            scale = 315
-        } else if (ratio < 0.85 && ratio > 0.75) {
-            scale = 120
-        } else if (ratio <= 0.75) {
-            scale = 150
-        }
+
         console.log(scale);
         let intervalId = setInterval(() => {
 
@@ -110,7 +103,21 @@ $(document).ready((function() {
 
                     parent_el.appendChild(new_block)
                 }
+                /**
+                 * BOTTOM
+                 */
+                // if (buffer[buffer.length - 1].y + h - scale < h) {
+                //     console.log(`BOTTOM SPAWN Y=${buffer[index].y}`);
 
+                //     let new_block = model.cloneNode(true)
+
+                //     buffer.push({
+                //         obj: new_block,
+                //         x: buffer[index].x,
+                //         y: buffer[index].y + h
+                //     });
+
+                // }
                 buffer[index].obj.style.transform = `translate(${buffer[index].x}px, ${buffer[index].y}px)`
             }
 
