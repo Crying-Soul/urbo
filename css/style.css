@@ -713,19 +713,17 @@ a:hover {
 
 .flex-projects {
     position: absolute;
-    display: flex;
-    flex-wrap: wrap;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 .group {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-wrap: wrap;
     width: 217vh;
-    transition: transform ease-out 1s;
+    transition: ease-out 1s;
 }
 
 .group .project {

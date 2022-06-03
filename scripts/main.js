@@ -6,7 +6,9 @@ $(document).ready((function() {
         bufferY = 0;
     const copy_model_projects = document.querySelector('#projects .group');
     const copy_model_team = document.querySelector('#team .group');
-    let bufferLink = [];
+    let bufferLink = [
+        []
+    ];
     let intervalID = null;
 
 
@@ -31,98 +33,125 @@ $(document).ready((function() {
         }
     });
 
-    const createPlayer = (buffer, model, parent_el) => {
 
-        buffer[0].original = true
-        if (bufferLink.length > 0) {
-            bufferLink.forEach(elem => {
-                if (!elem.original) {
-                    elem.obj.remove()
-                }
+
+    const createPlayer = (buffer, model, parent_el) => {
+        let w = model.clientWidth;
+        let h = model.clientHeight;
+
+
+        buffer[0][0].original = true
+        if (bufferLink[0].length > 0) {
+            bufferLink.forEach(row => {
+                row.forEach(
+                    elem => {
+                        if (!elem.original) {
+                            elem.obj.remove()
+                        }
+                    }
+                )
+
             })
         }
 
-        let w = model.clientWidth;
-        let h = model.clientHeight;
-        let scale = 0;
 
-        // console.log("RATIO: " + window.devicePixelRatio, "WIDTH: " + window.innerWidth);
-        let ratio = window.devicePixelRatio
-
-
-        console.log(scale);
         let intervalId = setInterval(() => {
 
 
-            for (let index = buffer.length - 1; index >= 0; --index) {
-                buffer[index].x += speed * direction.x;
-                // buffer[index].y += speed * direction.y;
+
+            for (let row = buffer.length - 1; row >= 0; --row) {
+                for (let index = buffer[row].length - 1; index >= 0; --index) {
+                    let row_buffer = buffer[row];
+                    console.log(buffer, buffer[row]);
+                    row_buffer[index].x += speed * direction.x;
+                    row_buffer[index].y += speed * direction.y;
 
 
-                /**
-                 * RIGHT
-                 */
-                if (buffer[buffer.length - 1].x + w - scale < w) {
-                    console.log(`RIGHT SPAWN X=${buffer[index].x}`);
-                    let new_block = model.cloneNode(true);
+                    /**
+                     * RIGHT
+                     */
+                    if (row_buffer[row_buffer.length - 1].x + w < w) {
+                        console.log(`RIGHT SPAWN X=${row_buffer[index].x}`);
+                        let new_block = model.cloneNode(true);
+                        new_block.style.display = 'none';
 
-
-                    buffer.push({
+                        row_buffer.push({
                             obj: new_block,
-                            x: buffer[index].x + w - scale,
-                            y: buffer[index].y,
+                            x: row_buffer[index].x + w,
+                            y: row_buffer[index].y,
                             original: false
-                        }
-
-                    );
-                    new_block.style.transform = `translate(${buffer[buffer.length - 1].x}px, ${buffer[buffer.length - 1].y}px)`
-
-
-                    parent_el.appendChild(new_block)
-                }
-                /**
-                 * LEFT
-                 */
-                if (buffer[0].x + scale >= 0) {
-                    console.log(`LEFT SPAWN X=${buffer[index].x}`);
-                    let new_block = model.cloneNode(true);
-
-                    console.log(new_block);
+                        }, );
+                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                        parent_el.appendChild(new_block)
 
 
-                    buffer.unshift({
+                    }
+
+                    /**
+                     * LEFT
+                     */
+                    if (row_buffer[0].x >= 0) {
+                        console.log(`LEFT SPAWN X=${row_buffer[0].x}`);
+                        let new_block = model.cloneNode(true);
+                        new_block.style.display = 'none';
+
+
+
+                        row_buffer.unshift({
+                                obj: new_block,
+                                x: row_buffer[index].x - w,
+                                y: row_buffer[index].y,
+                                original: false
+                            }
+
+                        )
+                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                        parent_el.appendChild(new_block)
+                    }
+                    /**
+                     * TOP
+                     */
+                    if (buffer[0][0].y >= 0) {
+                        console.log(`TOP SPAWN Y=${row_buffer[0].y}`);
+
+                        let new_block = model.cloneNode(true);
+                        new_block.style.display = 'none';
+
+
+                        buffer.unshift([{
                             obj: new_block,
-                            x: buffer[index].x - w + scale,
-                            y: buffer[index].y,
+                            x: row_buffer[index].x,
+                            y: row_buffer[index].y - h,
                             original: false
-                        }
+                        }]);
+                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                        parent_el.appendChild(new_block)
 
-                    )
-                    new_block.style.transform = `translate(${buffer[buffer.length - 1].x}px, ${buffer[buffer.length - 1].y}px)`
+                    }
+                    /**
+                     * BOTTOM
+                     */
+                    if (buffer[buffer.length - 1][buffer[buffer.length - 1].length - 1].y + h < h) {
+                        console.log(`BOTTOM SPAWN Y=${row_buffer[index].y}`);
 
+                        let new_block = model.cloneNode(true);
 
-                    parent_el.appendChild(new_block)
+                        new_block.style.display = 'none';
+
+                        console.log(new_block);
+                        buffer.push([{
+                            obj: new_block,
+                            x: row_buffer[index].x,
+                            y: row_buffer[index].y + h,
+                            original: false
+                        }]);
+                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                        parent_el.appendChild(new_block)
+                    }
+                    row_buffer[index].obj.style.transform = `translate(${row_buffer[index].x}px, ${row_buffer[index].y}px)`
                 }
-                /**
-                 * BOTTOM
-                 */
-                // if (buffer[buffer.length - 1].y + h - scale < h) {
-                //     console.log(`BOTTOM SPAWN Y=${buffer[index].y}`);
 
-                //     let new_block = model.cloneNode(true)
-
-                //     buffer.push({
-                //         obj: new_block,
-                //         x: buffer[index].x,
-                //         y: buffer[index].y + h
-                //     });
-
-                // }
-                buffer[index].obj.style.transform = `translate(${buffer[index].x}px, ${buffer[index].y}px)`
             }
-
-
-
         }, 1000 / 60);
         bufferLink = buffer;
         return intervalId;
@@ -201,20 +230,24 @@ $(document).ready((function() {
             $('.project-wrapper-list').addClass('project-view-swap');
             if (href == "projects") {
 
-                intervalID = createPlayer([{
-                        obj: copy_model_projects,
-                        x: 0,
-                        y: 0
-                    }],
+                intervalID = createPlayer([
+                        [{
+                            obj: copy_model_projects,
+                            x: 0,
+                            y: 0
+                        }]
+                    ],
                     copy_model_projects,
                     document.querySelector('#projects .flex-projects'));
             } else if (href == "team") {
 
-                intervalID = createPlayer([{
-                        obj: copy_model_team,
-                        x: 0,
-                        y: 0
-                    }], copy_model_team,
+                intervalID = createPlayer([
+                        [{
+                            obj: copy_model_team,
+                            x: 0,
+                            y: 0
+                        }]
+                    ], copy_model_team,
                     document.querySelector('#team .flex-projects'));
 
             }
