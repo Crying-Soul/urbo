@@ -38,6 +38,7 @@ $(document).ready((function() {
     const createPlayer = (buffer, model, parent_el) => {
         let w = model.clientWidth;
         let h = model.clientHeight;
+        let row_limit = 2
 
 
         buffer[0][0].original = true
@@ -61,93 +62,107 @@ $(document).ready((function() {
 
             for (let row = buffer.length - 1; row >= 0; --row) {
                 for (let index = buffer[row].length - 1; index >= 0; --index) {
-                    let row_buffer = buffer[row];
-                    console.log(buffer, buffer[row]);
-                    row_buffer[index].x += speed * direction.x;
-                    row_buffer[index].y += speed * direction.y;
+                    if (buffer[row][index]) {
+                        let row_buffer = buffer[row];
+
+                        row_buffer[index].x += speed * direction.x;
+                        row_buffer[index].y += speed * direction.y;
 
 
-                    /**
-                     * RIGHT
-                     */
-                    if (row_buffer[row_buffer.length - 1].x + w < w) {
-                        console.log(`RIGHT SPAWN X=${row_buffer[index].x}`);
-                        let new_block = model.cloneNode(true);
-                        new_block.style.display = 'none';
+                        /**
+                         * RIGHT
+                         */
+                        if (row_buffer[row_buffer.length - 1].x + w < w) {
+                            let new_block = model.cloneNode(true);
+                            new_block.style.display = 'none';
 
-                        row_buffer.push({
-                            obj: new_block,
-                            x: row_buffer[index].x + w,
-                            y: row_buffer[index].y,
-                            original: false
-                        }, );
-                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                        parent_el.appendChild(new_block)
-
-
-                    }
-
-                    /**
-                     * LEFT
-                     */
-                    if (row_buffer[0].x >= 0) {
-                        console.log(`LEFT SPAWN X=${row_buffer[0].x}`);
-                        let new_block = model.cloneNode(true);
-                        new_block.style.display = 'none';
-
-
-
-                        row_buffer.unshift({
+                            row_buffer.push({
                                 obj: new_block,
-                                x: row_buffer[index].x - w,
+                                x: row_buffer[index].x + w,
                                 y: row_buffer[index].y,
                                 original: false
+                            }, );
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                            parent_el.appendChild(new_block)
+
+
+                        }
+
+                        /**
+                         * LEFT
+                         */
+                        if (row_buffer[0].x >= 0) {
+                            let new_block = model.cloneNode(true);
+                            new_block.style.display = 'none';
+
+
+
+                            row_buffer.unshift({
+                                    obj: new_block,
+                                    x: row_buffer[index].x - w,
+                                    y: row_buffer[index].y,
+                                    original: false
+                                }
+
+                            )
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                            parent_el.appendChild(new_block)
+                        }
+                        /**
+                         * TOP
+                         */
+                        if (buffer[0][0].y >= 0) {
+                            if (buffer.length > row_limit) {
+                                let removable = buffer.pop();
+                                removable.forEach(elem => {
+                                    elem.obj.remove();
+                                });
+
                             }
 
-                        )
-                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                        parent_el.appendChild(new_block)
+                            let new_block = model.cloneNode(true);
+                            new_block.style.display = 'none';
+
+
+                            buffer.unshift([{
+                                obj: new_block,
+                                x: row_buffer[index].x,
+                                y: row_buffer[index].y - h,
+                                original: false
+                            }]);
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
+                            parent_el.appendChild(new_block)
+
+                        }
+                        /**
+                         * BOTTOM
+                         */
+                        if (buffer[buffer.length - 1][buffer[buffer.length - 1].length - 1].y + h < h) {
+                            if (buffer.length > row_limit) {
+                                let removable = buffer.shift();
+                                removable.forEach(elem => {
+                                    elem.obj.remove();
+                                });
+
+                            }
+
+
+                            let new_block = model.cloneNode(true);
+
+                            new_block.style.display = 'none';
+
+                            buffer.push([{
+                                obj: new_block,
+                                x: row_buffer[index].x,
+                                y: row_buffer[index].y + h,
+                                original: false
+                            }]);
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000);
+                            parent_el.appendChild(new_block);
+                        }
+                        row_buffer[index].obj.style.transform = `translate(${row_buffer[index].x}px, ${row_buffer[index].y}px)`
+
                     }
-                    /**
-                     * TOP
-                     */
-                    if (buffer[0][0].y >= 0) {
-                        console.log(`TOP SPAWN Y=${row_buffer[0].y}`);
-
-                        let new_block = model.cloneNode(true);
-                        new_block.style.display = 'none';
-
-
-                        buffer.unshift([{
-                            obj: new_block,
-                            x: row_buffer[index].x,
-                            y: row_buffer[index].y - h,
-                            original: false
-                        }]);
-                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                        parent_el.appendChild(new_block)
-
-                    }
-                    /**
-                     * BOTTOM
-                     */
-                    if (buffer[buffer.length - 1][buffer[buffer.length - 1].length - 1].y + h < h) {
-                        console.log(`BOTTOM SPAWN Y=${row_buffer[index].y}`);
-
-                        let new_block = model.cloneNode(true);
-
-                        new_block.style.display = 'none';
-
-                        buffer.push([{
-                            obj: new_block,
-                            x: row_buffer[index].x,
-                            y: row_buffer[index].y + h,
-                            original: false
-                        }]);
-                        setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                        parent_el.appendChild(new_block)
-                    }
-                    row_buffer[index].obj.style.transform = `translate(${row_buffer[index].x}px, ${row_buffer[index].y}px)`
                 }
 
             }
@@ -157,15 +172,9 @@ $(document).ready((function() {
     }
     const clearPlayer = intervalId => {
 
-
         clearInterval(intervalId);
-
         intervalID = null;
-
-
         return true;
-
-
     }
 
     const scroll_counter = 4;
