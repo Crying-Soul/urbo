@@ -138,7 +138,6 @@ $(document).ready((function() {
 
                         new_block.style.display = 'none';
 
-                        console.log(new_block);
                         buffer.push([{
                             obj: new_block,
                             x: row_buffer[index].x,
