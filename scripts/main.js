@@ -19,17 +19,17 @@ $(document).ready((function() {
         if (bufferX <= 0.5) {
             direction.x = 1 - bufferX;
         } else {
-            direction.x = -bufferX
+            direction.x = -bufferX;
         }
         if (bufferY <= 0.5) {
             direction.y = 1 - bufferY;
         } else {
-            direction.y = -bufferY
+            direction.y = -bufferY;
         }
 
         if (bufferX <= 0.7 && bufferX >= 0.4 && bufferY <= 0.7 && bufferY >= 0.4) {
-            direction.x = 0
-            direction.y = 0
+            direction.x = 0;
+            direction.y = 0;
         }
     });
 
@@ -38,7 +38,7 @@ $(document).ready((function() {
     const createPlayer = (buffer, model, parent_el) => {
         let w = model.clientWidth;
         let h = model.clientHeight;
-        let row_limit = 2
+        let row_limit = 2;
 
 
         buffer[0][0].original = true
@@ -50,10 +50,30 @@ $(document).ready((function() {
                             elem.obj.remove()
                         }
                     }
-                )
-
-            })
+                );
+            });
         }
+
+        setInterval(() => {
+            $(".group .project").mouseenter((function(e) {
+
+                if (!$(this).children('p').length) {
+
+                    $(this).prepend(`<p>${$(this).attr('data-content')}</p>`)
+                }
+            }));
+            $(".group .project").click((function(e) {
+
+                location.href = `./pages/${$(this).attr('data-content').toLowerCase().replace('.', '-')}.html`;
+
+            }));
+            $(".group .project").mouseleave((function(e) {
+                if ($(this).children('p')) {
+
+                    $(this).children('p').remove()
+                }
+            }));
+        }, 2000)
 
 
         let intervalId = setInterval(() => {
@@ -82,8 +102,8 @@ $(document).ready((function() {
                                 y: row_buffer[index].y,
                                 original: false
                             }, );
-                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                            parent_el.appendChild(new_block)
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000);
+                            parent_el.appendChild(new_block);
 
 
                         }
@@ -105,8 +125,8 @@ $(document).ready((function() {
                                 }
 
                             )
-                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                            parent_el.appendChild(new_block)
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000);
+                            parent_el.appendChild(new_block);
                         }
                         /**
                          * TOP
@@ -119,19 +139,16 @@ $(document).ready((function() {
                                 });
 
                             }
-
                             let new_block = model.cloneNode(true);
                             new_block.style.display = 'none';
-
-
                             buffer.unshift([{
                                 obj: new_block,
                                 x: row_buffer[index].x,
                                 y: row_buffer[index].y - h,
                                 original: false
                             }]);
-                            setTimeout(() => { new_block.style.display = 'flex' }, 1000)
-                            parent_el.appendChild(new_block)
+                            setTimeout(() => { new_block.style.display = 'flex' }, 1000);
+                            parent_el.appendChild(new_block);
 
                         }
                         /**
@@ -145,7 +162,6 @@ $(document).ready((function() {
                                 });
 
                             }
-
 
                             let new_block = model.cloneNode(true);
 
@@ -164,7 +180,6 @@ $(document).ready((function() {
 
                     }
                 }
-
             }
         }, 1000 / 60);
         bufferLink = buffer;
