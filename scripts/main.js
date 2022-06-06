@@ -575,7 +575,6 @@ $(document).ready((function() {
             $(".view-wrapper").removeClass("d-n")
             $(".view-wrapper").css("display", "block")
             $(".mobile-back-arrow").removeClass('d-n')
-
         })
     );
     $(".mobile-back-arrow").on("click", (function() {

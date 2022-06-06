@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    /* border: 1px solid red; */
 }
 
 body {
@@ -720,10 +719,11 @@ a:hover {
 }
 
 .group {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
-    width: 217vh;
+    width: 216vh;
+    gap: 20px;
     transition: ease-out 1s;
 }
 
@@ -739,15 +739,10 @@ a:hover {
 
 .project img {
     border-radius: 3px;
-    -webkit-filter: brightness(20%);
     filter: brightness(20%);
     height: 37vh;
-    margin: 10px;
-    -o-object-fit: cover;
     object-fit: cover;
     position: relative;
-    -webkit-transition: .5s;
-    -o-transition: .5s;
     transition: .5s;
     width: 34vh;
     z-index: 4
