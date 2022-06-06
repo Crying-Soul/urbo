@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    /* border: 1px solid red; */
 }
 
 body {
@@ -595,10 +596,10 @@ a:hover {
         border-top: 1px rgba(0, 0, 0, .1) solid
     }
     100% {
+        border-right: 1px solid rgba(0, 0, 0, 1);
+        border-top: 1px solid rgba(0, 0, 0, .1);
         border-bottom: 1px #fff solid;
         border-left: 1px #fff solid;
-        border-right: 1px rgba(0, 0, 0, .1) solid;
-        border-top: 1px rgba(0, 0, 0, .1) solid
     }
 }
 
@@ -1427,6 +1428,10 @@ a:hover {
     font-size: 34px
 }
 
+.mobile-button-scroll-down {
+    display: none;
+}
+
 @media only screen and (max-device-width: 680px) {
     /* * {
         border: 1px solid red;
@@ -1525,26 +1530,6 @@ a:hover {
             transform: scale(1.5)
         }
     }
-    .view-wrapper {
-        display: none
-    }
-    .mobile-view-wrapper {
-        display: block !important;
-        left: 60%;
-        position: absolute
-    }
-    .button-scroll-down {
-        display: block !important;
-        left: 50%;
-        position: absolute;
-        -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        transform: translateX(-50%);
-        z-index: 7
-    }
-    .button-view-wrap::after {
-        border-top: 2px solid #7601fd !important
-    }
     .menu-extra {
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -1555,8 +1540,66 @@ a:hover {
         font-size: .6em;
         margin: 0
     }
-    .button-scroll-down p {
-        font-size: 34px
+    .mobile-button-scroll-down p {
+        color: #7601fd;
+        font-size: 34px;
+        letter-spacing: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-47%, -55%);
+    }
+    .mobile-button-scroll-down,
+    .view-wrapper {
+        display: block;
+        bottom: 80px;
+        left: 100px;
+        z-index: 7;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+    .mobile-button-scroll-down button {
+        background: transparent;
+        font-family: "Majorant-Rg";
+        height: 100%;
+        left: 50%;
+        outline: none;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        width: 100%;
+        border: none;
+    }
+    .mobile-button-view-wrap,
+    .button-view-wrap {
+        border: 1px solid rgba(118, 1, 253, .3);
+        border-radius: 2px;
+        height: 85px;
+        position: relative;
+        transform: rotate(45deg);
+        width: 85px;
+        z-index: 4
+    }
+    .mobile-button-view-wrap::after,
+    .button-view-wrap::after {
+        border-radius: 2px;
+        border-top: 2px solid #7601fd !important;
+        content: " ";
+        height: 100%;
+        left: 0;
+        line-height: 100px;
+        position: absolute;
+        top: -2px;
+        transition: .5s;
+        width: 50%
+    }
+    .view-wrapper {
+        left: 70vw;
+    }
+    .view-wrapper p {
+        color: #7601fd;
     }
     .mobile-default-view {
         -webkit-backdrop-filter: brightness(60%) blur(2px);
@@ -1626,6 +1669,16 @@ a:hover {
         -o-transition: .5s;
         transition: .5s
     }
+    /* 
+    .mobile-view-wrapper {
+        display: block !important;
+        left: 60%;
+        position: absolute
+    }
+   
+    
+    
+
     .project-list .project-el {
         font-size: 1.2em
     }
@@ -1686,5 +1739,5 @@ a:hover {
         100% {
             opacity: 1
         }
-    }
+    } */
 }
