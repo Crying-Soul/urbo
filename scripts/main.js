@@ -32,13 +32,14 @@ $(document).ready((function() {
     const mobileScrollBuffer = [];
     let mobileCounter = 0;
     let isMobile = window.mobileAndTabletCheck();
+    let grid = false;
 
     const scroll_counter = 4;
     const mobile_scroll_counter = 6;
 
     let href = !localStorage.getItem('href') ? 'home' : localStorage.getItem('href')
 
-    let grid = false;
+
 
 
 
@@ -315,6 +316,7 @@ $(document).ready((function() {
         }
     }
 
+
     $("button.grid-list-view").on("click", (function() {
         updateViewState()
         $(this).html(
@@ -364,10 +366,19 @@ $(document).ready((function() {
 
             $('.project-wrapper-list').removeClass('project-view-swap');
 
-            $("button.grid-list-view").html(
-                "<p>LIST&nbsp;VIEW</p>"
-            );
-            grid = true
+            if (isMobile) {
+                $("button.grid-list-view").html(
+                    "<p>GRID&nbsp;VIEW</p>"
+                );
+                grid = false
+            } else {
+                $("button.grid-list-view").html(
+                    "<p>LIST&nbsp;VIEW</p>"
+                );
+                grid = true
+            }
+
+
             $(".menu-el, .menu-alter-el").removeClass('inactive-el');
         }, 1500);
 
@@ -452,6 +463,17 @@ $(document).ready((function() {
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+                if (isMobile) {
+                    $("button.grid-list-view").html(
+                        "<p>GRID&nbsp;VIEW</p>"
+                    );
+                    grid = false
+                } else {
+                    $("button.grid-list-view").html(
+                        "<p>LIST&nbsp;VIEW</p>"
+                    );
+                    grid = true
+                }
 
                 skip = true;
                 counter = 0;
@@ -481,6 +503,17 @@ $(document).ready((function() {
                 $(`.content#${href}`).addClass("active-content");
                 $(`.menu-el a[data-href=${href}]`).parent().addClass('active')
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
+                if (isMobile) {
+                    $("button.grid-list-view").html(
+                        "<p>GRID&nbsp;VIEW</p>"
+                    );
+                    grid = false
+                } else {
+                    $("button.grid-list-view").html(
+                        "<p>LIST&nbsp;VIEW</p>"
+                    );
+                    grid = true
+                }
 
                 skip = true;
                 counter = 0;
@@ -553,6 +586,18 @@ $(document).ready((function() {
 
                 $(`.content#${href}`).addClass(`active-content scroll-animation-in-${href}`);
             }
+            if (isMobile) {
+                $("button.grid-list-view").html(
+                    "<p>GRID&nbsp;VIEW</p>"
+                );
+                grid = false
+            } else {
+                $("button.grid-list-view").html(
+                    "<p>LIST&nbsp;VIEW</p>"
+                );
+                grid = true
+            }
+
             skip = true;
             counter, mobileCounter = 0;
         }, 1500);
